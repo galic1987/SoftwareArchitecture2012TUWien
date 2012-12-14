@@ -1,0 +1,24 @@
+CREATE SCHEMA IF NOT EXISTS SOFT_ARCH;
+
+DROP TABLE SOFT_ARCH.USER;
+DROP TABLE SOFT_ARCH.REQUEST_HISTORY ;
+
+CREATE TABLE IF NOT EXISTS SOFT_ARCH.USER(
+id int auto_increment(1,1) PRIMARY KEY,
+username VARCHAR(50),
+password VARCHAR(50),
+name VARCHAR(50),
+surname VARCHAR(50),
+email VARCHAR(50),
+account int);
+
+CREATE TABLE IF NOT EXISTS SOFT_ARCH.REQUEST_HISTORY(
+id int auto_increment(1,1) PRIMARY KEY,
+date timestamp,
+user_id int,
+searchFind int,
+accoun int,
+found_by int,
+FOREIGN KEY (user_id) REFERENCES SOFT_ARCH.USER(id),
+FOREIGN KEY (found_by) REFERENCES SOFT_ARCH.REQUEST_HISTORY(id)
+);
