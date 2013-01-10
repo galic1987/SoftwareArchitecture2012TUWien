@@ -96,8 +96,8 @@
 		<configuration>
 			<webXml>WebContent\WEB-INF\web.xml</webXml>
 			<warName>Server</warName>
-			<outputDirectory>C:\Program Files (x86)\Apache Software Foundation\Tomcat 7.0\webapps</outputDirectory>
-			<webResources>
+			<!--  <outputDirectory>C:\Program Files (x86)\Apache Software Foundation\Tomcat 7.0\webapps</outputDirectory>
+			--><webResources>
 				<resource>
 					<!-- this is relative to the pom.xml directory -->
 					<directory>WebContent\WEB-INF</directory>
