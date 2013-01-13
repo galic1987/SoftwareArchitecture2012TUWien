@@ -1,0 +1,59 @@
+import "General.proto";
+
+message ServerRequest {
+	required int32 req_id=1;
+	optional ServerRequestType server_request_type=2;
+	extensions 100 to max;
+}
+
+extend ServerRequest {
+	optional RegisterPeerRequest register_peer_request=100;
+	optional RegisterPeerResponse register_peer_response=101;
+	optional BootstrapRequest bootstrap_request=102;
+	optional BootstrapResponse bootstrap_response=103;
+	optional PeerDeadRequest peer_dead_request=104;
+	optional ValidateSearchRequest validate_search_request=105;
+	optional ValidateSearchResponse validate_search_response=106;	
+}
+
+enum ServerRequestType {
+	REGISTER_PEER_REQUEST=1;
+	REGISTER_PEER_RESPONSE=2;
+	BOOTSTRAP_REQUEST=3;
+	BOOTSTRAP_RESPONSE=4;
+	PEER_DEAD_REQUEST=5;
+	VALIDATE_SEARCH_REQUEST=6;
+	VALIDATE_SEARCH_RESPONSE=7;
+}
+
+message RegisterPeerRequest {
+     required string peer_address=1;
+     required int32 client_id=2;
+}
+
+message RegisterPeerResponse {
+     optional int32 peer_id =1;
+     optional PeerRegistrationStatus status=2;
+}
+
+message BootstrapRequest {
+     required int32 numberOfPeers =1;
+}
+
+message BootstrapResponse {
+     repeated PeerData data=1;
+}
+
+message PeerDeadRequest {
+     required string destination_peer=1;
+}
+
+message ValidateSearchRequest {
+     required SearchRequest search_request=1;
+}
+
+message ValidateSearchResponse {
+	 required ValidateSearchStatus search_status=1;
+}
+
+

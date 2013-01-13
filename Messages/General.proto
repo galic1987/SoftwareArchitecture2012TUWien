@@ -1,0 +1,42 @@
+message SearchRequest {
+     required int32 request_id = 1;
+     required int32 timestamp=2;
+     required int32 clientid=3;
+     optional int32 hops_to_live=4;
+     required bytes fingerprint=5;
+     optional string original_peer=6;
+}
+
+message PeerData {
+     required string peer_address=1;
+     required int32 client_id=2;
+	 optional int32 number_of_songs = 3;
+}
+
+message SongData {
+     required string song_name=1;
+     required string artist_name=2;
+     required string album_name=3;
+     optional double ConfidenceLevel=4;
+}
+
+enum ValidateSearchStatus {
+	SEARCH_OK=0;
+	SEARCH_DENIED=1;
+	SEARCH_ERROR=2;
+}
+
+enum SearchStatus {
+	FOUND=0;
+	NOT_FOUND=1;
+	PROCESSING=2;
+}
+
+enum PeerRegistrationStatus {
+	PEER_OK=0;
+	PEER_ERROR=1;
+}
+
+message AddSongRequest {
+     required string file_path=1;
+}
