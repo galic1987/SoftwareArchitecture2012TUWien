@@ -1,0 +1,76 @@
+import "General.proto";
+
+message PeerRequest {
+	required int32 request_id=1;
+	optional PeerRequestType peer_request_type=2;
+	extensions 100 to max;
+}
+
+extend PeerRequest {
+	optional AreYouAliveRequest are_you_alive_request=100;
+	optional AreYouAliveResponse are_you_alive_response = 101;
+	optional SearchRequest search_request=102;
+	optional SearchAbort search_abort=103;
+	optional SearchSuccesful search_succesful=104;
+	
+	optional MonitoringGetPeersRequest monitoring_get_peers_request=200;
+	optional MonitoringGetPeersResponse monitoring_get_peers_response=201;
+	optional MonitoringRequestsProcessedRequest monitoring_requests_processed_request=202;
+	optional MonitoringRequestsProcessedResponse monitoring_requests_processed_response=203;
+}
+
+enum PeerRequestType {
+	ARE_YOU_ALIVE_REQUEST=0;
+	ARE_YOU_ALIVE_RESPONSE=1;
+	SEARCH_REQUEST=2;
+	SEARCH_ABORT=3;
+	SEARCH_SUCCESFULL=4;
+	
+	MONITORING_GET_PEERS_REQUEST=100;
+	MONITORING_GET_PEERS_RESPONSE=101;
+	MONITORING_REQUESTS_PROCESSED_REQUEST=102;
+	MONITORING_REQUESTS_PROCESSED_RESPONSE=103;
+	
+}
+
+message AreYouAliveRequest {
+     required string destination_peer=1;
+     required int32 timestamp=2;
+}
+
+message AreYouAliveResponse {
+     required string destination_peer=1;
+     required string timestamp=2;
+}
+
+message SearchAbort {
+     required int32 request_id=1;
+}
+
+message SearchSuccesful {
+     required SearchRequest search_request=1;
+     required int32 founder_peerid=2;
+     required int32 founder_clientid=3;
+	 optional SongData song_data=4;
+}
+
+
+message MonitoringGetPeersRequest {
+}
+
+message MonitoringGetPeersResponse {
+	repeated PeerData peer_data=1;
+}
+     
+message MonitoringRequestsProcessedRequest {
+}
+
+message MonitoringRequestsProcessedResponse {
+     repeated RequestData request_data=1;
+}
+
+message RequestData {
+     required SearchRequest search_request=1;
+     required SearchStatus search_status=2;
+     optional bool credited=3;
+}
