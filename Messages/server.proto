@@ -1,9 +1,12 @@
 import "General.proto";
 
+package pb_sa;
+option java_package = "at.ac.tuwien.software.architectures.ws2012";
+
 message ServerRequest {
 	required int32 req_id=1;
 	optional ServerRequestType server_request_type=2;
-	extensions 100 to max;
+	extensions 100 to 200;
 }
 
 extend ServerRequest {

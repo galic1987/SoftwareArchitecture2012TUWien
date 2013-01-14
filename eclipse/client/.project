@@ -20,4 +20,41 @@
 		<nature>org.eclipse.m2e.core.maven2Nature</nature>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>General.proto</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Messages/General.proto</locationURI>
+		</link>
+		<link>
+			<name>generate.bat</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Messages/generate.bat</locationURI>
+		</link>
+		<link>
+			<name>peer.proto</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Messages/peer.proto</locationURI>
+		</link>
+		<link>
+			<name>server.proto</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Messages/server.proto</locationURI>
+		</link>
+		<link>
+			<name>src/at/ac/tuwien/software/architectures/ws2012/General.java</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Messages/Java/at/ac/tuwien/software/architectures/ws2012/General.java</locationURI>
+		</link>
+		<link>
+			<name>src/at/ac/tuwien/software/architectures/ws2012/Peer.java</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Messages/Java/at/ac/tuwien/software/architectures/ws2012/Peer.java</locationURI>
+		</link>
+		<link>
+			<name>src/at/ac/tuwien/software/architectures/ws2012/Server.java</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/Messages/Java/at/ac/tuwien/software/architectures/ws2012/Server.java</locationURI>
+		</link>
+	</linkedResources>
 </projectDescription>

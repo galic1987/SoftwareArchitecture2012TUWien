@@ -1,3 +1,6 @@
+package pb_sa;
+option java_package = "at.ac.tuwien.software.architectures.ws2012";
+
 message SearchRequest {
      required int32 request_id = 1;
      required int32 timestamp=2;
