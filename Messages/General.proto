@@ -1,9 +1,36 @@
 package pb_sa;
 option java_package = "at.ac.tuwien.software.architectures.ws2012";
 
+
+message Request {
+	required int32 request_id=1;
+	optional RequestType request_type=2;
+    optional int32 timestamp=3;
+	extensions 100 to max;
+}
+
+enum RequestType {
+	ARE_YOU_ALIVE_REQUEST=100;
+	ARE_YOU_ALIVE_RESPONSE=101;
+	SEARCH_REQUEST=102;
+	SEARCH_ABORT=103;
+	SEARCH_SUCCESFULL=104;
+	
+	MONITORING_GET_PEERS_REQUEST=200;
+	MONITORING_GET_PEERS_RESPONSE=201;
+	MONITORING_REQUESTS_PROCESSED_REQUEST=202;
+	MONITORING_REQUESTS_PROCESSED_RESPONSE=203;
+	
+	REGISTER_PEER_REQUEST=301;
+	REGISTER_PEER_RESPONSE=302;
+	BOOTSTRAP_REQUEST=303;
+	BOOTSTRAP_RESPONSE=304;
+	PEER_DEAD_REQUEST=305;
+	VALIDATE_SEARCH_REQUEST=306;
+	VALIDATE_SEARCH_RESPONSE=307;
+}
+
 message SearchRequest {
-     required int32 request_id = 1;
-     required int32 timestamp=2;
      required int32 clientid=3;
      optional int32 hops_to_live=4;
      required bytes fingerprint=5;

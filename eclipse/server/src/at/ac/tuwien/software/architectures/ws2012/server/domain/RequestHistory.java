@@ -2,7 +2,6 @@ package at.ac.tuwien.software.architectures.ws2012.server.domain;
 
 import java.util.Date;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;

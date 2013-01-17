@@ -1,0 +1,21 @@
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+             version="2.0">
+   <persistence-unit name="software-architectures">
+      <!-- <jta-data-source>java:/DefaultDS</jta-data-source>  -->
+      <class>at.ac.tuwien.software.architectures.ws2012.server.domain.User</class>
+      <class>at.ac.tuwien.software.architectures.ws2012.server.domain.RequestHistory</class>
+      <properties>
+      	<property name="hibernate.connection.driver_class" value="org.h2.Driver"/>
+		<property name="hibernate.connection.url" value=" jdbc:h2:tcp://localhost/~/test"/>
+		<property name="hibernate.connection.username" value="sa"/>
+		<property name="hibernate.connection.password" value=""/>
+		<property name="hibernate.default_schema" value="SOFT_ARCH"/>
+		<property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
+     <!--     <property name="hibernate.dialect" value="org.hibernate.dialect.HSQLDialect"/>
+         <property name="hibernate.hbm2ddl.auto" value="create-drop"/> -->
+      </properties>
+      
+   </persistence-unit>
+</persistence>

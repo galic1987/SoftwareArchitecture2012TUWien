@@ -12,67 +12,8 @@ import General_pb2
 DESCRIPTOR = descriptor.FileDescriptor(
   name='peer.proto',
   package='pb_sa',
-  serialized_pb='\n\npeer.proto\x12\x05pb_sa\x1a\rGeneral.proto\"^\n\x0bPeerRequest\x12\x12\n\nrequest_id\x18\x01 \x02(\x05\x12\x31\n\x11peer_request_type\x18\x02 \x01(\x0e\x32\x16.pb_sa.PeerRequestType*\x08\x08\x64\x10\x80\x80\x80\x80\x02\"A\n\x12\x41reYouAliveRequest\x12\x18\n\x10\x64\x65stination_peer\x18\x01 \x02(\t\x12\x11\n\ttimestamp\x18\x02 \x02(\x05\"B\n\x13\x41reYouAliveResponse\x12\x18\n\x10\x64\x65stination_peer\x18\x01 \x02(\t\x12\x11\n\ttimestamp\x18\x02 \x02(\t\"!\n\x0bSearchAbort\x12\x12\n\nrequest_id\x18\x01 \x02(\x05\"\x95\x01\n\x0fSearchSuccesful\x12,\n\x0esearch_request\x18\x01 \x02(\x0b\x32\x14.pb_sa.SearchRequest\x12\x16\n\x0e\x66ounder_peerid\x18\x02 \x02(\x05\x12\x18\n\x10\x66ounder_clientid\x18\x03 \x02(\x05\x12\"\n\tsong_data\x18\x04 \x01(\x0b\x32\x0f.pb_sa.SongData\"\x1b\n\x19MonitoringGetPeersRequest\"@\n\x1aMonitoringGetPeersResponse\x12\"\n\tpeer_data\x18\x01 \x03(\x0b\x32\x0f.pb_sa.PeerData\"$\n\"MonitoringRequestsProcessedRequest\"O\n#MonitoringRequestsProcessedResponse\x12(\n\x0crequest_data\x18\x01 \x03(\x0b\x32\x12.pb_sa.RequestData\"y\n\x0bRequestData\x12,\n\x0esearch_request\x18\x01 \x02(\x0b\x32\x14.pb_sa.SearchRequest\x12*\n\rsearch_status\x18\x02 \x02(\x0e\x32\x13.pb_sa.SearchStatus\x12\x10\n\x08\x63redited\x18\x03 \x01(\x08*\xa1\x02\n\x0fPeerRequestType\x12\x19\n\x15\x41RE_YOU_ALIVE_REQUEST\x10\x00\x12\x1a\n\x16\x41RE_YOU_ALIVE_RESPONSE\x10\x01\x12\x12\n\x0eSEARCH_REQUEST\x10\x02\x12\x10\n\x0cSEARCH_ABORT\x10\x03\x12\x15\n\x11SEARCH_SUCCESFULL\x10\x04\x12 \n\x1cMONITORING_GET_PEERS_REQUEST\x10\x64\x12!\n\x1dMONITORING_GET_PEERS_RESPONSE\x10\x65\x12)\n%MONITORING_REQUESTS_PROCESSED_REQUEST\x10\x66\x12*\n&MONITORING_REQUESTS_PROCESSED_RESPONSE\x10g:L\n\x15\x61re_you_alive_request\x12\x12.pb_sa.PeerRequest\x18\x64 \x01(\x0b\x32\x19.pb_sa.AreYouAliveRequest:N\n\x16\x61re_you_alive_response\x12\x12.pb_sa.PeerRequest\x18\x65 \x01(\x0b\x32\x1a.pb_sa.AreYouAliveResponse:@\n\x0esearch_request\x12\x12.pb_sa.PeerRequest\x18\x66 \x01(\x0b\x32\x14.pb_sa.SearchRequest:<\n\x0csearch_abort\x12\x12.pb_sa.PeerRequest\x18g \x01(\x0b\x32\x12.pb_sa.SearchAbort:D\n\x10search_succesful\x12\x12.pb_sa.PeerRequest\x18h \x01(\x0b\x32\x16.pb_sa.SearchSuccesful:[\n\x1cmonitoring_get_peers_request\x12\x12.pb_sa.PeerRequest\x18\xc8\x01 \x01(\x0b\x32 .pb_sa.MonitoringGetPeersRequest:]\n\x1dmonitoring_get_peers_response\x12\x12.pb_sa.PeerRequest\x18\xc9\x01 \x01(\x0b\x32!.pb_sa.MonitoringGetPeersResponse:m\n%monitoring_requests_processed_request\x12\x12.pb_sa.PeerRequest\x18\xca\x01 \x01(\x0b\x32).pb_sa.MonitoringRequestsProcessedRequest:o\n&monitoring_requests_processed_response\x12\x12.pb_sa.PeerRequest\x18\xcb\x01 \x01(\x0b\x32*.pb_sa.MonitoringRequestsProcessedResponseB,\n*at.ac.tuwien.software.architectures.ws2012')
+  serialized_pb='\n\npeer.proto\x12\x05pb_sa\x1a\rGeneral.proto\".\n\x12\x41reYouAliveRequest\x12\x18\n\x10\x64\x65stination_peer\x18\x01 \x02(\t\"/\n\x13\x41reYouAliveResponse\x12\x18\n\x10\x64\x65stination_peer\x18\x01 \x02(\t\"!\n\x0bSearchAbort\x12\x12\n\nrequest_id\x18\x01 \x02(\x05\"\x95\x01\n\x0fSearchSuccesful\x12,\n\x0esearch_request\x18\x01 \x02(\x0b\x32\x14.pb_sa.SearchRequest\x12\x16\n\x0e\x66ounder_peerid\x18\x02 \x02(\x05\x12\x18\n\x10\x66ounder_clientid\x18\x03 \x02(\x05\x12\"\n\tsong_data\x18\x04 \x01(\x0b\x32\x0f.pb_sa.SongData\"\x1b\n\x19MonitoringGetPeersRequest\"@\n\x1aMonitoringGetPeersResponse\x12\"\n\tpeer_data\x18\x01 \x03(\x0b\x32\x0f.pb_sa.PeerData\"$\n\"MonitoringRequestsProcessedRequest\"O\n#MonitoringRequestsProcessedResponse\x12(\n\x0crequest_data\x18\x01 \x03(\x0b\x32\x12.pb_sa.RequestData\"y\n\x0bRequestData\x12,\n\x0esearch_request\x18\x01 \x02(\x0b\x32\x14.pb_sa.SearchRequest\x12*\n\rsearch_status\x18\x02 \x02(\x0e\x32\x13.pb_sa.SearchStatus\x12\x10\n\x08\x63redited\x18\x03 \x01(\x08:H\n\x15\x61re_you_alive_request\x12\x0e.pb_sa.Request\x18\x64 \x01(\x0b\x32\x19.pb_sa.AreYouAliveRequest:J\n\x16\x61re_you_alive_response\x12\x0e.pb_sa.Request\x18\x65 \x01(\x0b\x32\x1a.pb_sa.AreYouAliveResponse:<\n\x0esearch_request\x12\x0e.pb_sa.Request\x18\x66 \x01(\x0b\x32\x14.pb_sa.SearchRequest:8\n\x0csearch_abort\x12\x0e.pb_sa.Request\x18g \x01(\x0b\x32\x12.pb_sa.SearchAbort:@\n\x10search_succesful\x12\x0e.pb_sa.Request\x18h \x01(\x0b\x32\x16.pb_sa.SearchSuccesful:W\n\x1cmonitoring_get_peers_request\x12\x0e.pb_sa.Request\x18\xc8\x01 \x01(\x0b\x32 .pb_sa.MonitoringGetPeersRequest:Y\n\x1dmonitoring_get_peers_response\x12\x0e.pb_sa.Request\x18\xc9\x01 \x01(\x0b\x32!.pb_sa.MonitoringGetPeersResponse:i\n%monitoring_requests_processed_request\x12\x0e.pb_sa.Request\x18\xca\x01 \x01(\x0b\x32).pb_sa.MonitoringRequestsProcessedRequest:k\n&monitoring_requests_processed_response\x12\x0e.pb_sa.Request\x18\xcb\x01 \x01(\x0b\x32*.pb_sa.MonitoringRequestsProcessedResponseB,\n*at.ac.tuwien.software.architectures.ws2012')
 
-_PEERREQUESTTYPE = descriptor.EnumDescriptor(
-  name='PeerRequestType',
-  full_name='pb_sa.PeerRequestType',
-  filename=None,
-  file=DESCRIPTOR,
-  values=[
-    descriptor.EnumValueDescriptor(
-      name='ARE_YOU_ALIVE_REQUEST', index=0, number=0,
-      options=None,
-      type=None),
-    descriptor.EnumValueDescriptor(
-      name='ARE_YOU_ALIVE_RESPONSE', index=1, number=1,
-      options=None,
-      type=None),
-    descriptor.EnumValueDescriptor(
-      name='SEARCH_REQUEST', index=2, number=2,
-      options=None,
-      type=None),
-    descriptor.EnumValueDescriptor(
-      name='SEARCH_ABORT', index=3, number=3,
-      options=None,
-      type=None),
-    descriptor.EnumValueDescriptor(
-      name='SEARCH_SUCCESFULL', index=4, number=4,
-      options=None,
-      type=None),
-    descriptor.EnumValueDescriptor(
-      name='MONITORING_GET_PEERS_REQUEST', index=5, number=100,
-      options=None,
-      type=None),
-    descriptor.EnumValueDescriptor(
-      name='MONITORING_GET_PEERS_RESPONSE', index=6, number=101,
-      options=None,
-      type=None),
-    descriptor.EnumValueDescriptor(
-      name='MONITORING_REQUESTS_PROCESSED_REQUEST', index=7, number=102,
-      options=None,
-      type=None),
-    descriptor.EnumValueDescriptor(
-      name='MONITORING_REQUESTS_PROCESSED_RESPONSE', index=8, number=103,
-      options=None,
-      type=None),
-  ],
-  containing_type=None,
-  options=None,
-  serialized_start=792,
-  serialized_end=1081,
-)
-
-
-ARE_YOU_ALIVE_REQUEST = 0
-ARE_YOU_ALIVE_RESPONSE = 1
-SEARCH_REQUEST = 2
-SEARCH_ABORT = 3
-SEARCH_SUCCESFULL = 4
-MONITORING_GET_PEERS_REQUEST = 100
-MONITORING_GET_PEERS_RESPONSE = 101
-MONITORING_REQUESTS_PROCESSED_REQUEST = 102
-MONITORING_REQUESTS_PROCESSED_RESPONSE = 103
 
 ARE_YOU_ALIVE_REQUEST_FIELD_NUMBER = 100
 are_you_alive_request = descriptor.FieldDescriptor(
@@ -148,41 +89,6 @@ monitoring_requests_processed_response = descriptor.FieldDescriptor(
   options=None)
 
 
-_PEERREQUEST = descriptor.Descriptor(
-  name='PeerRequest',
-  full_name='pb_sa.PeerRequest',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    descriptor.FieldDescriptor(
-      name='request_id', full_name='pb_sa.PeerRequest.request_id', index=0,
-      number=1, type=5, cpp_type=1, label=2,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    descriptor.FieldDescriptor(
-      name='peer_request_type', full_name='pb_sa.PeerRequest.peer_request_type', index=1,
-      number=2, type=14, cpp_type=8, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  options=None,
-  is_extendable=True,
-  extension_ranges=[(100, 536870912), ],
-  serialized_start=36,
-  serialized_end=130,
-)
-
-
 _AREYOUALIVEREQUEST = descriptor.Descriptor(
   name='AreYouAliveRequest',
   full_name='pb_sa.AreYouAliveRequest',
@@ -197,13 +103,6 @@ _AREYOUALIVEREQUEST = descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
-    descriptor.FieldDescriptor(
-      name='timestamp', full_name='pb_sa.AreYouAliveRequest.timestamp', index=1,
-      number=2, type=5, cpp_type=1, label=2,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
   ],
   extensions=[
   ],
@@ -213,8 +112,8 @@ _AREYOUALIVEREQUEST = descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=132,
-  serialized_end=197,
+  serialized_start=36,
+  serialized_end=82,
 )
 
 
@@ -232,13 +131,6 @@ _AREYOUALIVERESPONSE = descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
-    descriptor.FieldDescriptor(
-      name='timestamp', full_name='pb_sa.AreYouAliveResponse.timestamp', index=1,
-      number=2, type=9, cpp_type=9, label=2,
-      has_default_value=False, default_value=unicode("", "utf-8"),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
   ],
   extensions=[
   ],
@@ -248,8 +140,8 @@ _AREYOUALIVERESPONSE = descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=199,
-  serialized_end=265,
+  serialized_start=84,
+  serialized_end=131,
 )
 
 
@@ -276,8 +168,8 @@ _SEARCHABORT = descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=267,
-  serialized_end=300,
+  serialized_start=133,
+  serialized_end=166,
 )
 
 
@@ -325,8 +217,8 @@ _SEARCHSUCCESFUL = descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=303,
-  serialized_end=452,
+  serialized_start=169,
+  serialized_end=318,
 )
 
 
@@ -346,8 +238,8 @@ _MONITORINGGETPEERSREQUEST = descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=454,
-  serialized_end=481,
+  serialized_start=320,
+  serialized_end=347,
 )
 
 
@@ -374,8 +266,8 @@ _MONITORINGGETPEERSRESPONSE = descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=483,
-  serialized_end=547,
+  serialized_start=349,
+  serialized_end=413,
 )
 
 
@@ -395,8 +287,8 @@ _MONITORINGREQUESTSPROCESSEDREQUEST = descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=549,
-  serialized_end=585,
+  serialized_start=415,
+  serialized_end=451,
 )
 
 
@@ -423,8 +315,8 @@ _MONITORINGREQUESTSPROCESSEDRESPONSE = descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=587,
-  serialized_end=666,
+  serialized_start=453,
+  serialized_end=532,
 )
 
 
@@ -465,18 +357,16 @@ _REQUESTDATA = descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=668,
-  serialized_end=789,
+  serialized_start=534,
+  serialized_end=655,
 )
 
-_PEERREQUEST.fields_by_name['peer_request_type'].enum_type = _PEERREQUESTTYPE
 _SEARCHSUCCESFUL.fields_by_name['search_request'].message_type = General_pb2._SEARCHREQUEST
 _SEARCHSUCCESFUL.fields_by_name['song_data'].message_type = General_pb2._SONGDATA
 _MONITORINGGETPEERSRESPONSE.fields_by_name['peer_data'].message_type = General_pb2._PEERDATA
 _MONITORINGREQUESTSPROCESSEDRESPONSE.fields_by_name['request_data'].message_type = _REQUESTDATA
 _REQUESTDATA.fields_by_name['search_request'].message_type = General_pb2._SEARCHREQUEST
 _REQUESTDATA.fields_by_name['search_status'].enum_type = General_pb2._SEARCHSTATUS
-DESCRIPTOR.message_types_by_name['PeerRequest'] = _PEERREQUEST
 DESCRIPTOR.message_types_by_name['AreYouAliveRequest'] = _AREYOUALIVEREQUEST
 DESCRIPTOR.message_types_by_name['AreYouAliveResponse'] = _AREYOUALIVERESPONSE
 DESCRIPTOR.message_types_by_name['SearchAbort'] = _SEARCHABORT
@@ -486,12 +376,6 @@ DESCRIPTOR.message_types_by_name['MonitoringGetPeersResponse'] = _MONITORINGGETP
 DESCRIPTOR.message_types_by_name['MonitoringRequestsProcessedRequest'] = _MONITORINGREQUESTSPROCESSEDREQUEST
 DESCRIPTOR.message_types_by_name['MonitoringRequestsProcessedResponse'] = _MONITORINGREQUESTSPROCESSEDRESPONSE
 DESCRIPTOR.message_types_by_name['RequestData'] = _REQUESTDATA
-
-class PeerRequest(message.Message):
-  __metaclass__ = reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _PEERREQUEST
-  
-  # @@protoc_insertion_point(class_scope:pb_sa.PeerRequest)
 
 class AreYouAliveRequest(message.Message):
   __metaclass__ = reflection.GeneratedProtocolMessageType
@@ -548,21 +432,21 @@ class RequestData(message.Message):
   # @@protoc_insertion_point(class_scope:pb_sa.RequestData)
 
 are_you_alive_request.message_type = _AREYOUALIVEREQUEST
-PeerRequest.RegisterExtension(are_you_alive_request)
+General_pb2.Request.RegisterExtension(are_you_alive_request)
 are_you_alive_response.message_type = _AREYOUALIVERESPONSE
-PeerRequest.RegisterExtension(are_you_alive_response)
+General_pb2.Request.RegisterExtension(are_you_alive_response)
 search_request.message_type = General_pb2._SEARCHREQUEST
-PeerRequest.RegisterExtension(search_request)
+General_pb2.Request.RegisterExtension(search_request)
 search_abort.message_type = _SEARCHABORT
-PeerRequest.RegisterExtension(search_abort)
+General_pb2.Request.RegisterExtension(search_abort)
 search_succesful.message_type = _SEARCHSUCCESFUL
-PeerRequest.RegisterExtension(search_succesful)
+General_pb2.Request.RegisterExtension(search_succesful)
 monitoring_get_peers_request.message_type = _MONITORINGGETPEERSREQUEST
-PeerRequest.RegisterExtension(monitoring_get_peers_request)
+General_pb2.Request.RegisterExtension(monitoring_get_peers_request)
 monitoring_get_peers_response.message_type = _MONITORINGGETPEERSRESPONSE
-PeerRequest.RegisterExtension(monitoring_get_peers_response)
+General_pb2.Request.RegisterExtension(monitoring_get_peers_response)
 monitoring_requests_processed_request.message_type = _MONITORINGREQUESTSPROCESSEDREQUEST
-PeerRequest.RegisterExtension(monitoring_requests_processed_request)
+General_pb2.Request.RegisterExtension(monitoring_requests_processed_request)
 monitoring_requests_processed_response.message_type = _MONITORINGREQUESTSPROCESSEDRESPONSE
-PeerRequest.RegisterExtension(monitoring_requests_processed_response)
+General_pb2.Request.RegisterExtension(monitoring_requests_processed_response)
 # @@protoc_insertion_point(module_scope)

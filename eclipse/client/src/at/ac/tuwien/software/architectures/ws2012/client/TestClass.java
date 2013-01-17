@@ -1,17 +1,14 @@
 package at.ac.tuwien.software.architectures.ws2012.client;
 
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.nio.ByteBuffer;
 
 import com.google.protobuf.CodedInputStream;
 import com.google.protobuf.CodedOutputStream;
 
+import at.ac.tuwien.software.architectures.ws2012.General.Request;
+import at.ac.tuwien.software.architectures.ws2012.General.RequestType;
 import at.ac.tuwien.software.architectures.ws2012.Server;
 import at.ac.tuwien.software.architectures.ws2012.Server.BootstrapRequest;
-import at.ac.tuwien.software.architectures.ws2012.Server.ServerRequest;
-import at.ac.tuwien.software.architectures.ws2012.Server.ServerRequestType;
 
 public class TestClass {
 
@@ -34,9 +31,9 @@ public class TestClass {
 		//when everything is set we call build and message is done
 		
 		//now we create "container" message and store real message inside (as a so called extension)
-		ServerRequest highlevelmsg=ServerRequest.newBuilder().
-				setReqId(230).
-				setServerRequestType(ServerRequestType.BOOTSTRAP_REQUEST).
+		Request highlevelmsg=Request.newBuilder().
+				setRequestId(230).
+				setRequestType(RequestType.BOOTSTRAP_REQUEST).
 				setExtension(Server.bootstrapRequest, req).
 				build();
 	
@@ -45,7 +42,7 @@ public class TestClass {
 		os.writeRawVarint32(highlevelmsg.getSerializedSize());
 		//then finally encode the message after the size
 		highlevelmsg.writeTo(os);
-
+		
 		
 		
 		//meanwhile, on the other side:
@@ -57,7 +54,7 @@ public class TestClass {
 			int size=is.readRawVarint32();
 			//this is some internal stuff - we limit how much data can be read from input stream - otherwise, the whole content of input stream would be parsed and not just the content of the next message
 			int previous=is.pushLimit(size);
-			ServerRequest receivedreq=ServerRequest.parseFrom(is);
+			Request receivedreq=Request.parseFrom(is);
 			//now we can restore reading limit to what it was before we started reading last message
 			is.popLimit(previous);
 			

@@ -3,30 +3,15 @@ import "General.proto";
 package pb_sa;
 option java_package = "at.ac.tuwien.software.architectures.ws2012";
 
-message ServerRequest {
-	required int32 req_id=1;
-	optional ServerRequestType server_request_type=2;
-	extensions 100 to 200;
-}
 
-extend ServerRequest {
-	optional RegisterPeerRequest register_peer_request=100;
-	optional RegisterPeerResponse register_peer_response=101;
-	optional BootstrapRequest bootstrap_request=102;
-	optional BootstrapResponse bootstrap_response=103;
-	optional PeerDeadRequest peer_dead_request=104;
-	optional ValidateSearchRequest validate_search_request=105;
-	optional ValidateSearchResponse validate_search_response=106;	
-}
-
-enum ServerRequestType {
-	REGISTER_PEER_REQUEST=1;
-	REGISTER_PEER_RESPONSE=2;
-	BOOTSTRAP_REQUEST=3;
-	BOOTSTRAP_RESPONSE=4;
-	PEER_DEAD_REQUEST=5;
-	VALIDATE_SEARCH_REQUEST=6;
-	VALIDATE_SEARCH_RESPONSE=7;
+extend Request {
+	optional RegisterPeerRequest register_peer_request=300;
+	optional RegisterPeerResponse register_peer_response=301;
+	optional BootstrapRequest bootstrap_request=302;
+	optional BootstrapResponse bootstrap_response=303;
+	optional PeerDeadRequest peer_dead_request=304;
+	optional ValidateSearchRequest validate_search_request=305;
+	optional ValidateSearchResponse validate_search_response=306;	
 }
 
 message RegisterPeerRequest {

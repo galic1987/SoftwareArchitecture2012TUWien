@@ -17,533 +17,12 @@ public final class Peer {
     registry.add(at.ac.tuwien.software.architectures.ws2012.Peer.monitoringRequestsProcessedRequest);
     registry.add(at.ac.tuwien.software.architectures.ws2012.Peer.monitoringRequestsProcessedResponse);
   }
-  public enum PeerRequestType
-      implements com.google.protobuf.ProtocolMessageEnum {
-    ARE_YOU_ALIVE_REQUEST(0, 0),
-    ARE_YOU_ALIVE_RESPONSE(1, 1),
-    SEARCH_REQUEST(2, 2),
-    SEARCH_ABORT(3, 3),
-    SEARCH_SUCCESFULL(4, 4),
-    MONITORING_GET_PEERS_REQUEST(5, 100),
-    MONITORING_GET_PEERS_RESPONSE(6, 101),
-    MONITORING_REQUESTS_PROCESSED_REQUEST(7, 102),
-    MONITORING_REQUESTS_PROCESSED_RESPONSE(8, 103),
-    ;
-    
-    public static final int ARE_YOU_ALIVE_REQUEST_VALUE = 0;
-    public static final int ARE_YOU_ALIVE_RESPONSE_VALUE = 1;
-    public static final int SEARCH_REQUEST_VALUE = 2;
-    public static final int SEARCH_ABORT_VALUE = 3;
-    public static final int SEARCH_SUCCESFULL_VALUE = 4;
-    public static final int MONITORING_GET_PEERS_REQUEST_VALUE = 100;
-    public static final int MONITORING_GET_PEERS_RESPONSE_VALUE = 101;
-    public static final int MONITORING_REQUESTS_PROCESSED_REQUEST_VALUE = 102;
-    public static final int MONITORING_REQUESTS_PROCESSED_RESPONSE_VALUE = 103;
-    
-    
-    public final int getNumber() { return value; }
-    
-    public static PeerRequestType valueOf(int value) {
-      switch (value) {
-        case 0: return ARE_YOU_ALIVE_REQUEST;
-        case 1: return ARE_YOU_ALIVE_RESPONSE;
-        case 2: return SEARCH_REQUEST;
-        case 3: return SEARCH_ABORT;
-        case 4: return SEARCH_SUCCESFULL;
-        case 100: return MONITORING_GET_PEERS_REQUEST;
-        case 101: return MONITORING_GET_PEERS_RESPONSE;
-        case 102: return MONITORING_REQUESTS_PROCESSED_REQUEST;
-        case 103: return MONITORING_REQUESTS_PROCESSED_RESPONSE;
-        default: return null;
-      }
-    }
-    
-    public static com.google.protobuf.Internal.EnumLiteMap<PeerRequestType>
-        internalGetValueMap() {
-      return internalValueMap;
-    }
-    private static com.google.protobuf.Internal.EnumLiteMap<PeerRequestType>
-        internalValueMap =
-          new com.google.protobuf.Internal.EnumLiteMap<PeerRequestType>() {
-            public PeerRequestType findValueByNumber(int number) {
-              return PeerRequestType.valueOf(number);
-            }
-          };
-    
-    public final com.google.protobuf.Descriptors.EnumValueDescriptor
-        getValueDescriptor() {
-      return getDescriptor().getValues().get(index);
-    }
-    public final com.google.protobuf.Descriptors.EnumDescriptor
-        getDescriptorForType() {
-      return getDescriptor();
-    }
-    public static final com.google.protobuf.Descriptors.EnumDescriptor
-        getDescriptor() {
-      return at.ac.tuwien.software.architectures.ws2012.Peer.getDescriptor().getEnumTypes().get(0);
-    }
-    
-    private static final PeerRequestType[] VALUES = {
-      ARE_YOU_ALIVE_REQUEST, ARE_YOU_ALIVE_RESPONSE, SEARCH_REQUEST, SEARCH_ABORT, SEARCH_SUCCESFULL, MONITORING_GET_PEERS_REQUEST, MONITORING_GET_PEERS_RESPONSE, MONITORING_REQUESTS_PROCESSED_REQUEST, MONITORING_REQUESTS_PROCESSED_RESPONSE, 
-    };
-    
-    public static PeerRequestType valueOf(
-        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
-      if (desc.getType() != getDescriptor()) {
-        throw new java.lang.IllegalArgumentException(
-          "EnumValueDescriptor is not for this type.");
-      }
-      return VALUES[desc.getIndex()];
-    }
-    
-    private final int index;
-    private final int value;
-    
-    private PeerRequestType(int index, int value) {
-      this.index = index;
-      this.value = value;
-    }
-    
-    // @@protoc_insertion_point(enum_scope:pb_sa.PeerRequestType)
-  }
-  
-  public interface PeerRequestOrBuilder extends
-      com.google.protobuf.GeneratedMessage.
-          ExtendableMessageOrBuilder<PeerRequest> {
-    
-    // required int32 request_id = 1;
-    boolean hasRequestId();
-    int getRequestId();
-    
-    // optional .pb_sa.PeerRequestType peer_request_type = 2;
-    boolean hasPeerRequestType();
-    at.ac.tuwien.software.architectures.ws2012.Peer.PeerRequestType getPeerRequestType();
-  }
-  public static final class PeerRequest extends
-      com.google.protobuf.GeneratedMessage.ExtendableMessage<
-        PeerRequest> implements PeerRequestOrBuilder {
-    // Use PeerRequest.newBuilder() to construct.
-    private PeerRequest(Builder builder) {
-      super(builder);
-    }
-    private PeerRequest(boolean noInit) {}
-    
-    private static final PeerRequest defaultInstance;
-    public static PeerRequest getDefaultInstance() {
-      return defaultInstance;
-    }
-    
-    public PeerRequest getDefaultInstanceForType() {
-      return defaultInstance;
-    }
-    
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return at.ac.tuwien.software.architectures.ws2012.Peer.internal_static_pb_sa_PeerRequest_descriptor;
-    }
-    
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return at.ac.tuwien.software.architectures.ws2012.Peer.internal_static_pb_sa_PeerRequest_fieldAccessorTable;
-    }
-    
-    private int bitField0_;
-    // required int32 request_id = 1;
-    public static final int REQUEST_ID_FIELD_NUMBER = 1;
-    private int requestId_;
-    public boolean hasRequestId() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
-    }
-    public int getRequestId() {
-      return requestId_;
-    }
-    
-    // optional .pb_sa.PeerRequestType peer_request_type = 2;
-    public static final int PEER_REQUEST_TYPE_FIELD_NUMBER = 2;
-    private at.ac.tuwien.software.architectures.ws2012.Peer.PeerRequestType peerRequestType_;
-    public boolean hasPeerRequestType() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
-    }
-    public at.ac.tuwien.software.architectures.ws2012.Peer.PeerRequestType getPeerRequestType() {
-      return peerRequestType_;
-    }
-    
-    private void initFields() {
-      requestId_ = 0;
-      peerRequestType_ = at.ac.tuwien.software.architectures.ws2012.Peer.PeerRequestType.ARE_YOU_ALIVE_REQUEST;
-    }
-    private byte memoizedIsInitialized = -1;
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized != -1) return isInitialized == 1;
-      
-      if (!hasRequestId()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!extensionsAreInitialized()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      memoizedIsInitialized = 1;
-      return true;
-    }
-    
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      getSerializedSize();
-      com.google.protobuf.GeneratedMessage
-        .ExtendableMessage<at.ac.tuwien.software.architectures.ws2012.Peer.PeerRequest>.ExtensionWriter extensionWriter =
-          newExtensionWriter();
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeInt32(1, requestId_);
-      }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeEnum(2, peerRequestType_.getNumber());
-      }
-      extensionWriter.writeUntil(536870912, output);
-      getUnknownFields().writeTo(output);
-    }
-    
-    private int memoizedSerializedSize = -1;
-    public int getSerializedSize() {
-      int size = memoizedSerializedSize;
-      if (size != -1) return size;
-    
-      size = 0;
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, requestId_);
-      }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(2, peerRequestType_.getNumber());
-      }
-      size += extensionsSerializedSize();
-      size += getUnknownFields().getSerializedSize();
-      memoizedSerializedSize = size;
-      return size;
-    }
-    
-    private static final long serialVersionUID = 0L;
-    @java.lang.Override
-    protected java.lang.Object writeReplace()
-        throws java.io.ObjectStreamException {
-      return super.writeReplace();
-    }
-    
-    public static at.ac.tuwien.software.architectures.ws2012.Peer.PeerRequest parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
-    }
-    public static at.ac.tuwien.software.architectures.ws2012.Peer.PeerRequest parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
-    }
-    public static at.ac.tuwien.software.architectures.ws2012.Peer.PeerRequest parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
-    }
-    public static at.ac.tuwien.software.architectures.ws2012.Peer.PeerRequest parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
-    }
-    public static at.ac.tuwien.software.architectures.ws2012.Peer.PeerRequest parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
-    }
-    public static at.ac.tuwien.software.architectures.ws2012.Peer.PeerRequest parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
-    }
-    public static at.ac.tuwien.software.architectures.ws2012.Peer.PeerRequest parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
-    }
-    public static at.ac.tuwien.software.architectures.ws2012.Peer.PeerRequest parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
-    }
-    public static at.ac.tuwien.software.architectures.ws2012.Peer.PeerRequest parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
-    }
-    public static at.ac.tuwien.software.architectures.ws2012.Peer.PeerRequest parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
-    }
-    
-    public static Builder newBuilder() { return Builder.create(); }
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(at.ac.tuwien.software.architectures.ws2012.Peer.PeerRequest prototype) {
-      return newBuilder().mergeFrom(prototype);
-    }
-    public Builder toBuilder() { return newBuilder(this); }
-    
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.ExtendableBuilder<
-          at.ac.tuwien.software.architectures.ws2012.Peer.PeerRequest, Builder> implements at.ac.tuwien.software.architectures.ws2012.Peer.PeerRequestOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return at.ac.tuwien.software.architectures.ws2012.Peer.internal_static_pb_sa_PeerRequest_descriptor;
-      }
-      
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return at.ac.tuwien.software.architectures.ws2012.Peer.internal_static_pb_sa_PeerRequest_fieldAccessorTable;
-      }
-      
-      // Construct using at.ac.tuwien.software.architectures.ws2012.Peer.PeerRequest.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-      
-      private Builder(BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-        }
-      }
-      private static Builder create() {
-        return new Builder();
-      }
-      
-      public Builder clear() {
-        super.clear();
-        requestId_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000001);
-        peerRequestType_ = at.ac.tuwien.software.architectures.ws2012.Peer.PeerRequestType.ARE_YOU_ALIVE_REQUEST;
-        bitField0_ = (bitField0_ & ~0x00000002);
-        return this;
-      }
-      
-      public Builder clone() {
-        return create().mergeFrom(buildPartial());
-      }
-      
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return at.ac.tuwien.software.architectures.ws2012.Peer.PeerRequest.getDescriptor();
-      }
-      
-      public at.ac.tuwien.software.architectures.ws2012.Peer.PeerRequest getDefaultInstanceForType() {
-        return at.ac.tuwien.software.architectures.ws2012.Peer.PeerRequest.getDefaultInstance();
-      }
-      
-      public at.ac.tuwien.software.architectures.ws2012.Peer.PeerRequest build() {
-        at.ac.tuwien.software.architectures.ws2012.Peer.PeerRequest result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-      
-      private at.ac.tuwien.software.architectures.ws2012.Peer.PeerRequest buildParsed()
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        at.ac.tuwien.software.architectures.ws2012.Peer.PeerRequest result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(
-            result).asInvalidProtocolBufferException();
-        }
-        return result;
-      }
-      
-      public at.ac.tuwien.software.architectures.ws2012.Peer.PeerRequest buildPartial() {
-        at.ac.tuwien.software.architectures.ws2012.Peer.PeerRequest result = new at.ac.tuwien.software.architectures.ws2012.Peer.PeerRequest(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
-          to_bitField0_ |= 0x00000001;
-        }
-        result.requestId_ = requestId_;
-        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
-          to_bitField0_ |= 0x00000002;
-        }
-        result.peerRequestType_ = peerRequestType_;
-        result.bitField0_ = to_bitField0_;
-        onBuilt();
-        return result;
-      }
-      
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof at.ac.tuwien.software.architectures.ws2012.Peer.PeerRequest) {
-          return mergeFrom((at.ac.tuwien.software.architectures.ws2012.Peer.PeerRequest)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-      
-      public Builder mergeFrom(at.ac.tuwien.software.architectures.ws2012.Peer.PeerRequest other) {
-        if (other == at.ac.tuwien.software.architectures.ws2012.Peer.PeerRequest.getDefaultInstance()) return this;
-        if (other.hasRequestId()) {
-          setRequestId(other.getRequestId());
-        }
-        if (other.hasPeerRequestType()) {
-          setPeerRequestType(other.getPeerRequestType());
-        }
-        this.mergeExtensionFields(other);
-        this.mergeUnknownFields(other.getUnknownFields());
-        return this;
-      }
-      
-      public final boolean isInitialized() {
-        if (!hasRequestId()) {
-          
-          return false;
-        }
-        if (!extensionsAreInitialized()) {
-          
-          return false;
-        }
-        return true;
-      }
-      
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder(
-            this.getUnknownFields());
-        while (true) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              this.setUnknownFields(unknownFields.build());
-              onChanged();
-              return this;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                this.setUnknownFields(unknownFields.build());
-                onChanged();
-                return this;
-              }
-              break;
-            }
-            case 8: {
-              bitField0_ |= 0x00000001;
-              requestId_ = input.readInt32();
-              break;
-            }
-            case 16: {
-              int rawValue = input.readEnum();
-              at.ac.tuwien.software.architectures.ws2012.Peer.PeerRequestType value = at.ac.tuwien.software.architectures.ws2012.Peer.PeerRequestType.valueOf(rawValue);
-              if (value == null) {
-                unknownFields.mergeVarintField(2, rawValue);
-              } else {
-                bitField0_ |= 0x00000002;
-                peerRequestType_ = value;
-              }
-              break;
-            }
-          }
-        }
-      }
-      
-      private int bitField0_;
-      
-      // required int32 request_id = 1;
-      private int requestId_ ;
-      public boolean hasRequestId() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
-      }
-      public int getRequestId() {
-        return requestId_;
-      }
-      public Builder setRequestId(int value) {
-        bitField0_ |= 0x00000001;
-        requestId_ = value;
-        onChanged();
-        return this;
-      }
-      public Builder clearRequestId() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        requestId_ = 0;
-        onChanged();
-        return this;
-      }
-      
-      // optional .pb_sa.PeerRequestType peer_request_type = 2;
-      private at.ac.tuwien.software.architectures.ws2012.Peer.PeerRequestType peerRequestType_ = at.ac.tuwien.software.architectures.ws2012.Peer.PeerRequestType.ARE_YOU_ALIVE_REQUEST;
-      public boolean hasPeerRequestType() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
-      }
-      public at.ac.tuwien.software.architectures.ws2012.Peer.PeerRequestType getPeerRequestType() {
-        return peerRequestType_;
-      }
-      public Builder setPeerRequestType(at.ac.tuwien.software.architectures.ws2012.Peer.PeerRequestType value) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        bitField0_ |= 0x00000002;
-        peerRequestType_ = value;
-        onChanged();
-        return this;
-      }
-      public Builder clearPeerRequestType() {
-        bitField0_ = (bitField0_ & ~0x00000002);
-        peerRequestType_ = at.ac.tuwien.software.architectures.ws2012.Peer.PeerRequestType.ARE_YOU_ALIVE_REQUEST;
-        onChanged();
-        return this;
-      }
-      
-      // @@protoc_insertion_point(builder_scope:pb_sa.PeerRequest)
-    }
-    
-    static {
-      defaultInstance = new PeerRequest(true);
-      defaultInstance.initFields();
-    }
-    
-    // @@protoc_insertion_point(class_scope:pb_sa.PeerRequest)
-  }
-  
   public interface AreYouAliveRequestOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
     
     // required string destination_peer = 1;
     boolean hasDestinationPeer();
     String getDestinationPeer();
-    
-    // required int32 timestamp = 2;
-    boolean hasTimestamp();
-    int getTimestamp();
   }
   public static final class AreYouAliveRequest extends
       com.google.protobuf.GeneratedMessage
@@ -606,19 +85,8 @@ public final class Peer {
       }
     }
     
-    // required int32 timestamp = 2;
-    public static final int TIMESTAMP_FIELD_NUMBER = 2;
-    private int timestamp_;
-    public boolean hasTimestamp() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
-    }
-    public int getTimestamp() {
-      return timestamp_;
-    }
-    
     private void initFields() {
       destinationPeer_ = "";
-      timestamp_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -626,10 +94,6 @@ public final class Peer {
       if (isInitialized != -1) return isInitialized == 1;
       
       if (!hasDestinationPeer()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasTimestamp()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -643,9 +107,6 @@ public final class Peer {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         output.writeBytes(1, getDestinationPeerBytes());
       }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeInt32(2, timestamp_);
-      }
       getUnknownFields().writeTo(output);
     }
     
@@ -658,10 +119,6 @@ public final class Peer {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(1, getDestinationPeerBytes());
-      }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(2, timestamp_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -789,8 +246,6 @@ public final class Peer {
         super.clear();
         destinationPeer_ = "";
         bitField0_ = (bitField0_ & ~0x00000001);
-        timestamp_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
       
@@ -833,10 +288,6 @@ public final class Peer {
           to_bitField0_ |= 0x00000001;
         }
         result.destinationPeer_ = destinationPeer_;
-        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
-          to_bitField0_ |= 0x00000002;
-        }
-        result.timestamp_ = timestamp_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -856,19 +307,12 @@ public final class Peer {
         if (other.hasDestinationPeer()) {
           setDestinationPeer(other.getDestinationPeer());
         }
-        if (other.hasTimestamp()) {
-          setTimestamp(other.getTimestamp());
-        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
       
       public final boolean isInitialized() {
         if (!hasDestinationPeer()) {
-          
-          return false;
-        }
-        if (!hasTimestamp()) {
           
           return false;
         }
@@ -901,11 +345,6 @@ public final class Peer {
             case 10: {
               bitField0_ |= 0x00000001;
               destinationPeer_ = input.readBytes();
-              break;
-            }
-            case 16: {
-              bitField0_ |= 0x00000002;
-              timestamp_ = input.readInt32();
               break;
             }
           }
@@ -950,27 +389,6 @@ public final class Peer {
         onChanged();
       }
       
-      // required int32 timestamp = 2;
-      private int timestamp_ ;
-      public boolean hasTimestamp() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
-      }
-      public int getTimestamp() {
-        return timestamp_;
-      }
-      public Builder setTimestamp(int value) {
-        bitField0_ |= 0x00000002;
-        timestamp_ = value;
-        onChanged();
-        return this;
-      }
-      public Builder clearTimestamp() {
-        bitField0_ = (bitField0_ & ~0x00000002);
-        timestamp_ = 0;
-        onChanged();
-        return this;
-      }
-      
       // @@protoc_insertion_point(builder_scope:pb_sa.AreYouAliveRequest)
     }
     
@@ -988,10 +406,6 @@ public final class Peer {
     // required string destination_peer = 1;
     boolean hasDestinationPeer();
     String getDestinationPeer();
-    
-    // required string timestamp = 2;
-    boolean hasTimestamp();
-    String getTimestamp();
   }
   public static final class AreYouAliveResponse extends
       com.google.protobuf.GeneratedMessage
@@ -1054,41 +468,8 @@ public final class Peer {
       }
     }
     
-    // required string timestamp = 2;
-    public static final int TIMESTAMP_FIELD_NUMBER = 2;
-    private java.lang.Object timestamp_;
-    public boolean hasTimestamp() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
-    }
-    public String getTimestamp() {
-      java.lang.Object ref = timestamp_;
-      if (ref instanceof String) {
-        return (String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        String s = bs.toStringUtf8();
-        if (com.google.protobuf.Internal.isValidUtf8(bs)) {
-          timestamp_ = s;
-        }
-        return s;
-      }
-    }
-    private com.google.protobuf.ByteString getTimestampBytes() {
-      java.lang.Object ref = timestamp_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8((String) ref);
-        timestamp_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    
     private void initFields() {
       destinationPeer_ = "";
-      timestamp_ = "";
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -1096,10 +477,6 @@ public final class Peer {
       if (isInitialized != -1) return isInitialized == 1;
       
       if (!hasDestinationPeer()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasTimestamp()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -1113,9 +490,6 @@ public final class Peer {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         output.writeBytes(1, getDestinationPeerBytes());
       }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeBytes(2, getTimestampBytes());
-      }
       getUnknownFields().writeTo(output);
     }
     
@@ -1128,10 +502,6 @@ public final class Peer {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(1, getDestinationPeerBytes());
-      }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(2, getTimestampBytes());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -1259,8 +629,6 @@ public final class Peer {
         super.clear();
         destinationPeer_ = "";
         bitField0_ = (bitField0_ & ~0x00000001);
-        timestamp_ = "";
-        bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
       
@@ -1303,10 +671,6 @@ public final class Peer {
           to_bitField0_ |= 0x00000001;
         }
         result.destinationPeer_ = destinationPeer_;
-        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
-          to_bitField0_ |= 0x00000002;
-        }
-        result.timestamp_ = timestamp_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -1326,19 +690,12 @@ public final class Peer {
         if (other.hasDestinationPeer()) {
           setDestinationPeer(other.getDestinationPeer());
         }
-        if (other.hasTimestamp()) {
-          setTimestamp(other.getTimestamp());
-        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
       
       public final boolean isInitialized() {
         if (!hasDestinationPeer()) {
-          
-          return false;
-        }
-        if (!hasTimestamp()) {
           
           return false;
         }
@@ -1371,11 +728,6 @@ public final class Peer {
             case 10: {
               bitField0_ |= 0x00000001;
               destinationPeer_ = input.readBytes();
-              break;
-            }
-            case 18: {
-              bitField0_ |= 0x00000002;
-              timestamp_ = input.readBytes();
               break;
             }
           }
@@ -1417,42 +769,6 @@ public final class Peer {
       void setDestinationPeer(com.google.protobuf.ByteString value) {
         bitField0_ |= 0x00000001;
         destinationPeer_ = value;
-        onChanged();
-      }
-      
-      // required string timestamp = 2;
-      private java.lang.Object timestamp_ = "";
-      public boolean hasTimestamp() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
-      }
-      public String getTimestamp() {
-        java.lang.Object ref = timestamp_;
-        if (!(ref instanceof String)) {
-          String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
-          timestamp_ = s;
-          return s;
-        } else {
-          return (String) ref;
-        }
-      }
-      public Builder setTimestamp(String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000002;
-        timestamp_ = value;
-        onChanged();
-        return this;
-      }
-      public Builder clearTimestamp() {
-        bitField0_ = (bitField0_ & ~0x00000002);
-        timestamp_ = getDefaultInstance().getTimestamp();
-        onChanged();
-        return this;
-      }
-      void setTimestamp(com.google.protobuf.ByteString value) {
-        bitField0_ |= 0x00000002;
-        timestamp_ = value;
         onChanged();
       }
       
@@ -4790,7 +4106,7 @@ public final class Peer {
   public static final int ARE_YOU_ALIVE_REQUEST_FIELD_NUMBER = 100;
   public static final
     com.google.protobuf.GeneratedMessage.GeneratedExtension<
-      at.ac.tuwien.software.architectures.ws2012.Peer.PeerRequest,
+      at.ac.tuwien.software.architectures.ws2012.General.Request,
       at.ac.tuwien.software.architectures.ws2012.Peer.AreYouAliveRequest> areYouAliveRequest = com.google.protobuf.GeneratedMessage
           .newFileScopedGeneratedExtension(
         at.ac.tuwien.software.architectures.ws2012.Peer.AreYouAliveRequest.class,
@@ -4798,7 +4114,7 @@ public final class Peer {
   public static final int ARE_YOU_ALIVE_RESPONSE_FIELD_NUMBER = 101;
   public static final
     com.google.protobuf.GeneratedMessage.GeneratedExtension<
-      at.ac.tuwien.software.architectures.ws2012.Peer.PeerRequest,
+      at.ac.tuwien.software.architectures.ws2012.General.Request,
       at.ac.tuwien.software.architectures.ws2012.Peer.AreYouAliveResponse> areYouAliveResponse = com.google.protobuf.GeneratedMessage
           .newFileScopedGeneratedExtension(
         at.ac.tuwien.software.architectures.ws2012.Peer.AreYouAliveResponse.class,
@@ -4806,7 +4122,7 @@ public final class Peer {
   public static final int SEARCH_REQUEST_FIELD_NUMBER = 102;
   public static final
     com.google.protobuf.GeneratedMessage.GeneratedExtension<
-      at.ac.tuwien.software.architectures.ws2012.Peer.PeerRequest,
+      at.ac.tuwien.software.architectures.ws2012.General.Request,
       at.ac.tuwien.software.architectures.ws2012.General.SearchRequest> searchRequest = com.google.protobuf.GeneratedMessage
           .newFileScopedGeneratedExtension(
         at.ac.tuwien.software.architectures.ws2012.General.SearchRequest.class,
@@ -4814,7 +4130,7 @@ public final class Peer {
   public static final int SEARCH_ABORT_FIELD_NUMBER = 103;
   public static final
     com.google.protobuf.GeneratedMessage.GeneratedExtension<
-      at.ac.tuwien.software.architectures.ws2012.Peer.PeerRequest,
+      at.ac.tuwien.software.architectures.ws2012.General.Request,
       at.ac.tuwien.software.architectures.ws2012.Peer.SearchAbort> searchAbort = com.google.protobuf.GeneratedMessage
           .newFileScopedGeneratedExtension(
         at.ac.tuwien.software.architectures.ws2012.Peer.SearchAbort.class,
@@ -4822,7 +4138,7 @@ public final class Peer {
   public static final int SEARCH_SUCCESFUL_FIELD_NUMBER = 104;
   public static final
     com.google.protobuf.GeneratedMessage.GeneratedExtension<
-      at.ac.tuwien.software.architectures.ws2012.Peer.PeerRequest,
+      at.ac.tuwien.software.architectures.ws2012.General.Request,
       at.ac.tuwien.software.architectures.ws2012.Peer.SearchSuccesful> searchSuccesful = com.google.protobuf.GeneratedMessage
           .newFileScopedGeneratedExtension(
         at.ac.tuwien.software.architectures.ws2012.Peer.SearchSuccesful.class,
@@ -4830,7 +4146,7 @@ public final class Peer {
   public static final int MONITORING_GET_PEERS_REQUEST_FIELD_NUMBER = 200;
   public static final
     com.google.protobuf.GeneratedMessage.GeneratedExtension<
-      at.ac.tuwien.software.architectures.ws2012.Peer.PeerRequest,
+      at.ac.tuwien.software.architectures.ws2012.General.Request,
       at.ac.tuwien.software.architectures.ws2012.Peer.MonitoringGetPeersRequest> monitoringGetPeersRequest = com.google.protobuf.GeneratedMessage
           .newFileScopedGeneratedExtension(
         at.ac.tuwien.software.architectures.ws2012.Peer.MonitoringGetPeersRequest.class,
@@ -4838,7 +4154,7 @@ public final class Peer {
   public static final int MONITORING_GET_PEERS_RESPONSE_FIELD_NUMBER = 201;
   public static final
     com.google.protobuf.GeneratedMessage.GeneratedExtension<
-      at.ac.tuwien.software.architectures.ws2012.Peer.PeerRequest,
+      at.ac.tuwien.software.architectures.ws2012.General.Request,
       at.ac.tuwien.software.architectures.ws2012.Peer.MonitoringGetPeersResponse> monitoringGetPeersResponse = com.google.protobuf.GeneratedMessage
           .newFileScopedGeneratedExtension(
         at.ac.tuwien.software.architectures.ws2012.Peer.MonitoringGetPeersResponse.class,
@@ -4846,7 +4162,7 @@ public final class Peer {
   public static final int MONITORING_REQUESTS_PROCESSED_REQUEST_FIELD_NUMBER = 202;
   public static final
     com.google.protobuf.GeneratedMessage.GeneratedExtension<
-      at.ac.tuwien.software.architectures.ws2012.Peer.PeerRequest,
+      at.ac.tuwien.software.architectures.ws2012.General.Request,
       at.ac.tuwien.software.architectures.ws2012.Peer.MonitoringRequestsProcessedRequest> monitoringRequestsProcessedRequest = com.google.protobuf.GeneratedMessage
           .newFileScopedGeneratedExtension(
         at.ac.tuwien.software.architectures.ws2012.Peer.MonitoringRequestsProcessedRequest.class,
@@ -4854,16 +4170,11 @@ public final class Peer {
   public static final int MONITORING_REQUESTS_PROCESSED_RESPONSE_FIELD_NUMBER = 203;
   public static final
     com.google.protobuf.GeneratedMessage.GeneratedExtension<
-      at.ac.tuwien.software.architectures.ws2012.Peer.PeerRequest,
+      at.ac.tuwien.software.architectures.ws2012.General.Request,
       at.ac.tuwien.software.architectures.ws2012.Peer.MonitoringRequestsProcessedResponse> monitoringRequestsProcessedResponse = com.google.protobuf.GeneratedMessage
           .newFileScopedGeneratedExtension(
         at.ac.tuwien.software.architectures.ws2012.Peer.MonitoringRequestsProcessedResponse.class,
         at.ac.tuwien.software.architectures.ws2012.Peer.MonitoringRequestsProcessedResponse.getDefaultInstance());
-  private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_pb_sa_PeerRequest_descriptor;
-  private static
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_pb_sa_PeerRequest_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
     internal_static_pb_sa_AreYouAliveRequest_descriptor;
   private static
@@ -4918,86 +4229,66 @@ public final class Peer {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\npeer.proto\022\005pb_sa\032\rGeneral.proto\"^\n\013Pe" +
-      "erRequest\022\022\n\nrequest_id\030\001 \002(\005\0221\n\021peer_re" +
-      "quest_type\030\002 \001(\0162\026.pb_sa.PeerRequestType" +
-      "*\010\010d\020\200\200\200\200\002\"A\n\022AreYouAliveRequest\022\030\n\020dest" +
-      "ination_peer\030\001 \002(\t\022\021\n\ttimestamp\030\002 \002(\005\"B\n" +
-      "\023AreYouAliveResponse\022\030\n\020destination_peer" +
-      "\030\001 \002(\t\022\021\n\ttimestamp\030\002 \002(\t\"!\n\013SearchAbort" +
-      "\022\022\n\nrequest_id\030\001 \002(\005\"\225\001\n\017SearchSuccesful" +
-      "\022,\n\016search_request\030\001 \002(\0132\024.pb_sa.SearchR" +
-      "equest\022\026\n\016founder_peerid\030\002 \002(\005\022\030\n\020founde",
-      "r_clientid\030\003 \002(\005\022\"\n\tsong_data\030\004 \001(\0132\017.pb" +
-      "_sa.SongData\"\033\n\031MonitoringGetPeersReques" +
-      "t\"@\n\032MonitoringGetPeersResponse\022\"\n\tpeer_" +
-      "data\030\001 \003(\0132\017.pb_sa.PeerData\"$\n\"Monitorin" +
-      "gRequestsProcessedRequest\"O\n#MonitoringR" +
-      "equestsProcessedResponse\022(\n\014request_data" +
-      "\030\001 \003(\0132\022.pb_sa.RequestData\"y\n\013RequestDat" +
-      "a\022,\n\016search_request\030\001 \002(\0132\024.pb_sa.Search" +
-      "Request\022*\n\rsearch_status\030\002 \002(\0162\023.pb_sa.S" +
-      "earchStatus\022\020\n\010credited\030\003 \001(\010*\241\002\n\017PeerRe",
-      "questType\022\031\n\025ARE_YOU_ALIVE_REQUEST\020\000\022\032\n\026" +
-      "ARE_YOU_ALIVE_RESPONSE\020\001\022\022\n\016SEARCH_REQUE" +
-      "ST\020\002\022\020\n\014SEARCH_ABORT\020\003\022\025\n\021SEARCH_SUCCESF" +
-      "ULL\020\004\022 \n\034MONITORING_GET_PEERS_REQUEST\020d\022" +
-      "!\n\035MONITORING_GET_PEERS_RESPONSE\020e\022)\n%MO" +
-      "NITORING_REQUESTS_PROCESSED_REQUEST\020f\022*\n" +
-      "&MONITORING_REQUESTS_PROCESSED_RESPONSE\020" +
-      "g:L\n\025are_you_alive_request\022\022.pb_sa.PeerR" +
-      "equest\030d \001(\0132\031.pb_sa.AreYouAliveRequest:" +
-      "N\n\026are_you_alive_response\022\022.pb_sa.PeerRe",
-      "quest\030e \001(\0132\032.pb_sa.AreYouAliveResponse:" +
-      "@\n\016search_request\022\022.pb_sa.PeerRequest\030f " +
-      "\001(\0132\024.pb_sa.SearchRequest:<\n\014search_abor" +
-      "t\022\022.pb_sa.PeerRequest\030g \001(\0132\022.pb_sa.Sear" +
-      "chAbort:D\n\020search_succesful\022\022.pb_sa.Peer" +
-      "Request\030h \001(\0132\026.pb_sa.SearchSuccesful:[\n" +
-      "\034monitoring_get_peers_request\022\022.pb_sa.Pe" +
-      "erRequest\030\310\001 \001(\0132 .pb_sa.MonitoringGetPe" +
-      "ersRequest:]\n\035monitoring_get_peers_respo" +
-      "nse\022\022.pb_sa.PeerRequest\030\311\001 \001(\0132!.pb_sa.M",
-      "onitoringGetPeersResponse:m\n%monitoring_" +
-      "requests_processed_request\022\022.pb_sa.PeerR" +
-      "equest\030\312\001 \001(\0132).pb_sa.MonitoringRequests" +
-      "ProcessedRequest:o\n&monitoring_requests_" +
-      "processed_response\022\022.pb_sa.PeerRequest\030\313" +
-      "\001 \001(\0132*.pb_sa.MonitoringRequestsProcesse" +
-      "dResponseB,\n*at.ac.tuwien.software.archi" +
-      "tectures.ws2012"
+      "\n\npeer.proto\022\005pb_sa\032\rGeneral.proto\".\n\022Ar" +
+      "eYouAliveRequest\022\030\n\020destination_peer\030\001 \002" +
+      "(\t\"/\n\023AreYouAliveResponse\022\030\n\020destination" +
+      "_peer\030\001 \002(\t\"!\n\013SearchAbort\022\022\n\nrequest_id" +
+      "\030\001 \002(\005\"\225\001\n\017SearchSuccesful\022,\n\016search_req" +
+      "uest\030\001 \002(\0132\024.pb_sa.SearchRequest\022\026\n\016foun" +
+      "der_peerid\030\002 \002(\005\022\030\n\020founder_clientid\030\003 \002" +
+      "(\005\022\"\n\tsong_data\030\004 \001(\0132\017.pb_sa.SongData\"\033" +
+      "\n\031MonitoringGetPeersRequest\"@\n\032Monitorin" +
+      "gGetPeersResponse\022\"\n\tpeer_data\030\001 \003(\0132\017.p",
+      "b_sa.PeerData\"$\n\"MonitoringRequestsProce" +
+      "ssedRequest\"O\n#MonitoringRequestsProcess" +
+      "edResponse\022(\n\014request_data\030\001 \003(\0132\022.pb_sa" +
+      ".RequestData\"y\n\013RequestData\022,\n\016search_re" +
+      "quest\030\001 \002(\0132\024.pb_sa.SearchRequest\022*\n\rsea" +
+      "rch_status\030\002 \002(\0162\023.pb_sa.SearchStatus\022\020\n" +
+      "\010credited\030\003 \001(\010:H\n\025are_you_alive_request" +
+      "\022\016.pb_sa.Request\030d \001(\0132\031.pb_sa.AreYouAli" +
+      "veRequest:J\n\026are_you_alive_response\022\016.pb" +
+      "_sa.Request\030e \001(\0132\032.pb_sa.AreYouAliveRes",
+      "ponse:<\n\016search_request\022\016.pb_sa.Request\030" +
+      "f \001(\0132\024.pb_sa.SearchRequest:8\n\014search_ab" +
+      "ort\022\016.pb_sa.Request\030g \001(\0132\022.pb_sa.Search" +
+      "Abort:@\n\020search_succesful\022\016.pb_sa.Reques" +
+      "t\030h \001(\0132\026.pb_sa.SearchSuccesful:W\n\034monit" +
+      "oring_get_peers_request\022\016.pb_sa.Request\030" +
+      "\310\001 \001(\0132 .pb_sa.MonitoringGetPeersRequest" +
+      ":Y\n\035monitoring_get_peers_response\022\016.pb_s" +
+      "a.Request\030\311\001 \001(\0132!.pb_sa.MonitoringGetPe" +
+      "ersResponse:i\n%monitoring_requests_proce",
+      "ssed_request\022\016.pb_sa.Request\030\312\001 \001(\0132).pb" +
+      "_sa.MonitoringRequestsProcessedRequest:k" +
+      "\n&monitoring_requests_processed_response" +
+      "\022\016.pb_sa.Request\030\313\001 \001(\0132*.pb_sa.Monitori" +
+      "ngRequestsProcessedResponseB,\n*at.ac.tuw" +
+      "ien.software.architectures.ws2012"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
         public com.google.protobuf.ExtensionRegistry assignDescriptors(
             com.google.protobuf.Descriptors.FileDescriptor root) {
           descriptor = root;
-          internal_static_pb_sa_PeerRequest_descriptor =
-            getDescriptor().getMessageTypes().get(0);
-          internal_static_pb_sa_PeerRequest_fieldAccessorTable = new
-            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_pb_sa_PeerRequest_descriptor,
-              new java.lang.String[] { "RequestId", "PeerRequestType", },
-              at.ac.tuwien.software.architectures.ws2012.Peer.PeerRequest.class,
-              at.ac.tuwien.software.architectures.ws2012.Peer.PeerRequest.Builder.class);
           internal_static_pb_sa_AreYouAliveRequest_descriptor =
-            getDescriptor().getMessageTypes().get(1);
+            getDescriptor().getMessageTypes().get(0);
           internal_static_pb_sa_AreYouAliveRequest_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_pb_sa_AreYouAliveRequest_descriptor,
-              new java.lang.String[] { "DestinationPeer", "Timestamp", },
+              new java.lang.String[] { "DestinationPeer", },
               at.ac.tuwien.software.architectures.ws2012.Peer.AreYouAliveRequest.class,
               at.ac.tuwien.software.architectures.ws2012.Peer.AreYouAliveRequest.Builder.class);
           internal_static_pb_sa_AreYouAliveResponse_descriptor =
-            getDescriptor().getMessageTypes().get(2);
+            getDescriptor().getMessageTypes().get(1);
           internal_static_pb_sa_AreYouAliveResponse_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_pb_sa_AreYouAliveResponse_descriptor,
-              new java.lang.String[] { "DestinationPeer", "Timestamp", },
+              new java.lang.String[] { "DestinationPeer", },
               at.ac.tuwien.software.architectures.ws2012.Peer.AreYouAliveResponse.class,
               at.ac.tuwien.software.architectures.ws2012.Peer.AreYouAliveResponse.Builder.class);
           internal_static_pb_sa_SearchAbort_descriptor =
-            getDescriptor().getMessageTypes().get(3);
+            getDescriptor().getMessageTypes().get(2);
           internal_static_pb_sa_SearchAbort_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_pb_sa_SearchAbort_descriptor,
@@ -5005,7 +4296,7 @@ public final class Peer {
               at.ac.tuwien.software.architectures.ws2012.Peer.SearchAbort.class,
               at.ac.tuwien.software.architectures.ws2012.Peer.SearchAbort.Builder.class);
           internal_static_pb_sa_SearchSuccesful_descriptor =
-            getDescriptor().getMessageTypes().get(4);
+            getDescriptor().getMessageTypes().get(3);
           internal_static_pb_sa_SearchSuccesful_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_pb_sa_SearchSuccesful_descriptor,
@@ -5013,7 +4304,7 @@ public final class Peer {
               at.ac.tuwien.software.architectures.ws2012.Peer.SearchSuccesful.class,
               at.ac.tuwien.software.architectures.ws2012.Peer.SearchSuccesful.Builder.class);
           internal_static_pb_sa_MonitoringGetPeersRequest_descriptor =
-            getDescriptor().getMessageTypes().get(5);
+            getDescriptor().getMessageTypes().get(4);
           internal_static_pb_sa_MonitoringGetPeersRequest_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_pb_sa_MonitoringGetPeersRequest_descriptor,
@@ -5021,7 +4312,7 @@ public final class Peer {
               at.ac.tuwien.software.architectures.ws2012.Peer.MonitoringGetPeersRequest.class,
               at.ac.tuwien.software.architectures.ws2012.Peer.MonitoringGetPeersRequest.Builder.class);
           internal_static_pb_sa_MonitoringGetPeersResponse_descriptor =
-            getDescriptor().getMessageTypes().get(6);
+            getDescriptor().getMessageTypes().get(5);
           internal_static_pb_sa_MonitoringGetPeersResponse_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_pb_sa_MonitoringGetPeersResponse_descriptor,
@@ -5029,7 +4320,7 @@ public final class Peer {
               at.ac.tuwien.software.architectures.ws2012.Peer.MonitoringGetPeersResponse.class,
               at.ac.tuwien.software.architectures.ws2012.Peer.MonitoringGetPeersResponse.Builder.class);
           internal_static_pb_sa_MonitoringRequestsProcessedRequest_descriptor =
-            getDescriptor().getMessageTypes().get(7);
+            getDescriptor().getMessageTypes().get(6);
           internal_static_pb_sa_MonitoringRequestsProcessedRequest_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_pb_sa_MonitoringRequestsProcessedRequest_descriptor,
@@ -5037,7 +4328,7 @@ public final class Peer {
               at.ac.tuwien.software.architectures.ws2012.Peer.MonitoringRequestsProcessedRequest.class,
               at.ac.tuwien.software.architectures.ws2012.Peer.MonitoringRequestsProcessedRequest.Builder.class);
           internal_static_pb_sa_MonitoringRequestsProcessedResponse_descriptor =
-            getDescriptor().getMessageTypes().get(8);
+            getDescriptor().getMessageTypes().get(7);
           internal_static_pb_sa_MonitoringRequestsProcessedResponse_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_pb_sa_MonitoringRequestsProcessedResponse_descriptor,
@@ -5045,7 +4336,7 @@ public final class Peer {
               at.ac.tuwien.software.architectures.ws2012.Peer.MonitoringRequestsProcessedResponse.class,
               at.ac.tuwien.software.architectures.ws2012.Peer.MonitoringRequestsProcessedResponse.Builder.class);
           internal_static_pb_sa_RequestData_descriptor =
-            getDescriptor().getMessageTypes().get(9);
+            getDescriptor().getMessageTypes().get(8);
           internal_static_pb_sa_RequestData_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_pb_sa_RequestData_descriptor,

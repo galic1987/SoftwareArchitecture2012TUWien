@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="WINDOWS-1252" standalone="no"?>
+<jardesc>
+    <jar path="Server_mock.jar"/>
+    <options buildIfNeeded="true" compress="true" descriptionLocation="/Server_Mock/Server_mock.jardesc" exportErrors="true" exportWarnings="true" includeDirectoryEntries="false" overwrite="false" saveDescription="true" storeRefactorings="false" useSourceFolders="false"/>
+    <storedRefactorings deprecationInfo="true" structuralOnly="false"/>
+    <selectedProjects/>
+    <manifest generateManifest="true" mainClassHandleIdentifier="=Server_Mock/src&lt;{Server_Mock.java[Server_Mock" manifestLocation="" manifestVersion="1.0" reuseManifest="false" saveManifest="false" usesManifest="true">
+        <sealing sealJar="false">
+            <packagesToSeal/>
+            <packagesToUnSeal/>
+        </sealing>
+    </manifest>
+    <selectedElements exportClassFiles="true" exportJavaFiles="false" exportOutputFolder="false">
+        <folder path="/Server_Mock/target"/>
+        <file path="/Server_Mock/.classpath"/>
+        <folder path="/Server_Mock/bin"/>
+        <javaElement handleIdentifier="=Server_Mock/src"/>
+        <file path="/Server_Mock/.project"/>
+        <file path="/Server_Mock/pom.xml"/>
+    </selectedElements>
+</jardesc>

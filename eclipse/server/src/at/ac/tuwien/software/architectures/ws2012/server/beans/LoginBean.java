@@ -4,7 +4,6 @@ import java.io.Serializable;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.event.NamedEvent;
 
 import at.ac.tuwien.software.architectures.ws2012.server.domain.User;
 

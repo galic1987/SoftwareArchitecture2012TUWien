@@ -12,149 +12,65 @@ import General_pb2
 DESCRIPTOR = descriptor.FileDescriptor(
   name='server.proto',
   package='pb_sa',
-  serialized_pb='\n\x0cserver.proto\x12\x05pb_sa\x1a\rGeneral.proto\"]\n\rServerRequest\x12\x0e\n\x06req_id\x18\x01 \x02(\x05\x12\x35\n\x13server_request_type\x18\x02 \x01(\x0e\x32\x18.pb_sa.ServerRequestType*\x05\x08\x64\x10\xc9\x01\">\n\x13RegisterPeerRequest\x12\x14\n\x0cpeer_address\x18\x01 \x02(\t\x12\x11\n\tclient_id\x18\x02 \x02(\x05\"V\n\x14RegisterPeerResponse\x12\x0f\n\x07peer_id\x18\x01 \x01(\x05\x12-\n\x06status\x18\x02 \x01(\x0e\x32\x1d.pb_sa.PeerRegistrationStatus\")\n\x10\x42ootstrapRequest\x12\x15\n\rnumberOfPeers\x18\x01 \x02(\x05\"2\n\x11\x42ootstrapResponse\x12\x1d\n\x04\x64\x61ta\x18\x01 \x03(\x0b\x32\x0f.pb_sa.PeerData\"+\n\x0fPeerDeadRequest\x12\x18\n\x10\x64\x65stination_peer\x18\x01 \x02(\t\"E\n\x15ValidateSearchRequest\x12,\n\x0esearch_request\x18\x01 \x02(\x0b\x32\x14.pb_sa.SearchRequest\"L\n\x16ValidateSearchResponse\x12\x32\n\rsearch_status\x18\x01 \x02(\x0e\x32\x1b.pb_sa.ValidateSearchStatus*\xcb\x01\n\x11ServerRequestType\x12\x19\n\x15REGISTER_PEER_REQUEST\x10\x01\x12\x1a\n\x16REGISTER_PEER_RESPONSE\x10\x02\x12\x15\n\x11\x42OOTSTRAP_REQUEST\x10\x03\x12\x16\n\x12\x42OOTSTRAP_RESPONSE\x10\x04\x12\x15\n\x11PEER_DEAD_REQUEST\x10\x05\x12\x1b\n\x17VALIDATE_SEARCH_REQUEST\x10\x06\x12\x1c\n\x18VALIDATE_SEARCH_RESPONSE\x10\x07:O\n\x15register_peer_request\x12\x14.pb_sa.ServerRequest\x18\x64 \x01(\x0b\x32\x1a.pb_sa.RegisterPeerRequest:Q\n\x16register_peer_response\x12\x14.pb_sa.ServerRequest\x18\x65 \x01(\x0b\x32\x1b.pb_sa.RegisterPeerResponse:H\n\x11\x62ootstrap_request\x12\x14.pb_sa.ServerRequest\x18\x66 \x01(\x0b\x32\x17.pb_sa.BootstrapRequest:J\n\x12\x62ootstrap_response\x12\x14.pb_sa.ServerRequest\x18g \x01(\x0b\x32\x18.pb_sa.BootstrapResponse:G\n\x11peer_dead_request\x12\x14.pb_sa.ServerRequest\x18h \x01(\x0b\x32\x16.pb_sa.PeerDeadRequest:S\n\x17validate_search_request\x12\x14.pb_sa.ServerRequest\x18i \x01(\x0b\x32\x1c.pb_sa.ValidateSearchRequest:U\n\x18validate_search_response\x12\x14.pb_sa.ServerRequest\x18j \x01(\x0b\x32\x1d.pb_sa.ValidateSearchResponseB,\n*at.ac.tuwien.software.architectures.ws2012')
-
-_SERVERREQUESTTYPE = descriptor.EnumDescriptor(
-  name='ServerRequestType',
-  full_name='pb_sa.ServerRequestType',
-  filename=None,
-  file=DESCRIPTOR,
-  values=[
-    descriptor.EnumValueDescriptor(
-      name='REGISTER_PEER_REQUEST', index=0, number=1,
-      options=None,
-      type=None),
-    descriptor.EnumValueDescriptor(
-      name='REGISTER_PEER_RESPONSE', index=1, number=2,
-      options=None,
-      type=None),
-    descriptor.EnumValueDescriptor(
-      name='BOOTSTRAP_REQUEST', index=2, number=3,
-      options=None,
-      type=None),
-    descriptor.EnumValueDescriptor(
-      name='BOOTSTRAP_RESPONSE', index=3, number=4,
-      options=None,
-      type=None),
-    descriptor.EnumValueDescriptor(
-      name='PEER_DEAD_REQUEST', index=4, number=5,
-      options=None,
-      type=None),
-    descriptor.EnumValueDescriptor(
-      name='VALIDATE_SEARCH_REQUEST', index=5, number=6,
-      options=None,
-      type=None),
-    descriptor.EnumValueDescriptor(
-      name='VALIDATE_SEARCH_RESPONSE', index=6, number=7,
-      options=None,
-      type=None),
-  ],
-  containing_type=None,
-  options=None,
-  serialized_start=575,
-  serialized_end=778,
-)
+  serialized_pb='\n\x0cserver.proto\x12\x05pb_sa\x1a\rGeneral.proto\">\n\x13RegisterPeerRequest\x12\x14\n\x0cpeer_address\x18\x01 \x02(\t\x12\x11\n\tclient_id\x18\x02 \x02(\x05\"V\n\x14RegisterPeerResponse\x12\x0f\n\x07peer_id\x18\x01 \x01(\x05\x12-\n\x06status\x18\x02 \x01(\x0e\x32\x1d.pb_sa.PeerRegistrationStatus\")\n\x10\x42ootstrapRequest\x12\x15\n\rnumberOfPeers\x18\x01 \x02(\x05\"2\n\x11\x42ootstrapResponse\x12\x1d\n\x04\x64\x61ta\x18\x01 \x03(\x0b\x32\x0f.pb_sa.PeerData\"+\n\x0fPeerDeadRequest\x12\x18\n\x10\x64\x65stination_peer\x18\x01 \x02(\t\"E\n\x15ValidateSearchRequest\x12,\n\x0esearch_request\x18\x01 \x02(\x0b\x32\x14.pb_sa.SearchRequest\"L\n\x16ValidateSearchResponse\x12\x32\n\rsearch_status\x18\x01 \x02(\x0e\x32\x1b.pb_sa.ValidateSearchStatus:J\n\x15register_peer_request\x12\x0e.pb_sa.Request\x18\xac\x02 \x01(\x0b\x32\x1a.pb_sa.RegisterPeerRequest:L\n\x16register_peer_response\x12\x0e.pb_sa.Request\x18\xad\x02 \x01(\x0b\x32\x1b.pb_sa.RegisterPeerResponse:C\n\x11\x62ootstrap_request\x12\x0e.pb_sa.Request\x18\xae\x02 \x01(\x0b\x32\x17.pb_sa.BootstrapRequest:E\n\x12\x62ootstrap_response\x12\x0e.pb_sa.Request\x18\xaf\x02 \x01(\x0b\x32\x18.pb_sa.BootstrapResponse:B\n\x11peer_dead_request\x12\x0e.pb_sa.Request\x18\xb0\x02 \x01(\x0b\x32\x16.pb_sa.PeerDeadRequest:N\n\x17validate_search_request\x12\x0e.pb_sa.Request\x18\xb1\x02 \x01(\x0b\x32\x1c.pb_sa.ValidateSearchRequest:P\n\x18validate_search_response\x12\x0e.pb_sa.Request\x18\xb2\x02 \x01(\x0b\x32\x1d.pb_sa.ValidateSearchResponseB,\n*at.ac.tuwien.software.architectures.ws2012')
 
 
-REGISTER_PEER_REQUEST = 1
-REGISTER_PEER_RESPONSE = 2
-BOOTSTRAP_REQUEST = 3
-BOOTSTRAP_RESPONSE = 4
-PEER_DEAD_REQUEST = 5
-VALIDATE_SEARCH_REQUEST = 6
-VALIDATE_SEARCH_RESPONSE = 7
-
-REGISTER_PEER_REQUEST_FIELD_NUMBER = 100
+REGISTER_PEER_REQUEST_FIELD_NUMBER = 300
 register_peer_request = descriptor.FieldDescriptor(
   name='register_peer_request', full_name='pb_sa.register_peer_request', index=0,
-  number=100, type=11, cpp_type=10, label=1,
+  number=300, type=11, cpp_type=10, label=1,
   has_default_value=False, default_value=None,
   message_type=None, enum_type=None, containing_type=None,
   is_extension=True, extension_scope=None,
   options=None)
-REGISTER_PEER_RESPONSE_FIELD_NUMBER = 101
+REGISTER_PEER_RESPONSE_FIELD_NUMBER = 301
 register_peer_response = descriptor.FieldDescriptor(
   name='register_peer_response', full_name='pb_sa.register_peer_response', index=1,
-  number=101, type=11, cpp_type=10, label=1,
+  number=301, type=11, cpp_type=10, label=1,
   has_default_value=False, default_value=None,
   message_type=None, enum_type=None, containing_type=None,
   is_extension=True, extension_scope=None,
   options=None)
-BOOTSTRAP_REQUEST_FIELD_NUMBER = 102
+BOOTSTRAP_REQUEST_FIELD_NUMBER = 302
 bootstrap_request = descriptor.FieldDescriptor(
   name='bootstrap_request', full_name='pb_sa.bootstrap_request', index=2,
-  number=102, type=11, cpp_type=10, label=1,
+  number=302, type=11, cpp_type=10, label=1,
   has_default_value=False, default_value=None,
   message_type=None, enum_type=None, containing_type=None,
   is_extension=True, extension_scope=None,
   options=None)
-BOOTSTRAP_RESPONSE_FIELD_NUMBER = 103
+BOOTSTRAP_RESPONSE_FIELD_NUMBER = 303
 bootstrap_response = descriptor.FieldDescriptor(
   name='bootstrap_response', full_name='pb_sa.bootstrap_response', index=3,
-  number=103, type=11, cpp_type=10, label=1,
+  number=303, type=11, cpp_type=10, label=1,
   has_default_value=False, default_value=None,
   message_type=None, enum_type=None, containing_type=None,
   is_extension=True, extension_scope=None,
   options=None)
-PEER_DEAD_REQUEST_FIELD_NUMBER = 104
+PEER_DEAD_REQUEST_FIELD_NUMBER = 304
 peer_dead_request = descriptor.FieldDescriptor(
   name='peer_dead_request', full_name='pb_sa.peer_dead_request', index=4,
-  number=104, type=11, cpp_type=10, label=1,
+  number=304, type=11, cpp_type=10, label=1,
   has_default_value=False, default_value=None,
   message_type=None, enum_type=None, containing_type=None,
   is_extension=True, extension_scope=None,
   options=None)
-VALIDATE_SEARCH_REQUEST_FIELD_NUMBER = 105
+VALIDATE_SEARCH_REQUEST_FIELD_NUMBER = 305
 validate_search_request = descriptor.FieldDescriptor(
   name='validate_search_request', full_name='pb_sa.validate_search_request', index=5,
-  number=105, type=11, cpp_type=10, label=1,
+  number=305, type=11, cpp_type=10, label=1,
   has_default_value=False, default_value=None,
   message_type=None, enum_type=None, containing_type=None,
   is_extension=True, extension_scope=None,
   options=None)
-VALIDATE_SEARCH_RESPONSE_FIELD_NUMBER = 106
+VALIDATE_SEARCH_RESPONSE_FIELD_NUMBER = 306
 validate_search_response = descriptor.FieldDescriptor(
   name='validate_search_response', full_name='pb_sa.validate_search_response', index=6,
-  number=106, type=11, cpp_type=10, label=1,
+  number=306, type=11, cpp_type=10, label=1,
   has_default_value=False, default_value=None,
   message_type=None, enum_type=None, containing_type=None,
   is_extension=True, extension_scope=None,
   options=None)
-
-
-_SERVERREQUEST = descriptor.Descriptor(
-  name='ServerRequest',
-  full_name='pb_sa.ServerRequest',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    descriptor.FieldDescriptor(
-      name='req_id', full_name='pb_sa.ServerRequest.req_id', index=0,
-      number=1, type=5, cpp_type=1, label=2,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    descriptor.FieldDescriptor(
-      name='server_request_type', full_name='pb_sa.ServerRequest.server_request_type', index=1,
-      number=2, type=14, cpp_type=8, label=1,
-      has_default_value=False, default_value=1,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  options=None,
-  is_extendable=True,
-  extension_ranges=[(100, 201), ],
-  serialized_start=38,
-  serialized_end=131,
-)
 
 
 _REGISTERPEERREQUEST = descriptor.Descriptor(
@@ -187,8 +103,8 @@ _REGISTERPEERREQUEST = descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=133,
-  serialized_end=195,
+  serialized_start=38,
+  serialized_end=100,
 )
 
 
@@ -222,8 +138,8 @@ _REGISTERPEERRESPONSE = descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=197,
-  serialized_end=283,
+  serialized_start=102,
+  serialized_end=188,
 )
 
 
@@ -250,8 +166,8 @@ _BOOTSTRAPREQUEST = descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=285,
-  serialized_end=326,
+  serialized_start=190,
+  serialized_end=231,
 )
 
 
@@ -278,8 +194,8 @@ _BOOTSTRAPRESPONSE = descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=328,
-  serialized_end=378,
+  serialized_start=233,
+  serialized_end=283,
 )
 
 
@@ -306,8 +222,8 @@ _PEERDEADREQUEST = descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=380,
-  serialized_end=423,
+  serialized_start=285,
+  serialized_end=328,
 )
 
 
@@ -334,8 +250,8 @@ _VALIDATESEARCHREQUEST = descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=425,
-  serialized_end=494,
+  serialized_start=330,
+  serialized_end=399,
 )
 
 
@@ -362,16 +278,14 @@ _VALIDATESEARCHRESPONSE = descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=496,
-  serialized_end=572,
+  serialized_start=401,
+  serialized_end=477,
 )
 
-_SERVERREQUEST.fields_by_name['server_request_type'].enum_type = _SERVERREQUESTTYPE
 _REGISTERPEERRESPONSE.fields_by_name['status'].enum_type = General_pb2._PEERREGISTRATIONSTATUS
 _BOOTSTRAPRESPONSE.fields_by_name['data'].message_type = General_pb2._PEERDATA
 _VALIDATESEARCHREQUEST.fields_by_name['search_request'].message_type = General_pb2._SEARCHREQUEST
 _VALIDATESEARCHRESPONSE.fields_by_name['search_status'].enum_type = General_pb2._VALIDATESEARCHSTATUS
-DESCRIPTOR.message_types_by_name['ServerRequest'] = _SERVERREQUEST
 DESCRIPTOR.message_types_by_name['RegisterPeerRequest'] = _REGISTERPEERREQUEST
 DESCRIPTOR.message_types_by_name['RegisterPeerResponse'] = _REGISTERPEERRESPONSE
 DESCRIPTOR.message_types_by_name['BootstrapRequest'] = _BOOTSTRAPREQUEST
@@ -379,12 +293,6 @@ DESCRIPTOR.message_types_by_name['BootstrapResponse'] = _BOOTSTRAPRESPONSE
 DESCRIPTOR.message_types_by_name['PeerDeadRequest'] = _PEERDEADREQUEST
 DESCRIPTOR.message_types_by_name['ValidateSearchRequest'] = _VALIDATESEARCHREQUEST
 DESCRIPTOR.message_types_by_name['ValidateSearchResponse'] = _VALIDATESEARCHRESPONSE
-
-class ServerRequest(message.Message):
-  __metaclass__ = reflection.GeneratedProtocolMessageType
-  DESCRIPTOR = _SERVERREQUEST
-  
-  # @@protoc_insertion_point(class_scope:pb_sa.ServerRequest)
 
 class RegisterPeerRequest(message.Message):
   __metaclass__ = reflection.GeneratedProtocolMessageType
@@ -429,17 +337,17 @@ class ValidateSearchResponse(message.Message):
   # @@protoc_insertion_point(class_scope:pb_sa.ValidateSearchResponse)
 
 register_peer_request.message_type = _REGISTERPEERREQUEST
-ServerRequest.RegisterExtension(register_peer_request)
+General_pb2.Request.RegisterExtension(register_peer_request)
 register_peer_response.message_type = _REGISTERPEERRESPONSE
-ServerRequest.RegisterExtension(register_peer_response)
+General_pb2.Request.RegisterExtension(register_peer_response)
 bootstrap_request.message_type = _BOOTSTRAPREQUEST
-ServerRequest.RegisterExtension(bootstrap_request)
+General_pb2.Request.RegisterExtension(bootstrap_request)
 bootstrap_response.message_type = _BOOTSTRAPRESPONSE
-ServerRequest.RegisterExtension(bootstrap_response)
+General_pb2.Request.RegisterExtension(bootstrap_response)
 peer_dead_request.message_type = _PEERDEADREQUEST
-ServerRequest.RegisterExtension(peer_dead_request)
+General_pb2.Request.RegisterExtension(peer_dead_request)
 validate_search_request.message_type = _VALIDATESEARCHREQUEST
-ServerRequest.RegisterExtension(validate_search_request)
+General_pb2.Request.RegisterExtension(validate_search_request)
 validate_search_response.message_type = _VALIDATESEARCHRESPONSE
-ServerRequest.RegisterExtension(validate_search_response)
+General_pb2.Request.RegisterExtension(validate_search_response)
 # @@protoc_insertion_point(module_scope)

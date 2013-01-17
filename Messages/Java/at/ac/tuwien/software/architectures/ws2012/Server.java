@@ -15,517 +15,6 @@ public final class Server {
     registry.add(at.ac.tuwien.software.architectures.ws2012.Server.validateSearchRequest);
     registry.add(at.ac.tuwien.software.architectures.ws2012.Server.validateSearchResponse);
   }
-  public enum ServerRequestType
-      implements com.google.protobuf.ProtocolMessageEnum {
-    REGISTER_PEER_REQUEST(0, 1),
-    REGISTER_PEER_RESPONSE(1, 2),
-    BOOTSTRAP_REQUEST(2, 3),
-    BOOTSTRAP_RESPONSE(3, 4),
-    PEER_DEAD_REQUEST(4, 5),
-    VALIDATE_SEARCH_REQUEST(5, 6),
-    VALIDATE_SEARCH_RESPONSE(6, 7),
-    ;
-    
-    public static final int REGISTER_PEER_REQUEST_VALUE = 1;
-    public static final int REGISTER_PEER_RESPONSE_VALUE = 2;
-    public static final int BOOTSTRAP_REQUEST_VALUE = 3;
-    public static final int BOOTSTRAP_RESPONSE_VALUE = 4;
-    public static final int PEER_DEAD_REQUEST_VALUE = 5;
-    public static final int VALIDATE_SEARCH_REQUEST_VALUE = 6;
-    public static final int VALIDATE_SEARCH_RESPONSE_VALUE = 7;
-    
-    
-    public final int getNumber() { return value; }
-    
-    public static ServerRequestType valueOf(int value) {
-      switch (value) {
-        case 1: return REGISTER_PEER_REQUEST;
-        case 2: return REGISTER_PEER_RESPONSE;
-        case 3: return BOOTSTRAP_REQUEST;
-        case 4: return BOOTSTRAP_RESPONSE;
-        case 5: return PEER_DEAD_REQUEST;
-        case 6: return VALIDATE_SEARCH_REQUEST;
-        case 7: return VALIDATE_SEARCH_RESPONSE;
-        default: return null;
-      }
-    }
-    
-    public static com.google.protobuf.Internal.EnumLiteMap<ServerRequestType>
-        internalGetValueMap() {
-      return internalValueMap;
-    }
-    private static com.google.protobuf.Internal.EnumLiteMap<ServerRequestType>
-        internalValueMap =
-          new com.google.protobuf.Internal.EnumLiteMap<ServerRequestType>() {
-            public ServerRequestType findValueByNumber(int number) {
-              return ServerRequestType.valueOf(number);
-            }
-          };
-    
-    public final com.google.protobuf.Descriptors.EnumValueDescriptor
-        getValueDescriptor() {
-      return getDescriptor().getValues().get(index);
-    }
-    public final com.google.protobuf.Descriptors.EnumDescriptor
-        getDescriptorForType() {
-      return getDescriptor();
-    }
-    public static final com.google.protobuf.Descriptors.EnumDescriptor
-        getDescriptor() {
-      return at.ac.tuwien.software.architectures.ws2012.Server.getDescriptor().getEnumTypes().get(0);
-    }
-    
-    private static final ServerRequestType[] VALUES = {
-      REGISTER_PEER_REQUEST, REGISTER_PEER_RESPONSE, BOOTSTRAP_REQUEST, BOOTSTRAP_RESPONSE, PEER_DEAD_REQUEST, VALIDATE_SEARCH_REQUEST, VALIDATE_SEARCH_RESPONSE, 
-    };
-    
-    public static ServerRequestType valueOf(
-        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
-      if (desc.getType() != getDescriptor()) {
-        throw new java.lang.IllegalArgumentException(
-          "EnumValueDescriptor is not for this type.");
-      }
-      return VALUES[desc.getIndex()];
-    }
-    
-    private final int index;
-    private final int value;
-    
-    private ServerRequestType(int index, int value) {
-      this.index = index;
-      this.value = value;
-    }
-    
-    // @@protoc_insertion_point(enum_scope:pb_sa.ServerRequestType)
-  }
-  
-  public interface ServerRequestOrBuilder extends
-      com.google.protobuf.GeneratedMessage.
-          ExtendableMessageOrBuilder<ServerRequest> {
-    
-    // required int32 req_id = 1;
-    boolean hasReqId();
-    int getReqId();
-    
-    // optional .pb_sa.ServerRequestType server_request_type = 2;
-    boolean hasServerRequestType();
-    at.ac.tuwien.software.architectures.ws2012.Server.ServerRequestType getServerRequestType();
-  }
-  public static final class ServerRequest extends
-      com.google.protobuf.GeneratedMessage.ExtendableMessage<
-        ServerRequest> implements ServerRequestOrBuilder {
-    // Use ServerRequest.newBuilder() to construct.
-    private ServerRequest(Builder builder) {
-      super(builder);
-    }
-    private ServerRequest(boolean noInit) {}
-    
-    private static final ServerRequest defaultInstance;
-    public static ServerRequest getDefaultInstance() {
-      return defaultInstance;
-    }
-    
-    public ServerRequest getDefaultInstanceForType() {
-      return defaultInstance;
-    }
-    
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return at.ac.tuwien.software.architectures.ws2012.Server.internal_static_pb_sa_ServerRequest_descriptor;
-    }
-    
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return at.ac.tuwien.software.architectures.ws2012.Server.internal_static_pb_sa_ServerRequest_fieldAccessorTable;
-    }
-    
-    private int bitField0_;
-    // required int32 req_id = 1;
-    public static final int REQ_ID_FIELD_NUMBER = 1;
-    private int reqId_;
-    public boolean hasReqId() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
-    }
-    public int getReqId() {
-      return reqId_;
-    }
-    
-    // optional .pb_sa.ServerRequestType server_request_type = 2;
-    public static final int SERVER_REQUEST_TYPE_FIELD_NUMBER = 2;
-    private at.ac.tuwien.software.architectures.ws2012.Server.ServerRequestType serverRequestType_;
-    public boolean hasServerRequestType() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
-    }
-    public at.ac.tuwien.software.architectures.ws2012.Server.ServerRequestType getServerRequestType() {
-      return serverRequestType_;
-    }
-    
-    private void initFields() {
-      reqId_ = 0;
-      serverRequestType_ = at.ac.tuwien.software.architectures.ws2012.Server.ServerRequestType.REGISTER_PEER_REQUEST;
-    }
-    private byte memoizedIsInitialized = -1;
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized != -1) return isInitialized == 1;
-      
-      if (!hasReqId()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!extensionsAreInitialized()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      memoizedIsInitialized = 1;
-      return true;
-    }
-    
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      getSerializedSize();
-      com.google.protobuf.GeneratedMessage
-        .ExtendableMessage<at.ac.tuwien.software.architectures.ws2012.Server.ServerRequest>.ExtensionWriter extensionWriter =
-          newExtensionWriter();
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeInt32(1, reqId_);
-      }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeEnum(2, serverRequestType_.getNumber());
-      }
-      extensionWriter.writeUntil(201, output);
-      getUnknownFields().writeTo(output);
-    }
-    
-    private int memoizedSerializedSize = -1;
-    public int getSerializedSize() {
-      int size = memoizedSerializedSize;
-      if (size != -1) return size;
-    
-      size = 0;
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, reqId_);
-      }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(2, serverRequestType_.getNumber());
-      }
-      size += extensionsSerializedSize();
-      size += getUnknownFields().getSerializedSize();
-      memoizedSerializedSize = size;
-      return size;
-    }
-    
-    private static final long serialVersionUID = 0L;
-    @java.lang.Override
-    protected java.lang.Object writeReplace()
-        throws java.io.ObjectStreamException {
-      return super.writeReplace();
-    }
-    
-    public static at.ac.tuwien.software.architectures.ws2012.Server.ServerRequest parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
-    }
-    public static at.ac.tuwien.software.architectures.ws2012.Server.ServerRequest parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
-    }
-    public static at.ac.tuwien.software.architectures.ws2012.Server.ServerRequest parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
-    }
-    public static at.ac.tuwien.software.architectures.ws2012.Server.ServerRequest parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
-    }
-    public static at.ac.tuwien.software.architectures.ws2012.Server.ServerRequest parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
-    }
-    public static at.ac.tuwien.software.architectures.ws2012.Server.ServerRequest parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
-    }
-    public static at.ac.tuwien.software.architectures.ws2012.Server.ServerRequest parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
-    }
-    public static at.ac.tuwien.software.architectures.ws2012.Server.ServerRequest parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
-    }
-    public static at.ac.tuwien.software.architectures.ws2012.Server.ServerRequest parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
-    }
-    public static at.ac.tuwien.software.architectures.ws2012.Server.ServerRequest parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
-    }
-    
-    public static Builder newBuilder() { return Builder.create(); }
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(at.ac.tuwien.software.architectures.ws2012.Server.ServerRequest prototype) {
-      return newBuilder().mergeFrom(prototype);
-    }
-    public Builder toBuilder() { return newBuilder(this); }
-    
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.ExtendableBuilder<
-          at.ac.tuwien.software.architectures.ws2012.Server.ServerRequest, Builder> implements at.ac.tuwien.software.architectures.ws2012.Server.ServerRequestOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return at.ac.tuwien.software.architectures.ws2012.Server.internal_static_pb_sa_ServerRequest_descriptor;
-      }
-      
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return at.ac.tuwien.software.architectures.ws2012.Server.internal_static_pb_sa_ServerRequest_fieldAccessorTable;
-      }
-      
-      // Construct using at.ac.tuwien.software.architectures.ws2012.Server.ServerRequest.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-      
-      private Builder(BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-        }
-      }
-      private static Builder create() {
-        return new Builder();
-      }
-      
-      public Builder clear() {
-        super.clear();
-        reqId_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000001);
-        serverRequestType_ = at.ac.tuwien.software.architectures.ws2012.Server.ServerRequestType.REGISTER_PEER_REQUEST;
-        bitField0_ = (bitField0_ & ~0x00000002);
-        return this;
-      }
-      
-      public Builder clone() {
-        return create().mergeFrom(buildPartial());
-      }
-      
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return at.ac.tuwien.software.architectures.ws2012.Server.ServerRequest.getDescriptor();
-      }
-      
-      public at.ac.tuwien.software.architectures.ws2012.Server.ServerRequest getDefaultInstanceForType() {
-        return at.ac.tuwien.software.architectures.ws2012.Server.ServerRequest.getDefaultInstance();
-      }
-      
-      public at.ac.tuwien.software.architectures.ws2012.Server.ServerRequest build() {
-        at.ac.tuwien.software.architectures.ws2012.Server.ServerRequest result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-      
-      private at.ac.tuwien.software.architectures.ws2012.Server.ServerRequest buildParsed()
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        at.ac.tuwien.software.architectures.ws2012.Server.ServerRequest result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(
-            result).asInvalidProtocolBufferException();
-        }
-        return result;
-      }
-      
-      public at.ac.tuwien.software.architectures.ws2012.Server.ServerRequest buildPartial() {
-        at.ac.tuwien.software.architectures.ws2012.Server.ServerRequest result = new at.ac.tuwien.software.architectures.ws2012.Server.ServerRequest(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
-          to_bitField0_ |= 0x00000001;
-        }
-        result.reqId_ = reqId_;
-        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
-          to_bitField0_ |= 0x00000002;
-        }
-        result.serverRequestType_ = serverRequestType_;
-        result.bitField0_ = to_bitField0_;
-        onBuilt();
-        return result;
-      }
-      
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof at.ac.tuwien.software.architectures.ws2012.Server.ServerRequest) {
-          return mergeFrom((at.ac.tuwien.software.architectures.ws2012.Server.ServerRequest)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-      
-      public Builder mergeFrom(at.ac.tuwien.software.architectures.ws2012.Server.ServerRequest other) {
-        if (other == at.ac.tuwien.software.architectures.ws2012.Server.ServerRequest.getDefaultInstance()) return this;
-        if (other.hasReqId()) {
-          setReqId(other.getReqId());
-        }
-        if (other.hasServerRequestType()) {
-          setServerRequestType(other.getServerRequestType());
-        }
-        this.mergeExtensionFields(other);
-        this.mergeUnknownFields(other.getUnknownFields());
-        return this;
-      }
-      
-      public final boolean isInitialized() {
-        if (!hasReqId()) {
-          
-          return false;
-        }
-        if (!extensionsAreInitialized()) {
-          
-          return false;
-        }
-        return true;
-      }
-      
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder(
-            this.getUnknownFields());
-        while (true) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              this.setUnknownFields(unknownFields.build());
-              onChanged();
-              return this;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                this.setUnknownFields(unknownFields.build());
-                onChanged();
-                return this;
-              }
-              break;
-            }
-            case 8: {
-              bitField0_ |= 0x00000001;
-              reqId_ = input.readInt32();
-              break;
-            }
-            case 16: {
-              int rawValue = input.readEnum();
-              at.ac.tuwien.software.architectures.ws2012.Server.ServerRequestType value = at.ac.tuwien.software.architectures.ws2012.Server.ServerRequestType.valueOf(rawValue);
-              if (value == null) {
-                unknownFields.mergeVarintField(2, rawValue);
-              } else {
-                bitField0_ |= 0x00000002;
-                serverRequestType_ = value;
-              }
-              break;
-            }
-          }
-        }
-      }
-      
-      private int bitField0_;
-      
-      // required int32 req_id = 1;
-      private int reqId_ ;
-      public boolean hasReqId() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
-      }
-      public int getReqId() {
-        return reqId_;
-      }
-      public Builder setReqId(int value) {
-        bitField0_ |= 0x00000001;
-        reqId_ = value;
-        onChanged();
-        return this;
-      }
-      public Builder clearReqId() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        reqId_ = 0;
-        onChanged();
-        return this;
-      }
-      
-      // optional .pb_sa.ServerRequestType server_request_type = 2;
-      private at.ac.tuwien.software.architectures.ws2012.Server.ServerRequestType serverRequestType_ = at.ac.tuwien.software.architectures.ws2012.Server.ServerRequestType.REGISTER_PEER_REQUEST;
-      public boolean hasServerRequestType() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
-      }
-      public at.ac.tuwien.software.architectures.ws2012.Server.ServerRequestType getServerRequestType() {
-        return serverRequestType_;
-      }
-      public Builder setServerRequestType(at.ac.tuwien.software.architectures.ws2012.Server.ServerRequestType value) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        bitField0_ |= 0x00000002;
-        serverRequestType_ = value;
-        onChanged();
-        return this;
-      }
-      public Builder clearServerRequestType() {
-        bitField0_ = (bitField0_ & ~0x00000002);
-        serverRequestType_ = at.ac.tuwien.software.architectures.ws2012.Server.ServerRequestType.REGISTER_PEER_REQUEST;
-        onChanged();
-        return this;
-      }
-      
-      // @@protoc_insertion_point(builder_scope:pb_sa.ServerRequest)
-    }
-    
-    static {
-      defaultInstance = new ServerRequest(true);
-      defaultInstance.initFields();
-    }
-    
-    // @@protoc_insertion_point(class_scope:pb_sa.ServerRequest)
-  }
-  
   public interface RegisterPeerRequestOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
     
@@ -3465,67 +2954,62 @@ public final class Server {
     // @@protoc_insertion_point(class_scope:pb_sa.ValidateSearchResponse)
   }
   
-  public static final int REGISTER_PEER_REQUEST_FIELD_NUMBER = 100;
+  public static final int REGISTER_PEER_REQUEST_FIELD_NUMBER = 300;
   public static final
     com.google.protobuf.GeneratedMessage.GeneratedExtension<
-      at.ac.tuwien.software.architectures.ws2012.Server.ServerRequest,
+      at.ac.tuwien.software.architectures.ws2012.General.Request,
       at.ac.tuwien.software.architectures.ws2012.Server.RegisterPeerRequest> registerPeerRequest = com.google.protobuf.GeneratedMessage
           .newFileScopedGeneratedExtension(
         at.ac.tuwien.software.architectures.ws2012.Server.RegisterPeerRequest.class,
         at.ac.tuwien.software.architectures.ws2012.Server.RegisterPeerRequest.getDefaultInstance());
-  public static final int REGISTER_PEER_RESPONSE_FIELD_NUMBER = 101;
+  public static final int REGISTER_PEER_RESPONSE_FIELD_NUMBER = 301;
   public static final
     com.google.protobuf.GeneratedMessage.GeneratedExtension<
-      at.ac.tuwien.software.architectures.ws2012.Server.ServerRequest,
+      at.ac.tuwien.software.architectures.ws2012.General.Request,
       at.ac.tuwien.software.architectures.ws2012.Server.RegisterPeerResponse> registerPeerResponse = com.google.protobuf.GeneratedMessage
           .newFileScopedGeneratedExtension(
         at.ac.tuwien.software.architectures.ws2012.Server.RegisterPeerResponse.class,
         at.ac.tuwien.software.architectures.ws2012.Server.RegisterPeerResponse.getDefaultInstance());
-  public static final int BOOTSTRAP_REQUEST_FIELD_NUMBER = 102;
+  public static final int BOOTSTRAP_REQUEST_FIELD_NUMBER = 302;
   public static final
     com.google.protobuf.GeneratedMessage.GeneratedExtension<
-      at.ac.tuwien.software.architectures.ws2012.Server.ServerRequest,
+      at.ac.tuwien.software.architectures.ws2012.General.Request,
       at.ac.tuwien.software.architectures.ws2012.Server.BootstrapRequest> bootstrapRequest = com.google.protobuf.GeneratedMessage
           .newFileScopedGeneratedExtension(
         at.ac.tuwien.software.architectures.ws2012.Server.BootstrapRequest.class,
         at.ac.tuwien.software.architectures.ws2012.Server.BootstrapRequest.getDefaultInstance());
-  public static final int BOOTSTRAP_RESPONSE_FIELD_NUMBER = 103;
+  public static final int BOOTSTRAP_RESPONSE_FIELD_NUMBER = 303;
   public static final
     com.google.protobuf.GeneratedMessage.GeneratedExtension<
-      at.ac.tuwien.software.architectures.ws2012.Server.ServerRequest,
+      at.ac.tuwien.software.architectures.ws2012.General.Request,
       at.ac.tuwien.software.architectures.ws2012.Server.BootstrapResponse> bootstrapResponse = com.google.protobuf.GeneratedMessage
           .newFileScopedGeneratedExtension(
         at.ac.tuwien.software.architectures.ws2012.Server.BootstrapResponse.class,
         at.ac.tuwien.software.architectures.ws2012.Server.BootstrapResponse.getDefaultInstance());
-  public static final int PEER_DEAD_REQUEST_FIELD_NUMBER = 104;
+  public static final int PEER_DEAD_REQUEST_FIELD_NUMBER = 304;
   public static final
     com.google.protobuf.GeneratedMessage.GeneratedExtension<
-      at.ac.tuwien.software.architectures.ws2012.Server.ServerRequest,
+      at.ac.tuwien.software.architectures.ws2012.General.Request,
       at.ac.tuwien.software.architectures.ws2012.Server.PeerDeadRequest> peerDeadRequest = com.google.protobuf.GeneratedMessage
           .newFileScopedGeneratedExtension(
         at.ac.tuwien.software.architectures.ws2012.Server.PeerDeadRequest.class,
         at.ac.tuwien.software.architectures.ws2012.Server.PeerDeadRequest.getDefaultInstance());
-  public static final int VALIDATE_SEARCH_REQUEST_FIELD_NUMBER = 105;
+  public static final int VALIDATE_SEARCH_REQUEST_FIELD_NUMBER = 305;
   public static final
     com.google.protobuf.GeneratedMessage.GeneratedExtension<
-      at.ac.tuwien.software.architectures.ws2012.Server.ServerRequest,
+      at.ac.tuwien.software.architectures.ws2012.General.Request,
       at.ac.tuwien.software.architectures.ws2012.Server.ValidateSearchRequest> validateSearchRequest = com.google.protobuf.GeneratedMessage
           .newFileScopedGeneratedExtension(
         at.ac.tuwien.software.architectures.ws2012.Server.ValidateSearchRequest.class,
         at.ac.tuwien.software.architectures.ws2012.Server.ValidateSearchRequest.getDefaultInstance());
-  public static final int VALIDATE_SEARCH_RESPONSE_FIELD_NUMBER = 106;
+  public static final int VALIDATE_SEARCH_RESPONSE_FIELD_NUMBER = 306;
   public static final
     com.google.protobuf.GeneratedMessage.GeneratedExtension<
-      at.ac.tuwien.software.architectures.ws2012.Server.ServerRequest,
+      at.ac.tuwien.software.architectures.ws2012.General.Request,
       at.ac.tuwien.software.architectures.ws2012.Server.ValidateSearchResponse> validateSearchResponse = com.google.protobuf.GeneratedMessage
           .newFileScopedGeneratedExtension(
         at.ac.tuwien.software.architectures.ws2012.Server.ValidateSearchResponse.class,
         at.ac.tuwien.software.architectures.ws2012.Server.ValidateSearchResponse.getDefaultInstance());
-  private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_pb_sa_ServerRequest_descriptor;
-  private static
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_pb_sa_ServerRequest_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
     internal_static_pb_sa_RegisterPeerRequest_descriptor;
   private static
@@ -3570,57 +3054,41 @@ public final class Server {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\014server.proto\022\005pb_sa\032\rGeneral.proto\"]\n\r" +
-      "ServerRequest\022\016\n\006req_id\030\001 \002(\005\0225\n\023server_" +
-      "request_type\030\002 \001(\0162\030.pb_sa.ServerRequest" +
-      "Type*\005\010d\020\311\001\">\n\023RegisterPeerRequest\022\024\n\014pe" +
-      "er_address\030\001 \002(\t\022\021\n\tclient_id\030\002 \002(\005\"V\n\024R" +
-      "egisterPeerResponse\022\017\n\007peer_id\030\001 \001(\005\022-\n\006" +
-      "status\030\002 \001(\0162\035.pb_sa.PeerRegistrationSta" +
-      "tus\")\n\020BootstrapRequest\022\025\n\rnumberOfPeers" +
-      "\030\001 \002(\005\"2\n\021BootstrapResponse\022\035\n\004data\030\001 \003(" +
-      "\0132\017.pb_sa.PeerData\"+\n\017PeerDeadRequest\022\030\n",
-      "\020destination_peer\030\001 \002(\t\"E\n\025ValidateSearc" +
-      "hRequest\022,\n\016search_request\030\001 \002(\0132\024.pb_sa" +
-      ".SearchRequest\"L\n\026ValidateSearchResponse" +
-      "\0222\n\rsearch_status\030\001 \002(\0162\033.pb_sa.Validate" +
-      "SearchStatus*\313\001\n\021ServerRequestType\022\031\n\025RE" +
-      "GISTER_PEER_REQUEST\020\001\022\032\n\026REGISTER_PEER_R" +
-      "ESPONSE\020\002\022\025\n\021BOOTSTRAP_REQUEST\020\003\022\026\n\022BOOT" +
-      "STRAP_RESPONSE\020\004\022\025\n\021PEER_DEAD_REQUEST\020\005\022" +
-      "\033\n\027VALIDATE_SEARCH_REQUEST\020\006\022\034\n\030VALIDATE" +
-      "_SEARCH_RESPONSE\020\007:O\n\025register_peer_requ",
-      "est\022\024.pb_sa.ServerRequest\030d \001(\0132\032.pb_sa." +
-      "RegisterPeerRequest:Q\n\026register_peer_res" +
-      "ponse\022\024.pb_sa.ServerRequest\030e \001(\0132\033.pb_s" +
-      "a.RegisterPeerResponse:H\n\021bootstrap_requ" +
-      "est\022\024.pb_sa.ServerRequest\030f \001(\0132\027.pb_sa." +
-      "BootstrapRequest:J\n\022bootstrap_response\022\024" +
-      ".pb_sa.ServerRequest\030g \001(\0132\030.pb_sa.Boots" +
-      "trapResponse:G\n\021peer_dead_request\022\024.pb_s" +
-      "a.ServerRequest\030h \001(\0132\026.pb_sa.PeerDeadRe" +
-      "quest:S\n\027validate_search_request\022\024.pb_sa",
-      ".ServerRequest\030i \001(\0132\034.pb_sa.ValidateSea" +
-      "rchRequest:U\n\030validate_search_response\022\024" +
-      ".pb_sa.ServerRequest\030j \001(\0132\035.pb_sa.Valid" +
-      "ateSearchResponseB,\n*at.ac.tuwien.softwa" +
-      "re.architectures.ws2012"
+      "\n\014server.proto\022\005pb_sa\032\rGeneral.proto\">\n\023" +
+      "RegisterPeerRequest\022\024\n\014peer_address\030\001 \002(" +
+      "\t\022\021\n\tclient_id\030\002 \002(\005\"V\n\024RegisterPeerResp" +
+      "onse\022\017\n\007peer_id\030\001 \001(\005\022-\n\006status\030\002 \001(\0162\035." +
+      "pb_sa.PeerRegistrationStatus\")\n\020Bootstra" +
+      "pRequest\022\025\n\rnumberOfPeers\030\001 \002(\005\"2\n\021Boots" +
+      "trapResponse\022\035\n\004data\030\001 \003(\0132\017.pb_sa.PeerD" +
+      "ata\"+\n\017PeerDeadRequest\022\030\n\020destination_pe" +
+      "er\030\001 \002(\t\"E\n\025ValidateSearchRequest\022,\n\016sea" +
+      "rch_request\030\001 \002(\0132\024.pb_sa.SearchRequest\"",
+      "L\n\026ValidateSearchResponse\0222\n\rsearch_stat" +
+      "us\030\001 \002(\0162\033.pb_sa.ValidateSearchStatus:J\n" +
+      "\025register_peer_request\022\016.pb_sa.Request\030\254" +
+      "\002 \001(\0132\032.pb_sa.RegisterPeerRequest:L\n\026reg" +
+      "ister_peer_response\022\016.pb_sa.Request\030\255\002 \001" +
+      "(\0132\033.pb_sa.RegisterPeerResponse:C\n\021boots" +
+      "trap_request\022\016.pb_sa.Request\030\256\002 \001(\0132\027.pb" +
+      "_sa.BootstrapRequest:E\n\022bootstrap_respon" +
+      "se\022\016.pb_sa.Request\030\257\002 \001(\0132\030.pb_sa.Bootst" +
+      "rapResponse:B\n\021peer_dead_request\022\016.pb_sa",
+      ".Request\030\260\002 \001(\0132\026.pb_sa.PeerDeadRequest:" +
+      "N\n\027validate_search_request\022\016.pb_sa.Reque" +
+      "st\030\261\002 \001(\0132\034.pb_sa.ValidateSearchRequest:" +
+      "P\n\030validate_search_response\022\016.pb_sa.Requ" +
+      "est\030\262\002 \001(\0132\035.pb_sa.ValidateSearchRespons" +
+      "eB,\n*at.ac.tuwien.software.architectures" +
+      ".ws2012"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
         public com.google.protobuf.ExtensionRegistry assignDescriptors(
             com.google.protobuf.Descriptors.FileDescriptor root) {
           descriptor = root;
-          internal_static_pb_sa_ServerRequest_descriptor =
-            getDescriptor().getMessageTypes().get(0);
-          internal_static_pb_sa_ServerRequest_fieldAccessorTable = new
-            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_pb_sa_ServerRequest_descriptor,
-              new java.lang.String[] { "ReqId", "ServerRequestType", },
-              at.ac.tuwien.software.architectures.ws2012.Server.ServerRequest.class,
-              at.ac.tuwien.software.architectures.ws2012.Server.ServerRequest.Builder.class);
           internal_static_pb_sa_RegisterPeerRequest_descriptor =
-            getDescriptor().getMessageTypes().get(1);
+            getDescriptor().getMessageTypes().get(0);
           internal_static_pb_sa_RegisterPeerRequest_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_pb_sa_RegisterPeerRequest_descriptor,
@@ -3628,7 +3096,7 @@ public final class Server {
               at.ac.tuwien.software.architectures.ws2012.Server.RegisterPeerRequest.class,
               at.ac.tuwien.software.architectures.ws2012.Server.RegisterPeerRequest.Builder.class);
           internal_static_pb_sa_RegisterPeerResponse_descriptor =
-            getDescriptor().getMessageTypes().get(2);
+            getDescriptor().getMessageTypes().get(1);
           internal_static_pb_sa_RegisterPeerResponse_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_pb_sa_RegisterPeerResponse_descriptor,
@@ -3636,7 +3104,7 @@ public final class Server {
               at.ac.tuwien.software.architectures.ws2012.Server.RegisterPeerResponse.class,
               at.ac.tuwien.software.architectures.ws2012.Server.RegisterPeerResponse.Builder.class);
           internal_static_pb_sa_BootstrapRequest_descriptor =
-            getDescriptor().getMessageTypes().get(3);
+            getDescriptor().getMessageTypes().get(2);
           internal_static_pb_sa_BootstrapRequest_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_pb_sa_BootstrapRequest_descriptor,
@@ -3644,7 +3112,7 @@ public final class Server {
               at.ac.tuwien.software.architectures.ws2012.Server.BootstrapRequest.class,
               at.ac.tuwien.software.architectures.ws2012.Server.BootstrapRequest.Builder.class);
           internal_static_pb_sa_BootstrapResponse_descriptor =
-            getDescriptor().getMessageTypes().get(4);
+            getDescriptor().getMessageTypes().get(3);
           internal_static_pb_sa_BootstrapResponse_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_pb_sa_BootstrapResponse_descriptor,
@@ -3652,7 +3120,7 @@ public final class Server {
               at.ac.tuwien.software.architectures.ws2012.Server.BootstrapResponse.class,
               at.ac.tuwien.software.architectures.ws2012.Server.BootstrapResponse.Builder.class);
           internal_static_pb_sa_PeerDeadRequest_descriptor =
-            getDescriptor().getMessageTypes().get(5);
+            getDescriptor().getMessageTypes().get(4);
           internal_static_pb_sa_PeerDeadRequest_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_pb_sa_PeerDeadRequest_descriptor,
@@ -3660,7 +3128,7 @@ public final class Server {
               at.ac.tuwien.software.architectures.ws2012.Server.PeerDeadRequest.class,
               at.ac.tuwien.software.architectures.ws2012.Server.PeerDeadRequest.Builder.class);
           internal_static_pb_sa_ValidateSearchRequest_descriptor =
-            getDescriptor().getMessageTypes().get(6);
+            getDescriptor().getMessageTypes().get(5);
           internal_static_pb_sa_ValidateSearchRequest_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_pb_sa_ValidateSearchRequest_descriptor,
@@ -3668,7 +3136,7 @@ public final class Server {
               at.ac.tuwien.software.architectures.ws2012.Server.ValidateSearchRequest.class,
               at.ac.tuwien.software.architectures.ws2012.Server.ValidateSearchRequest.Builder.class);
           internal_static_pb_sa_ValidateSearchResponse_descriptor =
-            getDescriptor().getMessageTypes().get(7);
+            getDescriptor().getMessageTypes().get(6);
           internal_static_pb_sa_ValidateSearchResponse_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_pb_sa_ValidateSearchResponse_descriptor,

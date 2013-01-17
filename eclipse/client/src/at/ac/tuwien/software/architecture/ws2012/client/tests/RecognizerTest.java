@@ -1,7 +1,5 @@
 package at.ac.tuwien.software.architecture.ws2012.client.tests;
 
-import static org.junit.Assert.*;
-
 import org.junit.Test;
 import ac.at.tuwien.infosys.swa.audio.*;
 
