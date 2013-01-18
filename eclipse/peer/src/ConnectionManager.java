@@ -43,7 +43,7 @@ public class ConnectionManager extends Thread {
 				log.info(String.format("Connection established: %s",info));
 				Connection conn=new Connection(info, sock, this);
 				connectionMap.put(info, conn);
-				conn.run();
+				conn.start();
 				
 			} catch (IOException e) {
 				log.error(e.getMessage());
