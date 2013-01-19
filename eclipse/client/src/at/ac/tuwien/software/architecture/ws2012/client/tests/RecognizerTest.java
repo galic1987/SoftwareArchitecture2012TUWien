@@ -40,15 +40,15 @@ public class RecognizerTest {
 			
 		// 3. compare some fingerprints, search for 			
 		double t1 = f1.match(f2) ;
-		System.out.print("we found some match f1 - f2 number" + t1);
+		System.out.println("we found some match f1 - f2 number" + t1);
 		
 		
 		double t2 = f2.match(f3) ;
-		System.out.print("we found some match f3 - f3 number" + t2);
+		System.out.println("we found some match f3 - f3 number" + t2);
 		
 		
 		double t3 = f1.match(f1) ;
-		System.out.print("we found some match f1 - f1 number" + t3);
+		System.out.println("we found some match f1 - f1 number" + t3);
 		
 			
 		// 4. subfingerprints? test that what for?
