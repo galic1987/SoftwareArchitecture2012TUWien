@@ -15,17 +15,21 @@ public class Server_Mock {
 		int port = Integer.parseInt(args[0]);
 		log.info(String.format("Server starting on port %d",port));
 		AddressedRequestQueue inqueue=new AddressedRequestQueue();
+		AddressedRequestQueue outqueue=new AddressedRequestQueue();
 		
+		ServerManager srvManager=new ServerManager(outqueue, 1,3);
 		List<ServerWorker> workers=new ArrayList<ServerWorker>();
-		ConnectionManager manager= new ConnectionManager(port, inqueue);
+		ConnectionManager manager= new ConnectionManager(port, inqueue, outqueue);
+		QueueSender sender=new QueueSender(outqueue, manager);
 		for (int i=0;i<10;i++)
 		{
-			ServerWorker worker=new ServerWorker(String.valueOf(i), manager);
+			ServerWorker worker=new ServerWorker(String.valueOf(i), manager,srvManager);
 			workers.add(worker);
 			worker.start();
 		}
 		
 		manager.start();
+		sender.start();
 		
 		try {
 			Thread.sleep(100000);

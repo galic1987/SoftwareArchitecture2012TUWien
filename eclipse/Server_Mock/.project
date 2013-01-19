@@ -22,6 +22,36 @@
 	</natures>
 	<linkedResources>
 		<link>
+			<name>src/AddressedRequest.java</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/Common/AddressedRequest.java</locationURI>
+		</link>
+		<link>
+			<name>src/AddressedRequestQueue.java</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/Common/AddressedRequestQueue.java</locationURI>
+		</link>
+		<link>
+			<name>src/Connection.java</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/Common/Connection.java</locationURI>
+		</link>
+		<link>
+			<name>src/ConnectionManager.java</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/Common/ConnectionManager.java</locationURI>
+		</link>
+		<link>
+			<name>src/QueueSender.java</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/Common/QueueSender.java</locationURI>
+		</link>
+		<link>
+			<name>src/RequestQueue.java</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/Common/RequestQueue.java</locationURI>
+		</link>
+		<link>
 			<name>src/at</name>
 			<type>2</type>
 			<locationURI>virtual:/virtual</locationURI>

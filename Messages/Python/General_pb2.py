@@ -11,7 +11,7 @@ from google.protobuf import descriptor_pb2
 DESCRIPTOR = descriptor.FileDescriptor(
   name='General.proto',
   package='pb_sa',
-  serialized_pb='\n\rGeneral.proto\x12\x05pb_sa\"d\n\x07Request\x12\x12\n\nrequest_id\x18\x01 \x02(\x05\x12(\n\x0crequest_type\x18\x02 \x01(\x0e\x32\x12.pb_sa.RequestType\x12\x11\n\ttimestamp\x18\x03 \x01(\x05*\x08\x08\x64\x10\x80\x80\x80\x80\x02\"c\n\rSearchRequest\x12\x10\n\x08\x63lientid\x18\x03 \x02(\x05\x12\x14\n\x0chops_to_live\x18\x04 \x01(\x05\x12\x13\n\x0b\x66ingerprint\x18\x05 \x02(\x0c\x12\x15\n\roriginal_peer\x18\x06 \x01(\t\"L\n\x08PeerData\x12\x14\n\x0cpeer_address\x18\x01 \x02(\t\x12\x11\n\tclient_id\x18\x02 \x02(\x05\x12\x17\n\x0fnumber_of_songs\x18\x03 \x01(\x05\"_\n\x08SongData\x12\x11\n\tsong_name\x18\x01 \x02(\t\x12\x13\n\x0b\x61rtist_name\x18\x02 \x02(\t\x12\x12\n\nalbum_name\x18\x03 \x02(\t\x12\x17\n\x0f\x43onfidenceLevel\x18\x04 \x01(\x01\"#\n\x0e\x41\x64\x64SongRequest\x12\x11\n\tfile_path\x18\x01 \x02(\t*\xe0\x03\n\x0bRequestType\x12\x19\n\x15\x41RE_YOU_ALIVE_REQUEST\x10\x64\x12\x1a\n\x16\x41RE_YOU_ALIVE_RESPONSE\x10\x65\x12\x12\n\x0eSEARCH_REQUEST\x10\x66\x12\x10\n\x0cSEARCH_ABORT\x10g\x12\x15\n\x11SEARCH_SUCCESFULL\x10h\x12!\n\x1cMONITORING_GET_PEERS_REQUEST\x10\xc8\x01\x12\"\n\x1dMONITORING_GET_PEERS_RESPONSE\x10\xc9\x01\x12*\n%MONITORING_REQUESTS_PROCESSED_REQUEST\x10\xca\x01\x12+\n&MONITORING_REQUESTS_PROCESSED_RESPONSE\x10\xcb\x01\x12\x1a\n\x15REGISTER_PEER_REQUEST\x10\xad\x02\x12\x1b\n\x16REGISTER_PEER_RESPONSE\x10\xae\x02\x12\x16\n\x11\x42OOTSTRAP_REQUEST\x10\xaf\x02\x12\x17\n\x12\x42OOTSTRAP_RESPONSE\x10\xb0\x02\x12\x16\n\x11PEER_DEAD_REQUEST\x10\xb1\x02\x12\x1c\n\x17VALIDATE_SEARCH_REQUEST\x10\xb2\x02\x12\x1d\n\x18VALIDATE_SEARCH_RESPONSE\x10\xb3\x02*J\n\x14ValidateSearchStatus\x12\r\n\tSEARCH_OK\x10\x00\x12\x11\n\rSEARCH_DENIED\x10\x01\x12\x10\n\x0cSEARCH_ERROR\x10\x02*8\n\x0cSearchStatus\x12\t\n\x05\x46OUND\x10\x00\x12\r\n\tNOT_FOUND\x10\x01\x12\x0e\n\nPROCESSING\x10\x02*5\n\x16PeerRegistrationStatus\x12\x0b\n\x07PEER_OK\x10\x00\x12\x0e\n\nPEER_ERROR\x10\x01\x42,\n*at.ac.tuwien.software.architectures.ws2012')
+  serialized_pb='\n\rGeneral.proto\x12\x05pb_sa\"|\n\x07Request\x12\x12\n\nrequest_id\x18\x01 \x02(\x03\x12(\n\x0crequest_type\x18\x02 \x01(\x0e\x32\x12.pb_sa.RequestType\x12\x11\n\ttimestamp\x18\x03 \x01(\x03\x12\x16\n\x0elisten_address\x18\x04 \x01(\t*\x08\x08\x64\x10\x80\x80\x80\x80\x02\"c\n\rSearchRequest\x12\x10\n\x08\x63lientid\x18\x03 \x02(\x05\x12\x14\n\x0chops_to_live\x18\x04 \x01(\x05\x12\x13\n\x0b\x66ingerprint\x18\x05 \x02(\x0c\x12\x15\n\roriginal_peer\x18\x06 \x01(\t\"3\n\x08PeerData\x12\x14\n\x0cpeer_address\x18\x01 \x02(\t\x12\x11\n\tclient_id\x18\x02 \x02(\x03\"_\n\x08SongData\x12\x11\n\tsong_name\x18\x01 \x02(\t\x12\x13\n\x0b\x61rtist_name\x18\x02 \x02(\t\x12\x12\n\nalbum_name\x18\x03 \x02(\t\x12\x17\n\x0f\x43onfidenceLevel\x18\x04 \x01(\x01\"#\n\x0e\x41\x64\x64SongRequest\x12\x11\n\tfile_path\x18\x01 \x02(\t*\xe0\x03\n\x0bRequestType\x12\x19\n\x15\x41RE_YOU_ALIVE_REQUEST\x10\x64\x12\x1a\n\x16\x41RE_YOU_ALIVE_RESPONSE\x10\x65\x12\x12\n\x0eSEARCH_REQUEST\x10\x66\x12\x10\n\x0cSEARCH_ABORT\x10g\x12\x15\n\x11SEARCH_SUCCESFULL\x10h\x12!\n\x1cMONITORING_GET_PEERS_REQUEST\x10\xc8\x01\x12\"\n\x1dMONITORING_GET_PEERS_RESPONSE\x10\xc9\x01\x12*\n%MONITORING_REQUESTS_PROCESSED_REQUEST\x10\xca\x01\x12+\n&MONITORING_REQUESTS_PROCESSED_RESPONSE\x10\xcb\x01\x12\x1a\n\x15REGISTER_PEER_REQUEST\x10\xad\x02\x12\x1b\n\x16REGISTER_PEER_RESPONSE\x10\xae\x02\x12\x16\n\x11\x42OOTSTRAP_REQUEST\x10\xaf\x02\x12\x17\n\x12\x42OOTSTRAP_RESPONSE\x10\xb0\x02\x12\x16\n\x11PEER_DEAD_REQUEST\x10\xb1\x02\x12\x1c\n\x17VALIDATE_SEARCH_REQUEST\x10\xb2\x02\x12\x1d\n\x18VALIDATE_SEARCH_RESPONSE\x10\xb3\x02*J\n\x14ValidateSearchStatus\x12\r\n\tSEARCH_OK\x10\x00\x12\x11\n\rSEARCH_DENIED\x10\x01\x12\x10\n\x0cSEARCH_ERROR\x10\x02*8\n\x0cSearchStatus\x12\t\n\x05\x46OUND\x10\x00\x12\r\n\tNOT_FOUND\x10\x01\x12\x0e\n\nPROCESSING\x10\x02*5\n\x16PeerRegistrationStatus\x12\x0b\n\x07PEER_OK\x10\x00\x12\x0e\n\nPEER_ERROR\x10\x01\x42,\n*at.ac.tuwien.software.architectures.ws2012')
 
 _REQUESTTYPE = descriptor.EnumDescriptor(
   name='RequestType',
@@ -86,8 +86,8 @@ _REQUESTTYPE = descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=440,
-  serialized_end=920,
+  serialized_start=439,
+  serialized_end=919,
 )
 
 
@@ -112,8 +112,8 @@ _VALIDATESEARCHSTATUS = descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=922,
-  serialized_end=996,
+  serialized_start=921,
+  serialized_end=995,
 )
 
 
@@ -138,8 +138,8 @@ _SEARCHSTATUS = descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=998,
-  serialized_end=1054,
+  serialized_start=997,
+  serialized_end=1053,
 )
 
 
@@ -160,8 +160,8 @@ _PEERREGISTRATIONSTATUS = descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=1056,
-  serialized_end=1109,
+  serialized_start=1055,
+  serialized_end=1108,
 )
 
 
@@ -201,7 +201,7 @@ _REQUEST = descriptor.Descriptor(
   fields=[
     descriptor.FieldDescriptor(
       name='request_id', full_name='pb_sa.Request.request_id', index=0,
-      number=1, type=5, cpp_type=1, label=2,
+      number=1, type=3, cpp_type=2, label=2,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -215,8 +215,15 @@ _REQUEST = descriptor.Descriptor(
       options=None),
     descriptor.FieldDescriptor(
       name='timestamp', full_name='pb_sa.Request.timestamp', index=2,
-      number=3, type=5, cpp_type=1, label=1,
+      number=3, type=3, cpp_type=2, label=1,
       has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    descriptor.FieldDescriptor(
+      name='listen_address', full_name='pb_sa.Request.listen_address', index=3,
+      number=4, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=unicode("", "utf-8"),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
@@ -230,7 +237,7 @@ _REQUEST = descriptor.Descriptor(
   is_extendable=True,
   extension_ranges=[(100, 536870912), ],
   serialized_start=24,
-  serialized_end=124,
+  serialized_end=148,
 )
 
 
@@ -278,8 +285,8 @@ _SEARCHREQUEST = descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=126,
-  serialized_end=225,
+  serialized_start=150,
+  serialized_end=249,
 )
 
 
@@ -299,14 +306,7 @@ _PEERDATA = descriptor.Descriptor(
       options=None),
     descriptor.FieldDescriptor(
       name='client_id', full_name='pb_sa.PeerData.client_id', index=1,
-      number=2, type=5, cpp_type=1, label=2,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    descriptor.FieldDescriptor(
-      name='number_of_songs', full_name='pb_sa.PeerData.number_of_songs', index=2,
-      number=3, type=5, cpp_type=1, label=1,
+      number=2, type=3, cpp_type=2, label=2,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -320,8 +320,8 @@ _PEERDATA = descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=227,
-  serialized_end=303,
+  serialized_start=251,
+  serialized_end=302,
 )
 
 
@@ -369,8 +369,8 @@ _SONGDATA = descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=305,
-  serialized_end=400,
+  serialized_start=304,
+  serialized_end=399,
 )
 
 
@@ -397,8 +397,8 @@ _ADDSONGREQUEST = descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=402,
-  serialized_end=437,
+  serialized_start=401,
+  serialized_end=436,
 )
 
 _REQUEST.fields_by_name['request_type'].enum_type = _REQUESTTYPE

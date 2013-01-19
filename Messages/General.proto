@@ -3,9 +3,10 @@ option java_package = "at.ac.tuwien.software.architectures.ws2012";
 
 
 message Request {
-	required int32 request_id=1;
+	required int64 request_id=1;
 	optional RequestType request_type=2;
-    optional int32 timestamp=3;
+    optional int64 timestamp=3;
+	optional string listen_address=4;
 	extensions 100 to max;
 }
 
@@ -39,8 +40,7 @@ message SearchRequest {
 
 message PeerData {
      required string peer_address=1;
-     required int32 client_id=2;
-	 optional int32 number_of_songs = 3;
+     required int64 client_id=2;
 }
 
 message SongData {

@@ -2,10 +2,12 @@
 public class ServerWorker extends Thread {
 	String name;
 	ConnectionManager manager;
-	public ServerWorker(String n, ConnectionManager m)
+	ServerManager srvManager;
+	public ServerWorker(String n, ConnectionManager m, ServerManager s)
 	{
 		manager = m;
 		name = n;
+		srvManager=s;
 	}
 	
 	public void run()
@@ -26,8 +28,10 @@ public class ServerWorker extends Thread {
 			switch(req.req.getRequestType())
 			{
 			case REGISTER_PEER_REQUEST:
+				srvManager.RegisterPeer(req);
 				break;
 			case BOOTSTRAP_REQUEST:
+				srvManager.Bootstrap(req);
 				break;
 			case PEER_DEAD_REQUEST:
 				break;

@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.net.InetAddress;
 import java.net.Socket;
 import java.net.SocketAddress;
 import java.net.UnknownHostException;
@@ -25,42 +26,42 @@ public class Peer {
 		BasicConfigurator.configure();
 		
 		int port = Integer.parseInt(args[0]);
+		
+		int serverPort=5678;
+		String serverIP="127.0.0.1";
+		
+		int numberOfPeers=5;
+		String musicFolder="";
+		
+		int numOfWorkers=3;
+		
+		String serverAddress=String.format("%s:%d", serverIP, serverPort);
+		String localIP=GetLocalIP();
+		String localaddress=String.format("%s:%d",localIP,port);
+
 		log.info(String.format("Peer starting on port %d",port));
+		
 		AddressedRequestQueue inqueue=new AddressedRequestQueue();
+		AddressedRequestQueue outqueue=new AddressedRequestQueue();
 		
 		List<PeerWorker> workers=new ArrayList<PeerWorker>();
-		ConnectionManager manager= new ConnectionManager(port, inqueue);
-		for (int i=0;i<10;i++)
+		ConnectionManager manager= new ConnectionManager(port, inqueue, outqueue);
+		PeerManager peerManager= new PeerManager(outqueue, serverAddress, numberOfPeers, musicFolder, localaddress);
+		QueueSender sender=new QueueSender(outqueue, manager);
+		
+		for (int i=0;i<numOfWorkers;i++)
 		{
-			PeerWorker worker=new PeerWorker(String.valueOf(i), manager);
+			PeerWorker worker=new PeerWorker(String.valueOf(i), manager, peerManager);
 			workers.add(worker);
 			worker.start();
 		}
 		
 		manager.start();
+		sender.start();
 		
-		RegisterPeerRequest ext=RegisterPeerRequest.newBuilder().setClientId(100).setPeerAddress("sdfsdf").build();
-		Request req=Request.newBuilder().setRequestId(1).setRequestType(RequestType.REGISTER_PEER_REQUEST).setExtension(Server.registerPeerRequest, ext).build();
+		ConnectToServer(outqueue, serverAddress, localaddress);
 		
-		try {
-			Socket sock=new Socket("127.0.0.1", 5678);
-			CodedOutputStream os = CodedOutputStream.newInstance(sock.getOutputStream());
-			os.writeRawVarint32(req.getSerializedSize());
-			req.writeTo(os);
-			CodedInputStream is = CodedInputStream.newInstance(sock.getInputStream());
-			int size = is.readRawVarint32();
-			is.pushLimit(size);
-			Request resp=Request.parseFrom(is);
-			is.popLimit(size);
-			log.info(resp.toString());
-		} catch (UnknownHostException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		
+		log.info("waiting");
 		
 		try {
 			Thread.sleep(100000);
@@ -70,4 +71,22 @@ public class Peer {
 		}
 	}
 
+	private static void ConnectToServer(AddressedRequestQueue queue, String serveraddress, String localAddress) {
+		RegisterPeerRequest ext=RegisterPeerRequest.newBuilder().setClientId(100).setPeerAddress(localAddress).build();
+		Request req=Request.newBuilder().setRequestId(1).setRequestType(RequestType.REGISTER_PEER_REQUEST).setListenAddress(localAddress).setExtension(Server.registerPeerRequest, ext).build();
+		
+		queue.addElement(new AddressedRequest(req, serveraddress));
+	}
+	
+	public static String GetLocalIP()
+	{
+		InetAddress i=null;
+		try {
+			i = InetAddress.getLocalHost();
+			i=InetAddress.getByName(i.getHostName());
+		} catch (UnknownHostException e) {
+
+		}
+		return i.getHostAddress();
+	}
 }

@@ -1,11 +1,10 @@
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.UnknownHostException;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-
 import org.apache.log4j.Logger;
-
 
 public class ConnectionManager extends Thread {
 	static Logger log=Logger.getLogger(ConnectionManager.class.toString());
@@ -15,7 +14,7 @@ public class ConnectionManager extends Thread {
 	AddressedRequestQueue inqueue;
 	AddressedRequestQueue outqueue;
 	
-	public ConnectionManager(int port, AddressedRequestQueue inq)
+	public ConnectionManager(int port, AddressedRequestQueue inq, AddressedRequestQueue outq)
 	{
 		try {
 			listener=new ServerSocket(port);
@@ -24,12 +23,22 @@ public class ConnectionManager extends Thread {
 		}
 		connectionMap = new ConcurrentHashMap<String,Connection>();
 		inqueue = inq;
-		outqueue=new AddressedRequestQueue();
+		outqueue=outq;
 	}
 	
 	public String GetSocketInfo(Socket sock)
 	{
 		return String.format("%s:%d", sock.getInetAddress(),sock.getPort());
+	}
+	
+	public String GetRemoteSocketInfo(Socket sock)
+	{
+		return String.format("%s:%d", sock.getInetAddress().getHostAddress(),sock.getPort());
+	}
+	
+	public String GetLocalSocketInfo(Socket sock)
+	{
+		return String.format("%s:%d",sock.getLocalAddress().getHostAddress(), sock.getLocalPort());
 	}
 	
 	public void run()
@@ -39,7 +48,7 @@ public class ConnectionManager extends Thread {
 		{
 			try {
 				Socket sock=listener.accept();
-				String info=GetSocketInfo(sock);
+				String info=GetRemoteSocketInfo(sock);
 				log.info(String.format("Connection established: %s",info));
 				Connection conn=new Connection(info, sock, this);
 				connectionMap.put(info, conn);
@@ -72,4 +81,29 @@ public class ConnectionManager extends Thread {
 		return outqueue;
 	}
 	
+	public Connection newConnection(String address, int port)
+	{
+		Socket sock;
+		Connection conn=null;
+		String[] parts=address.split(":");
+		try {
+			sock=new Socket(parts[0], port);
+			String info=GetRemoteSocketInfo(sock);
+			log.info(String.format("Connection established: %s",info));
+			conn=new Connection(info, sock, this);
+			connectionMap.put(info, conn);
+			conn.start();
+		} catch (NumberFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (UnknownHostException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return conn;
+	}
 }

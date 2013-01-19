@@ -466,9 +466,9 @@ public final class Server {
   public interface RegisterPeerResponseOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
     
-    // optional int32 peer_id = 1;
-    boolean hasPeerId();
-    int getPeerId();
+    // optional string peer_address = 1;
+    boolean hasPeerAddress();
+    String getPeerAddress();
     
     // optional .pb_sa.PeerRegistrationStatus status = 2;
     boolean hasStatus();
@@ -503,14 +503,36 @@ public final class Server {
     }
     
     private int bitField0_;
-    // optional int32 peer_id = 1;
-    public static final int PEER_ID_FIELD_NUMBER = 1;
-    private int peerId_;
-    public boolean hasPeerId() {
+    // optional string peer_address = 1;
+    public static final int PEER_ADDRESS_FIELD_NUMBER = 1;
+    private java.lang.Object peerAddress_;
+    public boolean hasPeerAddress() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
-    public int getPeerId() {
-      return peerId_;
+    public String getPeerAddress() {
+      java.lang.Object ref = peerAddress_;
+      if (ref instanceof String) {
+        return (String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        String s = bs.toStringUtf8();
+        if (com.google.protobuf.Internal.isValidUtf8(bs)) {
+          peerAddress_ = s;
+        }
+        return s;
+      }
+    }
+    private com.google.protobuf.ByteString getPeerAddressBytes() {
+      java.lang.Object ref = peerAddress_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8((String) ref);
+        peerAddress_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
     }
     
     // optional .pb_sa.PeerRegistrationStatus status = 2;
@@ -524,7 +546,7 @@ public final class Server {
     }
     
     private void initFields() {
-      peerId_ = 0;
+      peerAddress_ = "";
       status_ = at.ac.tuwien.software.architectures.ws2012.General.PeerRegistrationStatus.PEER_OK;
     }
     private byte memoizedIsInitialized = -1;
@@ -540,7 +562,7 @@ public final class Server {
                         throws java.io.IOException {
       getSerializedSize();
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeInt32(1, peerId_);
+        output.writeBytes(1, getPeerAddressBytes());
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         output.writeEnum(2, status_.getNumber());
@@ -556,7 +578,7 @@ public final class Server {
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, peerId_);
+          .computeBytesSize(1, getPeerAddressBytes());
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
@@ -686,7 +708,7 @@ public final class Server {
       
       public Builder clear() {
         super.clear();
-        peerId_ = 0;
+        peerAddress_ = "";
         bitField0_ = (bitField0_ & ~0x00000001);
         status_ = at.ac.tuwien.software.architectures.ws2012.General.PeerRegistrationStatus.PEER_OK;
         bitField0_ = (bitField0_ & ~0x00000002);
@@ -731,7 +753,7 @@ public final class Server {
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
           to_bitField0_ |= 0x00000001;
         }
-        result.peerId_ = peerId_;
+        result.peerAddress_ = peerAddress_;
         if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
           to_bitField0_ |= 0x00000002;
         }
@@ -752,8 +774,8 @@ public final class Server {
       
       public Builder mergeFrom(at.ac.tuwien.software.architectures.ws2012.Server.RegisterPeerResponse other) {
         if (other == at.ac.tuwien.software.architectures.ws2012.Server.RegisterPeerResponse.getDefaultInstance()) return this;
-        if (other.hasPeerId()) {
-          setPeerId(other.getPeerId());
+        if (other.hasPeerAddress()) {
+          setPeerAddress(other.getPeerAddress());
         }
         if (other.hasStatus()) {
           setStatus(other.getStatus());
@@ -789,9 +811,9 @@ public final class Server {
               }
               break;
             }
-            case 8: {
+            case 10: {
               bitField0_ |= 0x00000001;
-              peerId_ = input.readInt32();
+              peerAddress_ = input.readBytes();
               break;
             }
             case 16: {
@@ -811,25 +833,40 @@ public final class Server {
       
       private int bitField0_;
       
-      // optional int32 peer_id = 1;
-      private int peerId_ ;
-      public boolean hasPeerId() {
+      // optional string peer_address = 1;
+      private java.lang.Object peerAddress_ = "";
+      public boolean hasPeerAddress() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
-      public int getPeerId() {
-        return peerId_;
+      public String getPeerAddress() {
+        java.lang.Object ref = peerAddress_;
+        if (!(ref instanceof String)) {
+          String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
+          peerAddress_ = s;
+          return s;
+        } else {
+          return (String) ref;
+        }
       }
-      public Builder setPeerId(int value) {
-        bitField0_ |= 0x00000001;
-        peerId_ = value;
+      public Builder setPeerAddress(String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        peerAddress_ = value;
         onChanged();
         return this;
       }
-      public Builder clearPeerId() {
+      public Builder clearPeerAddress() {
         bitField0_ = (bitField0_ & ~0x00000001);
-        peerId_ = 0;
+        peerAddress_ = getDefaultInstance().getPeerAddress();
         onChanged();
         return this;
+      }
+      void setPeerAddress(com.google.protobuf.ByteString value) {
+        bitField0_ |= 0x00000001;
+        peerAddress_ = value;
+        onChanged();
       }
       
       // optional .pb_sa.PeerRegistrationStatus status = 2;
@@ -3056,31 +3093,31 @@ public final class Server {
     java.lang.String[] descriptorData = {
       "\n\014server.proto\022\005pb_sa\032\rGeneral.proto\">\n\023" +
       "RegisterPeerRequest\022\024\n\014peer_address\030\001 \002(" +
-      "\t\022\021\n\tclient_id\030\002 \002(\005\"V\n\024RegisterPeerResp" +
-      "onse\022\017\n\007peer_id\030\001 \001(\005\022-\n\006status\030\002 \001(\0162\035." +
-      "pb_sa.PeerRegistrationStatus\")\n\020Bootstra" +
-      "pRequest\022\025\n\rnumberOfPeers\030\001 \002(\005\"2\n\021Boots" +
-      "trapResponse\022\035\n\004data\030\001 \003(\0132\017.pb_sa.PeerD" +
-      "ata\"+\n\017PeerDeadRequest\022\030\n\020destination_pe" +
-      "er\030\001 \002(\t\"E\n\025ValidateSearchRequest\022,\n\016sea" +
-      "rch_request\030\001 \002(\0132\024.pb_sa.SearchRequest\"",
-      "L\n\026ValidateSearchResponse\0222\n\rsearch_stat" +
-      "us\030\001 \002(\0162\033.pb_sa.ValidateSearchStatus:J\n" +
-      "\025register_peer_request\022\016.pb_sa.Request\030\254" +
-      "\002 \001(\0132\032.pb_sa.RegisterPeerRequest:L\n\026reg" +
-      "ister_peer_response\022\016.pb_sa.Request\030\255\002 \001" +
-      "(\0132\033.pb_sa.RegisterPeerResponse:C\n\021boots" +
-      "trap_request\022\016.pb_sa.Request\030\256\002 \001(\0132\027.pb" +
-      "_sa.BootstrapRequest:E\n\022bootstrap_respon" +
-      "se\022\016.pb_sa.Request\030\257\002 \001(\0132\030.pb_sa.Bootst" +
-      "rapResponse:B\n\021peer_dead_request\022\016.pb_sa",
-      ".Request\030\260\002 \001(\0132\026.pb_sa.PeerDeadRequest:" +
-      "N\n\027validate_search_request\022\016.pb_sa.Reque" +
-      "st\030\261\002 \001(\0132\034.pb_sa.ValidateSearchRequest:" +
-      "P\n\030validate_search_response\022\016.pb_sa.Requ" +
-      "est\030\262\002 \001(\0132\035.pb_sa.ValidateSearchRespons" +
-      "eB,\n*at.ac.tuwien.software.architectures" +
-      ".ws2012"
+      "\t\022\021\n\tclient_id\030\002 \002(\005\"[\n\024RegisterPeerResp" +
+      "onse\022\024\n\014peer_address\030\001 \001(\t\022-\n\006status\030\002 \001" +
+      "(\0162\035.pb_sa.PeerRegistrationStatus\")\n\020Boo" +
+      "tstrapRequest\022\025\n\rnumberOfPeers\030\001 \002(\005\"2\n\021" +
+      "BootstrapResponse\022\035\n\004data\030\001 \003(\0132\017.pb_sa." +
+      "PeerData\"+\n\017PeerDeadRequest\022\030\n\020destinati" +
+      "on_peer\030\001 \002(\t\"E\n\025ValidateSearchRequest\022," +
+      "\n\016search_request\030\001 \002(\0132\024.pb_sa.SearchReq",
+      "uest\"L\n\026ValidateSearchResponse\0222\n\rsearch" +
+      "_status\030\001 \002(\0162\033.pb_sa.ValidateSearchStat" +
+      "us:J\n\025register_peer_request\022\016.pb_sa.Requ" +
+      "est\030\254\002 \001(\0132\032.pb_sa.RegisterPeerRequest:L" +
+      "\n\026register_peer_response\022\016.pb_sa.Request" +
+      "\030\255\002 \001(\0132\033.pb_sa.RegisterPeerResponse:C\n\021" +
+      "bootstrap_request\022\016.pb_sa.Request\030\256\002 \001(\013" +
+      "2\027.pb_sa.BootstrapRequest:E\n\022bootstrap_r" +
+      "esponse\022\016.pb_sa.Request\030\257\002 \001(\0132\030.pb_sa.B" +
+      "ootstrapResponse:B\n\021peer_dead_request\022\016.",
+      "pb_sa.Request\030\260\002 \001(\0132\026.pb_sa.PeerDeadReq" +
+      "uest:N\n\027validate_search_request\022\016.pb_sa." +
+      "Request\030\261\002 \001(\0132\034.pb_sa.ValidateSearchReq" +
+      "uest:P\n\030validate_search_response\022\016.pb_sa" +
+      ".Request\030\262\002 \001(\0132\035.pb_sa.ValidateSearchRe" +
+      "sponseB,\n*at.ac.tuwien.software.architec" +
+      "tures.ws2012"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -3100,7 +3137,7 @@ public final class Server {
           internal_static_pb_sa_RegisterPeerResponse_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_pb_sa_RegisterPeerResponse_descriptor,
-              new java.lang.String[] { "PeerId", "Status", },
+              new java.lang.String[] { "PeerAddress", "Status", },
               at.ac.tuwien.software.architectures.ws2012.Server.RegisterPeerResponse.class,
               at.ac.tuwien.software.architectures.ws2012.Server.RegisterPeerResponse.Builder.class);
           internal_static_pb_sa_BootstrapRequest_descriptor =

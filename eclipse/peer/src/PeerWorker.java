@@ -1,14 +1,19 @@
+import at.ac.tuwien.software.architectures.ws2012.General;
 import at.ac.tuwien.software.architectures.ws2012.General.Request;
 import at.ac.tuwien.software.architectures.ws2012.General.RequestType;
+import at.ac.tuwien.software.architectures.ws2012.General.SearchRequest;
+import at.ac.tuwien.software.architectures.ws2012.Peer;
 
 
 public class PeerWorker extends Thread {
 	String name;
 	ConnectionManager manager;
-	public PeerWorker(String n, ConnectionManager m)
+	PeerManager peerManager;
+	public PeerWorker(String n, ConnectionManager m, PeerManager mgr)
 	{
 		manager = m;
 		name = n;
+		peerManager=mgr;
 	}
 	
 	public void run()
@@ -36,6 +41,8 @@ public class PeerWorker extends Thread {
 				manager.GetConnection(req.address).Send(response);
 				break;
 			case SEARCH_REQUEST:
+				SearchRequest search=req.req.getExtension(Peer.searchRequest);
+				int clientid = search.getClientid();
 				break;
 			case SEARCH_ABORT:
 				break;
@@ -45,6 +52,11 @@ public class PeerWorker extends Thread {
 				break;
 			case MONITORING_REQUESTS_PROCESSED_REQUEST:
 				break;
+			case BOOTSTRAP_RESPONSE:
+				peerManager.BootstrapResponse(req);
+				break;
+			case REGISTER_PEER_RESPONSE:
+				peerManager.RegisterPeer(req);
 			default:
 				break;
 			}

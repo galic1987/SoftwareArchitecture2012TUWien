@@ -336,17 +336,21 @@ public final class General {
       com.google.protobuf.GeneratedMessage.
           ExtendableMessageOrBuilder<Request> {
     
-    // required int32 request_id = 1;
+    // required int64 request_id = 1;
     boolean hasRequestId();
-    int getRequestId();
+    long getRequestId();
     
     // optional .pb_sa.RequestType request_type = 2;
     boolean hasRequestType();
     at.ac.tuwien.software.architectures.ws2012.General.RequestType getRequestType();
     
-    // optional int32 timestamp = 3;
+    // optional int64 timestamp = 3;
     boolean hasTimestamp();
-    int getTimestamp();
+    long getTimestamp();
+    
+    // optional string listen_address = 4;
+    boolean hasListenAddress();
+    String getListenAddress();
   }
   public static final class Request extends
       com.google.protobuf.GeneratedMessage.ExtendableMessage<
@@ -377,13 +381,13 @@ public final class General {
     }
     
     private int bitField0_;
-    // required int32 request_id = 1;
+    // required int64 request_id = 1;
     public static final int REQUEST_ID_FIELD_NUMBER = 1;
-    private int requestId_;
+    private long requestId_;
     public boolean hasRequestId() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
-    public int getRequestId() {
+    public long getRequestId() {
       return requestId_;
     }
     
@@ -397,20 +401,53 @@ public final class General {
       return requestType_;
     }
     
-    // optional int32 timestamp = 3;
+    // optional int64 timestamp = 3;
     public static final int TIMESTAMP_FIELD_NUMBER = 3;
-    private int timestamp_;
+    private long timestamp_;
     public boolean hasTimestamp() {
       return ((bitField0_ & 0x00000004) == 0x00000004);
     }
-    public int getTimestamp() {
+    public long getTimestamp() {
       return timestamp_;
     }
     
+    // optional string listen_address = 4;
+    public static final int LISTEN_ADDRESS_FIELD_NUMBER = 4;
+    private java.lang.Object listenAddress_;
+    public boolean hasListenAddress() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    public String getListenAddress() {
+      java.lang.Object ref = listenAddress_;
+      if (ref instanceof String) {
+        return (String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        String s = bs.toStringUtf8();
+        if (com.google.protobuf.Internal.isValidUtf8(bs)) {
+          listenAddress_ = s;
+        }
+        return s;
+      }
+    }
+    private com.google.protobuf.ByteString getListenAddressBytes() {
+      java.lang.Object ref = listenAddress_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8((String) ref);
+        listenAddress_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    
     private void initFields() {
-      requestId_ = 0;
+      requestId_ = 0L;
       requestType_ = at.ac.tuwien.software.architectures.ws2012.General.RequestType.ARE_YOU_ALIVE_REQUEST;
-      timestamp_ = 0;
+      timestamp_ = 0L;
+      listenAddress_ = "";
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -436,13 +473,16 @@ public final class General {
         .ExtendableMessage<at.ac.tuwien.software.architectures.ws2012.General.Request>.ExtensionWriter extensionWriter =
           newExtensionWriter();
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeInt32(1, requestId_);
+        output.writeInt64(1, requestId_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         output.writeEnum(2, requestType_.getNumber());
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeInt32(3, timestamp_);
+        output.writeInt64(3, timestamp_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeBytes(4, getListenAddressBytes());
       }
       extensionWriter.writeUntil(536870912, output);
       getUnknownFields().writeTo(output);
@@ -456,7 +496,7 @@ public final class General {
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, requestId_);
+          .computeInt64Size(1, requestId_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
@@ -464,7 +504,11 @@ public final class General {
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(3, timestamp_);
+          .computeInt64Size(3, timestamp_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(4, getListenAddressBytes());
       }
       size += extensionsSerializedSize();
       size += getUnknownFields().getSerializedSize();
@@ -591,12 +635,14 @@ public final class General {
       
       public Builder clear() {
         super.clear();
-        requestId_ = 0;
+        requestId_ = 0L;
         bitField0_ = (bitField0_ & ~0x00000001);
         requestType_ = at.ac.tuwien.software.architectures.ws2012.General.RequestType.ARE_YOU_ALIVE_REQUEST;
         bitField0_ = (bitField0_ & ~0x00000002);
-        timestamp_ = 0;
+        timestamp_ = 0L;
         bitField0_ = (bitField0_ & ~0x00000004);
+        listenAddress_ = "";
+        bitField0_ = (bitField0_ & ~0x00000008);
         return this;
       }
       
@@ -647,6 +693,10 @@ public final class General {
           to_bitField0_ |= 0x00000004;
         }
         result.timestamp_ = timestamp_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        result.listenAddress_ = listenAddress_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -671,6 +721,9 @@ public final class General {
         }
         if (other.hasTimestamp()) {
           setTimestamp(other.getTimestamp());
+        }
+        if (other.hasListenAddress()) {
+          setListenAddress(other.getListenAddress());
         }
         this.mergeExtensionFields(other);
         this.mergeUnknownFields(other.getUnknownFields());
@@ -714,7 +767,7 @@ public final class General {
             }
             case 8: {
               bitField0_ |= 0x00000001;
-              requestId_ = input.readInt32();
+              requestId_ = input.readInt64();
               break;
             }
             case 16: {
@@ -730,7 +783,12 @@ public final class General {
             }
             case 24: {
               bitField0_ |= 0x00000004;
-              timestamp_ = input.readInt32();
+              timestamp_ = input.readInt64();
+              break;
+            }
+            case 34: {
+              bitField0_ |= 0x00000008;
+              listenAddress_ = input.readBytes();
               break;
             }
           }
@@ -739,15 +797,15 @@ public final class General {
       
       private int bitField0_;
       
-      // required int32 request_id = 1;
-      private int requestId_ ;
+      // required int64 request_id = 1;
+      private long requestId_ ;
       public boolean hasRequestId() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
-      public int getRequestId() {
+      public long getRequestId() {
         return requestId_;
       }
-      public Builder setRequestId(int value) {
+      public Builder setRequestId(long value) {
         bitField0_ |= 0x00000001;
         requestId_ = value;
         onChanged();
@@ -755,7 +813,7 @@ public final class General {
       }
       public Builder clearRequestId() {
         bitField0_ = (bitField0_ & ~0x00000001);
-        requestId_ = 0;
+        requestId_ = 0L;
         onChanged();
         return this;
       }
@@ -784,15 +842,15 @@ public final class General {
         return this;
       }
       
-      // optional int32 timestamp = 3;
-      private int timestamp_ ;
+      // optional int64 timestamp = 3;
+      private long timestamp_ ;
       public boolean hasTimestamp() {
         return ((bitField0_ & 0x00000004) == 0x00000004);
       }
-      public int getTimestamp() {
+      public long getTimestamp() {
         return timestamp_;
       }
-      public Builder setTimestamp(int value) {
+      public Builder setTimestamp(long value) {
         bitField0_ |= 0x00000004;
         timestamp_ = value;
         onChanged();
@@ -800,9 +858,45 @@ public final class General {
       }
       public Builder clearTimestamp() {
         bitField0_ = (bitField0_ & ~0x00000004);
-        timestamp_ = 0;
+        timestamp_ = 0L;
         onChanged();
         return this;
+      }
+      
+      // optional string listen_address = 4;
+      private java.lang.Object listenAddress_ = "";
+      public boolean hasListenAddress() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      public String getListenAddress() {
+        java.lang.Object ref = listenAddress_;
+        if (!(ref instanceof String)) {
+          String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
+          listenAddress_ = s;
+          return s;
+        } else {
+          return (String) ref;
+        }
+      }
+      public Builder setListenAddress(String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000008;
+        listenAddress_ = value;
+        onChanged();
+        return this;
+      }
+      public Builder clearListenAddress() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        listenAddress_ = getDefaultInstance().getListenAddress();
+        onChanged();
+        return this;
+      }
+      void setListenAddress(com.google.protobuf.ByteString value) {
+        bitField0_ |= 0x00000008;
+        listenAddress_ = value;
+        onChanged();
       }
       
       // @@protoc_insertion_point(builder_scope:pb_sa.Request)
@@ -1388,13 +1482,9 @@ public final class General {
     boolean hasPeerAddress();
     String getPeerAddress();
     
-    // required int32 client_id = 2;
+    // required int64 client_id = 2;
     boolean hasClientId();
-    int getClientId();
-    
-    // optional int32 number_of_songs = 3;
-    boolean hasNumberOfSongs();
-    int getNumberOfSongs();
+    long getClientId();
   }
   public static final class PeerData extends
       com.google.protobuf.GeneratedMessage
@@ -1457,30 +1547,19 @@ public final class General {
       }
     }
     
-    // required int32 client_id = 2;
+    // required int64 client_id = 2;
     public static final int CLIENT_ID_FIELD_NUMBER = 2;
-    private int clientId_;
+    private long clientId_;
     public boolean hasClientId() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
-    public int getClientId() {
+    public long getClientId() {
       return clientId_;
-    }
-    
-    // optional int32 number_of_songs = 3;
-    public static final int NUMBER_OF_SONGS_FIELD_NUMBER = 3;
-    private int numberOfSongs_;
-    public boolean hasNumberOfSongs() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
-    }
-    public int getNumberOfSongs() {
-      return numberOfSongs_;
     }
     
     private void initFields() {
       peerAddress_ = "";
-      clientId_ = 0;
-      numberOfSongs_ = 0;
+      clientId_ = 0L;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -1506,10 +1585,7 @@ public final class General {
         output.writeBytes(1, getPeerAddressBytes());
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeInt32(2, clientId_);
-      }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeInt32(3, numberOfSongs_);
+        output.writeInt64(2, clientId_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -1526,11 +1602,7 @@ public final class General {
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(2, clientId_);
-      }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(3, numberOfSongs_);
+          .computeInt64Size(2, clientId_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -1658,10 +1730,8 @@ public final class General {
         super.clear();
         peerAddress_ = "";
         bitField0_ = (bitField0_ & ~0x00000001);
-        clientId_ = 0;
+        clientId_ = 0L;
         bitField0_ = (bitField0_ & ~0x00000002);
-        numberOfSongs_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000004);
         return this;
       }
       
@@ -1708,10 +1778,6 @@ public final class General {
           to_bitField0_ |= 0x00000002;
         }
         result.clientId_ = clientId_;
-        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
-          to_bitField0_ |= 0x00000004;
-        }
-        result.numberOfSongs_ = numberOfSongs_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -1733,9 +1799,6 @@ public final class General {
         }
         if (other.hasClientId()) {
           setClientId(other.getClientId());
-        }
-        if (other.hasNumberOfSongs()) {
-          setNumberOfSongs(other.getNumberOfSongs());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -1783,12 +1846,7 @@ public final class General {
             }
             case 16: {
               bitField0_ |= 0x00000002;
-              clientId_ = input.readInt32();
-              break;
-            }
-            case 24: {
-              bitField0_ |= 0x00000004;
-              numberOfSongs_ = input.readInt32();
+              clientId_ = input.readInt64();
               break;
             }
           }
@@ -1833,15 +1891,15 @@ public final class General {
         onChanged();
       }
       
-      // required int32 client_id = 2;
-      private int clientId_ ;
+      // required int64 client_id = 2;
+      private long clientId_ ;
       public boolean hasClientId() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
-      public int getClientId() {
+      public long getClientId() {
         return clientId_;
       }
-      public Builder setClientId(int value) {
+      public Builder setClientId(long value) {
         bitField0_ |= 0x00000002;
         clientId_ = value;
         onChanged();
@@ -1849,28 +1907,7 @@ public final class General {
       }
       public Builder clearClientId() {
         bitField0_ = (bitField0_ & ~0x00000002);
-        clientId_ = 0;
-        onChanged();
-        return this;
-      }
-      
-      // optional int32 number_of_songs = 3;
-      private int numberOfSongs_ ;
-      public boolean hasNumberOfSongs() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
-      }
-      public int getNumberOfSongs() {
-        return numberOfSongs_;
-      }
-      public Builder setNumberOfSongs(int value) {
-        bitField0_ |= 0x00000004;
-        numberOfSongs_ = value;
-        onChanged();
-        return this;
-      }
-      public Builder clearNumberOfSongs() {
-        bitField0_ = (bitField0_ & ~0x00000004);
-        numberOfSongs_ = 0;
+        clientId_ = 0L;
         onChanged();
         return this;
       }
@@ -2947,35 +2984,35 @@ public final class General {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\rGeneral.proto\022\005pb_sa\"d\n\007Request\022\022\n\nreq" +
-      "uest_id\030\001 \002(\005\022(\n\014request_type\030\002 \001(\0162\022.pb" +
-      "_sa.RequestType\022\021\n\ttimestamp\030\003 \001(\005*\010\010d\020\200" +
-      "\200\200\200\002\"c\n\rSearchRequest\022\020\n\010clientid\030\003 \002(\005\022" +
-      "\024\n\014hops_to_live\030\004 \001(\005\022\023\n\013fingerprint\030\005 \002" +
-      "(\014\022\025\n\roriginal_peer\030\006 \001(\t\"L\n\010PeerData\022\024\n" +
-      "\014peer_address\030\001 \002(\t\022\021\n\tclient_id\030\002 \002(\005\022\027" +
-      "\n\017number_of_songs\030\003 \001(\005\"_\n\010SongData\022\021\n\ts" +
-      "ong_name\030\001 \002(\t\022\023\n\013artist_name\030\002 \002(\t\022\022\n\na" +
-      "lbum_name\030\003 \002(\t\022\027\n\017ConfidenceLevel\030\004 \001(\001",
-      "\"#\n\016AddSongRequest\022\021\n\tfile_path\030\001 \002(\t*\340\003" +
-      "\n\013RequestType\022\031\n\025ARE_YOU_ALIVE_REQUEST\020d" +
-      "\022\032\n\026ARE_YOU_ALIVE_RESPONSE\020e\022\022\n\016SEARCH_R" +
-      "EQUEST\020f\022\020\n\014SEARCH_ABORT\020g\022\025\n\021SEARCH_SUC" +
-      "CESFULL\020h\022!\n\034MONITORING_GET_PEERS_REQUES" +
-      "T\020\310\001\022\"\n\035MONITORING_GET_PEERS_RESPONSE\020\311\001" +
-      "\022*\n%MONITORING_REQUESTS_PROCESSED_REQUES" +
-      "T\020\312\001\022+\n&MONITORING_REQUESTS_PROCESSED_RE" +
-      "SPONSE\020\313\001\022\032\n\025REGISTER_PEER_REQUEST\020\255\002\022\033\n" +
-      "\026REGISTER_PEER_RESPONSE\020\256\002\022\026\n\021BOOTSTRAP_",
-      "REQUEST\020\257\002\022\027\n\022BOOTSTRAP_RESPONSE\020\260\002\022\026\n\021P" +
-      "EER_DEAD_REQUEST\020\261\002\022\034\n\027VALIDATE_SEARCH_R" +
-      "EQUEST\020\262\002\022\035\n\030VALIDATE_SEARCH_RESPONSE\020\263\002" +
-      "*J\n\024ValidateSearchStatus\022\r\n\tSEARCH_OK\020\000\022" +
-      "\021\n\rSEARCH_DENIED\020\001\022\020\n\014SEARCH_ERROR\020\002*8\n\014" +
-      "SearchStatus\022\t\n\005FOUND\020\000\022\r\n\tNOT_FOUND\020\001\022\016" +
-      "\n\nPROCESSING\020\002*5\n\026PeerRegistrationStatus" +
-      "\022\013\n\007PEER_OK\020\000\022\016\n\nPEER_ERROR\020\001B,\n*at.ac.t" +
-      "uwien.software.architectures.ws2012"
+      "\n\rGeneral.proto\022\005pb_sa\"|\n\007Request\022\022\n\nreq" +
+      "uest_id\030\001 \002(\003\022(\n\014request_type\030\002 \001(\0162\022.pb" +
+      "_sa.RequestType\022\021\n\ttimestamp\030\003 \001(\003\022\026\n\016li" +
+      "sten_address\030\004 \001(\t*\010\010d\020\200\200\200\200\002\"c\n\rSearchRe" +
+      "quest\022\020\n\010clientid\030\003 \002(\005\022\024\n\014hops_to_live\030" +
+      "\004 \001(\005\022\023\n\013fingerprint\030\005 \002(\014\022\025\n\roriginal_p" +
+      "eer\030\006 \001(\t\"3\n\010PeerData\022\024\n\014peer_address\030\001 " +
+      "\002(\t\022\021\n\tclient_id\030\002 \002(\003\"_\n\010SongData\022\021\n\tso" +
+      "ng_name\030\001 \002(\t\022\023\n\013artist_name\030\002 \002(\t\022\022\n\nal" +
+      "bum_name\030\003 \002(\t\022\027\n\017ConfidenceLevel\030\004 \001(\001\"",
+      "#\n\016AddSongRequest\022\021\n\tfile_path\030\001 \002(\t*\340\003\n" +
+      "\013RequestType\022\031\n\025ARE_YOU_ALIVE_REQUEST\020d\022" +
+      "\032\n\026ARE_YOU_ALIVE_RESPONSE\020e\022\022\n\016SEARCH_RE" +
+      "QUEST\020f\022\020\n\014SEARCH_ABORT\020g\022\025\n\021SEARCH_SUCC" +
+      "ESFULL\020h\022!\n\034MONITORING_GET_PEERS_REQUEST" +
+      "\020\310\001\022\"\n\035MONITORING_GET_PEERS_RESPONSE\020\311\001\022" +
+      "*\n%MONITORING_REQUESTS_PROCESSED_REQUEST" +
+      "\020\312\001\022+\n&MONITORING_REQUESTS_PROCESSED_RES" +
+      "PONSE\020\313\001\022\032\n\025REGISTER_PEER_REQUEST\020\255\002\022\033\n\026" +
+      "REGISTER_PEER_RESPONSE\020\256\002\022\026\n\021BOOTSTRAP_R",
+      "EQUEST\020\257\002\022\027\n\022BOOTSTRAP_RESPONSE\020\260\002\022\026\n\021PE" +
+      "ER_DEAD_REQUEST\020\261\002\022\034\n\027VALIDATE_SEARCH_RE" +
+      "QUEST\020\262\002\022\035\n\030VALIDATE_SEARCH_RESPONSE\020\263\002*" +
+      "J\n\024ValidateSearchStatus\022\r\n\tSEARCH_OK\020\000\022\021" +
+      "\n\rSEARCH_DENIED\020\001\022\020\n\014SEARCH_ERROR\020\002*8\n\014S" +
+      "earchStatus\022\t\n\005FOUND\020\000\022\r\n\tNOT_FOUND\020\001\022\016\n" +
+      "\nPROCESSING\020\002*5\n\026PeerRegistrationStatus\022" +
+      "\013\n\007PEER_OK\020\000\022\016\n\nPEER_ERROR\020\001B,\n*at.ac.tu" +
+      "wien.software.architectures.ws2012"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -2987,7 +3024,7 @@ public final class General {
           internal_static_pb_sa_Request_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_pb_sa_Request_descriptor,
-              new java.lang.String[] { "RequestId", "RequestType", "Timestamp", },
+              new java.lang.String[] { "RequestId", "RequestType", "Timestamp", "ListenAddress", },
               at.ac.tuwien.software.architectures.ws2012.General.Request.class,
               at.ac.tuwien.software.architectures.ws2012.General.Request.Builder.class);
           internal_static_pb_sa_SearchRequest_descriptor =
@@ -3003,7 +3040,7 @@ public final class General {
           internal_static_pb_sa_PeerData_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_pb_sa_PeerData_descriptor,
-              new java.lang.String[] { "PeerAddress", "ClientId", "NumberOfSongs", },
+              new java.lang.String[] { "PeerAddress", "ClientId", },
               at.ac.tuwien.software.architectures.ws2012.General.PeerData.class,
               at.ac.tuwien.software.architectures.ws2012.General.PeerData.Builder.class);
           internal_static_pb_sa_SongData_descriptor =

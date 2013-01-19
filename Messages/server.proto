@@ -20,7 +20,7 @@ message RegisterPeerRequest {
 }
 
 message RegisterPeerResponse {
-     optional int32 peer_id =1;
+     optional string peer_address =1;
      optional PeerRegistrationStatus status=2;
 }
 

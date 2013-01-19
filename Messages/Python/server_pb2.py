@@ -12,7 +12,7 @@ import General_pb2
 DESCRIPTOR = descriptor.FileDescriptor(
   name='server.proto',
   package='pb_sa',
-  serialized_pb='\n\x0cserver.proto\x12\x05pb_sa\x1a\rGeneral.proto\">\n\x13RegisterPeerRequest\x12\x14\n\x0cpeer_address\x18\x01 \x02(\t\x12\x11\n\tclient_id\x18\x02 \x02(\x05\"V\n\x14RegisterPeerResponse\x12\x0f\n\x07peer_id\x18\x01 \x01(\x05\x12-\n\x06status\x18\x02 \x01(\x0e\x32\x1d.pb_sa.PeerRegistrationStatus\")\n\x10\x42ootstrapRequest\x12\x15\n\rnumberOfPeers\x18\x01 \x02(\x05\"2\n\x11\x42ootstrapResponse\x12\x1d\n\x04\x64\x61ta\x18\x01 \x03(\x0b\x32\x0f.pb_sa.PeerData\"+\n\x0fPeerDeadRequest\x12\x18\n\x10\x64\x65stination_peer\x18\x01 \x02(\t\"E\n\x15ValidateSearchRequest\x12,\n\x0esearch_request\x18\x01 \x02(\x0b\x32\x14.pb_sa.SearchRequest\"L\n\x16ValidateSearchResponse\x12\x32\n\rsearch_status\x18\x01 \x02(\x0e\x32\x1b.pb_sa.ValidateSearchStatus:J\n\x15register_peer_request\x12\x0e.pb_sa.Request\x18\xac\x02 \x01(\x0b\x32\x1a.pb_sa.RegisterPeerRequest:L\n\x16register_peer_response\x12\x0e.pb_sa.Request\x18\xad\x02 \x01(\x0b\x32\x1b.pb_sa.RegisterPeerResponse:C\n\x11\x62ootstrap_request\x12\x0e.pb_sa.Request\x18\xae\x02 \x01(\x0b\x32\x17.pb_sa.BootstrapRequest:E\n\x12\x62ootstrap_response\x12\x0e.pb_sa.Request\x18\xaf\x02 \x01(\x0b\x32\x18.pb_sa.BootstrapResponse:B\n\x11peer_dead_request\x12\x0e.pb_sa.Request\x18\xb0\x02 \x01(\x0b\x32\x16.pb_sa.PeerDeadRequest:N\n\x17validate_search_request\x12\x0e.pb_sa.Request\x18\xb1\x02 \x01(\x0b\x32\x1c.pb_sa.ValidateSearchRequest:P\n\x18validate_search_response\x12\x0e.pb_sa.Request\x18\xb2\x02 \x01(\x0b\x32\x1d.pb_sa.ValidateSearchResponseB,\n*at.ac.tuwien.software.architectures.ws2012')
+  serialized_pb='\n\x0cserver.proto\x12\x05pb_sa\x1a\rGeneral.proto\">\n\x13RegisterPeerRequest\x12\x14\n\x0cpeer_address\x18\x01 \x02(\t\x12\x11\n\tclient_id\x18\x02 \x02(\x05\"[\n\x14RegisterPeerResponse\x12\x14\n\x0cpeer_address\x18\x01 \x01(\t\x12-\n\x06status\x18\x02 \x01(\x0e\x32\x1d.pb_sa.PeerRegistrationStatus\")\n\x10\x42ootstrapRequest\x12\x15\n\rnumberOfPeers\x18\x01 \x02(\x05\"2\n\x11\x42ootstrapResponse\x12\x1d\n\x04\x64\x61ta\x18\x01 \x03(\x0b\x32\x0f.pb_sa.PeerData\"+\n\x0fPeerDeadRequest\x12\x18\n\x10\x64\x65stination_peer\x18\x01 \x02(\t\"E\n\x15ValidateSearchRequest\x12,\n\x0esearch_request\x18\x01 \x02(\x0b\x32\x14.pb_sa.SearchRequest\"L\n\x16ValidateSearchResponse\x12\x32\n\rsearch_status\x18\x01 \x02(\x0e\x32\x1b.pb_sa.ValidateSearchStatus:J\n\x15register_peer_request\x12\x0e.pb_sa.Request\x18\xac\x02 \x01(\x0b\x32\x1a.pb_sa.RegisterPeerRequest:L\n\x16register_peer_response\x12\x0e.pb_sa.Request\x18\xad\x02 \x01(\x0b\x32\x1b.pb_sa.RegisterPeerResponse:C\n\x11\x62ootstrap_request\x12\x0e.pb_sa.Request\x18\xae\x02 \x01(\x0b\x32\x17.pb_sa.BootstrapRequest:E\n\x12\x62ootstrap_response\x12\x0e.pb_sa.Request\x18\xaf\x02 \x01(\x0b\x32\x18.pb_sa.BootstrapResponse:B\n\x11peer_dead_request\x12\x0e.pb_sa.Request\x18\xb0\x02 \x01(\x0b\x32\x16.pb_sa.PeerDeadRequest:N\n\x17validate_search_request\x12\x0e.pb_sa.Request\x18\xb1\x02 \x01(\x0b\x32\x1c.pb_sa.ValidateSearchRequest:P\n\x18validate_search_response\x12\x0e.pb_sa.Request\x18\xb2\x02 \x01(\x0b\x32\x1d.pb_sa.ValidateSearchResponseB,\n*at.ac.tuwien.software.architectures.ws2012')
 
 
 REGISTER_PEER_REQUEST_FIELD_NUMBER = 300
@@ -116,9 +116,9 @@ _REGISTERPEERRESPONSE = descriptor.Descriptor(
   containing_type=None,
   fields=[
     descriptor.FieldDescriptor(
-      name='peer_id', full_name='pb_sa.RegisterPeerResponse.peer_id', index=0,
-      number=1, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
+      name='peer_address', full_name='pb_sa.RegisterPeerResponse.peer_address', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=unicode("", "utf-8"),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
@@ -139,7 +139,7 @@ _REGISTERPEERRESPONSE = descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   serialized_start=102,
-  serialized_end=188,
+  serialized_end=193,
 )
 
 
@@ -166,8 +166,8 @@ _BOOTSTRAPREQUEST = descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=190,
-  serialized_end=231,
+  serialized_start=195,
+  serialized_end=236,
 )
 
 
@@ -194,8 +194,8 @@ _BOOTSTRAPRESPONSE = descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=233,
-  serialized_end=283,
+  serialized_start=238,
+  serialized_end=288,
 )
 
 
@@ -222,8 +222,8 @@ _PEERDEADREQUEST = descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=285,
-  serialized_end=328,
+  serialized_start=290,
+  serialized_end=333,
 )
 
 
@@ -250,8 +250,8 @@ _VALIDATESEARCHREQUEST = descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=330,
-  serialized_end=399,
+  serialized_start=335,
+  serialized_end=404,
 )
 
 
@@ -278,8 +278,8 @@ _VALIDATESEARCHRESPONSE = descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=401,
-  serialized_end=477,
+  serialized_start=406,
+  serialized_end=482,
 )
 
 _REGISTERPEERRESPONSE.fields_by_name['status'].enum_type = General_pb2._PEERREGISTRATIONSTATUS
