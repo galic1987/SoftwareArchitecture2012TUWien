@@ -2,9 +2,12 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.util.Date;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import org.apache.log4j.Logger;
+
+import at.ac.tuwien.software.architectures.ws2012.General.Request;
 
 public class ConnectionManager extends Thread {
 	static Logger log=Logger.getLogger(ConnectionManager.class.toString());
@@ -14,7 +17,10 @@ public class ConnectionManager extends Thread {
 	AddressedRequestQueue inqueue;
 	AddressedRequestQueue outqueue;
 	
-	public ConnectionManager(int port, AddressedRequestQueue inq, AddressedRequestQueue outq)
+	boolean server;
+	PeerManager peerManager;
+	
+	public ConnectionManager(int port, AddressedRequestQueue inq, AddressedRequestQueue outq, boolean srv)
 	{
 		try {
 			listener=new ServerSocket(port);
@@ -24,6 +30,7 @@ public class ConnectionManager extends Thread {
 		connectionMap = new ConcurrentHashMap<String,Connection>();
 		inqueue = inq;
 		outqueue=outq;
+		server=srv;
 	}
 	
 	public String GetSocketInfo(Socket sock)
@@ -50,7 +57,7 @@ public class ConnectionManager extends Thread {
 				Socket sock=listener.accept();
 				String info=GetRemoteSocketInfo(sock);
 				log.info(String.format("Connection established: %s",info));
-				Connection conn=new Connection(info, sock, this);
+				Connection conn=new Connection(info, sock, this, false);
 				connectionMap.put(info, conn);
 				conn.start();
 				
@@ -81,29 +88,55 @@ public class ConnectionManager extends Thread {
 		return outqueue;
 	}
 	
-	public Connection newConnection(String address, int port)
+	public Connection newConnection(String addr, boolean server_conn)
 	{
 		Socket sock;
 		Connection conn=null;
-		String[] parts=address.split(":");
+		String[] parts=addr.split(":");
 		try {
-			sock=new Socket(parts[0], port);
+			log.info(String.format("establishing new connection to %s:%s",parts[0],parts[1]));
+			sock=new Socket(parts[0], Integer.parseInt(parts[1]));
 			String info=GetRemoteSocketInfo(sock);
 			log.info(String.format("Connection established: %s",info));
-			conn=new Connection(info, sock, this);
+			conn=new Connection(info, sock, this, server_conn);
 			connectionMap.put(info, conn);
 			conn.start();
 		} catch (NumberFormatException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (UnknownHostException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
 		return conn;
+	}
+
+	public Connection removeConnection(String name) {
+		if (connectionMap.containsKey(name))
+		{
+			Connection conn = connectionMap.remove(name);
+			conn.Close();
+			return conn;
+		}
+		return null;
+	}
+
+	public void connectionLive(String address, Date date) {
+		if (server) 
+			return;
+		
+		if (connectionMap.containsKey(address))
+		{
+			Connection conn=connectionMap.get(address);
+			conn.timestamp=date;
+		}
+	}
+
+	public void reportDead(String name, String listenaddr) {
+		if (server)
+			return;
+		peerManager.reportDead(name, listenaddr);
+		
 	}
 }

@@ -34,11 +34,10 @@ public class PeerWorker extends Thread {
 			switch(req.req.getRequestType())
 			{
 			case ARE_YOU_ALIVE_REQUEST:
-				Request response = Request.newBuilder().
-					setRequestType(RequestType.ARE_YOU_ALIVE_RESPONSE).
-					setRequestId(req.req.getRequestId()).
-					build();
-				manager.GetConnection(req.address).Send(response);
+				peerManager.AreYouAlive(req);
+				break;
+			case ARE_YOU_ALIVE_RESPONSE:
+				peerManager.AreYouAliveResponse(req);
 				break;
 			case SEARCH_REQUEST:
 				SearchRequest search=req.req.getExtension(Peer.searchRequest);

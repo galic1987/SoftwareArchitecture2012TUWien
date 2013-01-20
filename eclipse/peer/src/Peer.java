@@ -35,18 +35,23 @@ public class Peer {
 		
 		int numOfWorkers=3;
 		
+		int refreshPeriod=10000;
+		
 		String serverAddress=String.format("%s:%d", serverIP, serverPort);
 		String localIP=GetLocalIP();
 		String localaddress=String.format("%s:%d",localIP,port);
 
 		log.info(String.format("Peer starting on port %d",port));
 		
-		AddressedRequestQueue inqueue=new AddressedRequestQueue();
-		AddressedRequestQueue outqueue=new AddressedRequestQueue();
+		AddressedRequestQueue inqueue=new AddressedRequestQueue("inqueue");
+		AddressedRequestQueue outqueue=new AddressedRequestQueue("outqueue");
 		
 		List<PeerWorker> workers=new ArrayList<PeerWorker>();
-		ConnectionManager manager= new ConnectionManager(port, inqueue, outqueue);
-		PeerManager peerManager= new PeerManager(outqueue, serverAddress, numberOfPeers, musicFolder, localaddress);
+		ConnectionManager manager= new ConnectionManager(port, inqueue, outqueue, false);
+		PeerManager peerManager= new PeerManager(outqueue, serverAddress, numberOfPeers, musicFolder, localaddress, manager);
+		manager.peerManager=peerManager;
+		
+		PeerJobRunner runner=new PeerJobRunner(manager, peerManager, refreshPeriod);
 		QueueSender sender=new QueueSender(outqueue, manager);
 		
 		for (int i=0;i<numOfWorkers;i++)
@@ -58,6 +63,7 @@ public class Peer {
 		
 		manager.start();
 		sender.start();
+		runner.start();
 		
 		ConnectToServer(outqueue, serverAddress, localaddress);
 		
@@ -75,7 +81,7 @@ public class Peer {
 		RegisterPeerRequest ext=RegisterPeerRequest.newBuilder().setClientId(100).setPeerAddress(localAddress).build();
 		Request req=Request.newBuilder().setRequestId(1).setRequestType(RequestType.REGISTER_PEER_REQUEST).setListenAddress(localAddress).setExtension(Server.registerPeerRequest, ext).build();
 		
-		queue.addElement(new AddressedRequest(req, serveraddress));
+		queue.addElement(new AddressedRequest(req, serveraddress, true));
 	}
 	
 	public static String GetLocalIP()

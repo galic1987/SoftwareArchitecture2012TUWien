@@ -1,5 +1,8 @@
+import org.apache.log4j.Logger;
+
 
 public class QueueSender extends Thread {
+	static Logger log=Logger.getLogger(QueueSender.class.toString());
 	AddressedRequestQueue outqueue;
 	ConnectionManager connManager;
 	
@@ -18,17 +21,19 @@ public class QueueSender extends Thread {
 				AddressedRequest req=outqueue.getElement();
 
 				Connection conn = connManager.GetConnection(req.address);
-				if (conn!=null)
-				{
-					conn.Send(req.req);
-				}
+				if (conn==null)
+					conn=connManager.newConnection(req.address, req.server_conn);
+
+				conn.Send(req.req);
+				if (req.server_conn)
+					log.info("message sent to server");
 				else
+					log.info("message sent");
+
+				if (connManager.server)
 				{
-					String address=req.address.split(":")[0];
-					int port = Integer.parseInt(req.address.split(":")[1]);
-					connManager.newConnection(address, port);
-					conn=connManager.GetConnection(req.address);
-					conn.Send(req.req);
+					//log.info("this is server, sending reply and removing connection");
+					//connManager.removeConnection(conn.name);
 				}
 			}
 			else

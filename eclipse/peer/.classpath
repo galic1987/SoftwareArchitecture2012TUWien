@@ -16,6 +16,6 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="fingerprint.jar"/>
+	<classpathentry kind="lib" path="C:/Stuff/Projects/SoftwareArchitecture_git/SoftwareArchitecture2012TUWien/eclipse/peer/extLib/fingerprint.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
