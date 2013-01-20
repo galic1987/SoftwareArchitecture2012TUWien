@@ -17,5 +17,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="extLib/fingerprint.jar"/>
+	<classpathentry kind="lib" path="extLib/fingerprint-0.1-javadoc.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
