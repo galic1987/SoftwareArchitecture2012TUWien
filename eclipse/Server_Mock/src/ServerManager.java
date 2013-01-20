@@ -70,7 +70,7 @@ public class ServerManager {
 		Request request=req.req;
 		PeerDeadRequest peerDead=request.getExtension(Server.peerDeadRequest);
 		String deadpeer=peerDead.getDestinationPeer();
-		String reporterpeer=req.address;
+		String reporterpeer=request.getListenAddress();
 		
 		if (peerMap.containsKey(deadpeer))
 		{
@@ -79,7 +79,7 @@ public class ServerManager {
 		}
 		else
 		{
-			log.info(String.format("Duplicate: Peer %d reported as dead by peer %d",deadpeer, reporterpeer));
+			log.info(String.format("Duplicate: Peer %s reported as dead by peer %s",deadpeer, reporterpeer));
 		}
 	}
 	

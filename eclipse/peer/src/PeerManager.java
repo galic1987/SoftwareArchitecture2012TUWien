@@ -74,32 +74,65 @@ public class PeerManager {
 		AreYouAliveRequest areUalive=request.getExtension(Peer.areYouAliveRequest);
 		
 		String peerAddress=req.address;
+		String listenAddress=request.getListenAddress();
+
+		if (!req.server_conn)
+			UpdateActual(peerAddress, listenAddress);
 		
 		Request response = Request.newBuilder().
 				setRequestType(RequestType.ARE_YOU_ALIVE_RESPONSE).
 				setRequestId(request.getRequestId()).
+				setListenAddress(listenAddress).
+				setTimestamp((new Date()).getTime()).
 				build();
 		outqueue.addElement(new AddressedRequest(response, peerAddress, false));
+	}
+
+	private void UpdateActual(String peerAddress, String listenaddr) {
+		Connection conn;
+		conn=connManager.GetConnection(peerAddress);
+		if (conn!=null)
+		{
+			conn.listenAddress=listenaddr;
+			conn.actualAddress=peerAddress;
+		}
+		else 
+		{
+			log.error("IMPOSSIBLE cannot have this");
+		}
 	}
 
 	public void AreYouAliveResponse(AddressedRequest req) {
 		Request request=req.req;
 		at.ac.tuwien.software.architectures.ws2012.Peer.AreYouAliveResponse resp=request.getExtension(Peer.areYouAliveResponse);
 		
+		String actual=req.address;
+		String listen=request.getListenAddress();
+		UpdateActual(actual, listen);
+		
 		connManager.connectionLive(req.address, new Date());
 	}
 
-	public void reportDead(String name) {
-		PeerDeadRequest peerDead=PeerDeadRequest.newBuilder().setDestinationPeer(name).build();
+	public void reportDead(String name, String listen) {
+		PeerDeadRequest peerDead=PeerDeadRequest.newBuilder().setDestinationPeer(listen).build();
 		Request request=Request.newBuilder().setRequestId(++reqid).setListenAddress(listenAddress).setRequestType(RequestType.PEER_DEAD_REQUEST).setExtension(Server.peerDeadRequest, peerDead).build();
 		
 		log.info(String.format("Reporting dead peer: %s", name));
 		outqueue.addElement(new AddressedRequest(request, serverAddress, true));
 	}
 
+	private String GetListen(String name) {
+		Connection conn;
+		conn=connManager.GetConnection(name);
+		if (conn!=null)
+			return conn.listenAddress;
+			
+		return "";
+	}
+
 	public void checkAlive(String address) {
 		AreYouAliveRequest areyoualive=AreYouAliveRequest.newBuilder().setDestinationPeer(listenAddress).build();
-		Request containerreq=Request.newBuilder().setRequestId(++reqid).setRequestType(RequestType.ARE_YOU_ALIVE_REQUEST).setTimestamp((new Date()).getTime()).setExtension(Peer.areYouAliveRequest, areyoualive).build();
+		Request containerreq=Request.newBuilder().setRequestId(++reqid).setListenAddress(listenAddress).setRequestType(RequestType.ARE_YOU_ALIVE_REQUEST).setTimestamp((new Date()).getTime()).setExtension(Peer.areYouAliveRequest, areyoualive).build();
 		outqueue.addElement(new AddressedRequest(containerreq, address, false));
 	}
 }

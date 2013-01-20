@@ -15,15 +15,15 @@ public class AddressedRequestQueue {
 	}
 	public void addElement(AddressedRequest req)
 	{
-		log.debug(String.format("message arrived in queue: %s", name));
+		//log.debug(String.format("message arrived in queue: %s", name));
 		queue.add(req);
 	}
 	
 	public AddressedRequest getElement()
 	{
 		AddressedRequest req=queue.poll();
-		if (req!=null)
-			log.debug(String.format("message picked up from queue: %s", name));
+		//if (req!=null)
+			//log.debug(String.format("message picked up from queue: %s", name));
 		return req;
 	}
 	

@@ -25,6 +25,9 @@ public class Connection extends Thread {
 	static boolean server;
 	boolean server_connection;
 	
+	public String listenAddress;
+	public String actualAddress;
+	
 	public Connection(String n, Socket sock, ConnectionManager m, boolean srv_conn)
 	{
 		log.info("Binding connection to socket");
@@ -66,10 +69,13 @@ public class Connection extends Thread {
 	
 	private void RemoveConnection(Exception e) {
 		log.warn(String.format("Removing connection, Exception: %s", e.getMessage()));
-		manager.removeConnection(name);
+		Connection conn=manager.removeConnection(name);
 		
 		if (!server_connection && !server)
-			manager.reportDead(name);
+		{
+			log.info(String.format("peer %s missing, will report to server",name));
+			manager.reportDead(name, conn.listenAddress);
+		}
 		
 		try {
 			socket.close();

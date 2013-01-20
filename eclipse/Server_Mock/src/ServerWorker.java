@@ -41,6 +41,14 @@ public class ServerWorker extends Thread {
 				manager.removeConnection(req.address);
 				break;
 			case PEER_DEAD_REQUEST:
+				srvManager.UnregisterPeer(req);
+				try {
+					Thread.sleep(1000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				manager.removeConnection(req.address);
 				break;
 			case VALIDATE_SEARCH_REQUEST:
 				break;

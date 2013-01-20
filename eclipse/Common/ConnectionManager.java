@@ -112,12 +112,14 @@ public class ConnectionManager extends Thread {
 		return conn;
 	}
 
-	public void removeConnection(String name) {
+	public Connection removeConnection(String name) {
 		if (connectionMap.containsKey(name))
 		{
 			Connection conn = connectionMap.remove(name);
 			conn.Close();
+			return conn;
 		}
+		return null;
 	}
 
 	public void connectionLive(String address, Date date) {
@@ -131,10 +133,10 @@ public class ConnectionManager extends Thread {
 		}
 	}
 
-	public void reportDead(String name) {
+	public void reportDead(String name, String listenaddr) {
 		if (server)
 			return;
-		peerManager.reportDead(name);
+		peerManager.reportDead(name, listenaddr);
 		
 	}
 }
