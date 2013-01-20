@@ -30,18 +30,17 @@ public class Peer {
 		BasicConfigurator.configure();
 		
 		int port = Integer.parseInt(args[0]);
-		
-		int serverPort=5678;
-		String serverIP="127.0.0.1";
-		
-		int numberOfPeers=1;
+		String serverIP=args[1];
+		int serverPort=Integer.parseInt(args[2]);
+		int numberOfPeers=Integer.parseInt(args[3]);
+		int numOfWorkers=Integer.parseInt(args[4]);
+		int hopsToLive=Integer.parseInt(args[5]);
+		int clientID=Integer.parseInt(args[6]);
+
 		String musicFolder="";
 		
-		int numOfWorkers=1;
 		
 		int refreshPeriod=10000;
-		int hopsToLive=3;
-		int clientID=100;
 		
 		String serverAddress=String.format("%s:%d", serverIP, serverPort);
 		String localIP=GetLocalIP();

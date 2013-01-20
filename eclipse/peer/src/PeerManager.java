@@ -199,10 +199,6 @@ public class PeerManager {
 		
 		SearchData data=searchMap.get(search.getFingerprint());
 		
-		
-			
-		
-		
 		//if denied just throw the search away and forget about it
 		if(status!=ValidateSearchStatus.SEARCH_OK)
 		{
@@ -223,9 +219,7 @@ public class PeerManager {
 				setExtension(Peer.searchRequest, search).
 				build();
 		connManager.sendToPeers(peersearch);
-		
 		//start local search
-		
 	}
 
 	public void SearchRequest(AddressedRequest req) {
@@ -277,9 +271,7 @@ public class PeerManager {
 					setExtension(Peer.searchRequest, newsearch).
 					build();	
 		}
-		
 		//perform local search
-		
 	}
 	
 	public void HandleMusicFound(SearchRequest search, SongData song )
@@ -336,7 +328,6 @@ public class PeerManager {
 		return musicLib.addMusic(song);
 	}
 	
-	
 	public String removeSong(String song){
 		return musicLib.removeMusic(song);
 	}
@@ -348,22 +339,16 @@ public class PeerManager {
 	public void searchSuccessful(AddressedRequest req) {
 		Request request=req.req;
 		SearchSuccesful success=request.getExtension(Peer.searchSuccesful);
-		
 		SearchData data=searchMap.remove(success.getSearchRequest().getFingerprint());
-		
 		Request clientResponse=Request.newBuilder().setRequestId(++reqid).setRequestType(RequestType.SEARCH_SUCCESFULL).setExtension(Peer.searchSuccesful, success).build();
-		
 		outqueue.addElement(new AddressedRequest(clientResponse, data.clientAddress, false));
 	}
 
 	public void searchUnsuccessful(AddressedRequest req) {
 		Request request=req.req;
 		SearchUnsuccesfulRequest failed=request.getExtension(Peer.searchUnsuccesfulRequest);
-		
 		SearchData data=searchMap.remove(failed.getSearchRequest().getFingerprint());
-		
 		Request clientResponse=Request.newBuilder().setRequestId(++reqid).setRequestType(RequestType.SEARCH_UNSUCCESFUL_REQUEST).setExtension(Peer.searchUnsuccesfulRequest, failed).build();
-		
 		outqueue.addElement(new AddressedRequest(clientResponse, data.clientAddress, false));
 	}
 }
