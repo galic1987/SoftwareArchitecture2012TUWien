@@ -306,4 +306,8 @@ public class PeerManager {
 	public String removeSong(String song){
 		return musicLib.removeMusic(song);
 	}
+	
+	public void updateMusicLibrary(){
+		musicLib.updateLibrary();
+	}
 }

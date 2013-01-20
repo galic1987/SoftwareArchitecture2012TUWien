@@ -96,8 +96,13 @@ public class Peer {
 				log.info(peerManager.removeSong(ccmm[1]));
 
 
+			}else if(ccmm[0].equals("update")){
+				// remove the song
+				peerManager.updateMusicLibrary();
+
 			}else{
 				log.info("remove or add song possible commands");
+				
 			}
 		}
 
