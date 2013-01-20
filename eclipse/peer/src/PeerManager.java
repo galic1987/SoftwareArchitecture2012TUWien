@@ -199,6 +199,9 @@ public class PeerManager {
 		SearchData data=searchMap.get(search.getFingerprint());
 		
 		
+			
+		
+		
 		//if denied just throw the search away and forget about it
 		if(status!=ValidateSearchStatus.SEARCH_OK)
 		{
@@ -230,10 +233,32 @@ public class PeerManager {
 		
 		int hopsToLive=search.getHopsToLive();
 		
+		
 		if (searchMap.containsKey(search.getFingerprint()))
 		{
 			log.info("ignoring the search, duplicate");
 			return;
+		}else{
+			// do the local search
+			SearchData data=searchMap.get(search.getFingerprint());
+
+			try{
+				Fingerprint f= FingerprintUtil.deserializeFingerprint(data.fingerprint.toByteArray());
+
+				String songName = musicLib.matchSong(f);
+				if(songName != "NO"){
+					// TODO: Inform server found it
+					SongData dataa = SongData.getDefaultInstance();
+					dataa.setSongName(songName);
+					
+					this.HandleMusicFound(search, dataa);
+					// TODO: Inform client foind it
+					return; 
+				}
+				
+				}catch(Exception e){
+					
+			}
 		}
 		
 		if (hopsToLive==1)

@@ -2393,6 +2393,9 @@ public final class General {
       return at.ac.tuwien.software.architectures.ws2012.General.internal_static_pb_sa_SongData_fieldAccessorTable;
     }
     
+    public void setSongName(String songname){
+    	this.songName_ = songname;
+    }
     private int bitField0_;
     // required string song_name = 1;
     public static final int SONG_NAME_FIELD_NUMBER = 1;
