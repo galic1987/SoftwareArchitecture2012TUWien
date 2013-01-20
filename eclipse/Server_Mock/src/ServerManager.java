@@ -62,7 +62,7 @@ public class ServerManager {
 		
 		RegisterPeerResponse regresp=RegisterPeerResponse.newBuilder().setPeerAddress(peerAddr).setStatus(PeerRegistrationStatus.PEER_OK).build();
 		Request resp=Request.newBuilder().setRequestId(request.getRequestId()).setRequestType(RequestType.REGISTER_PEER_RESPONSE).setTimestamp((new Date()).getTime()).setExtension(Server.registerPeerResponse, regresp).build();
-		outQueue.addElement(new AddressedRequest(resp, req.address));
+		outQueue.addElement(new AddressedRequest(resp, req.address, false));
 	}
 	
 	public synchronized void UnregisterPeer(AddressedRequest req)
@@ -130,7 +130,7 @@ public class ServerManager {
 		}
 		mainBuilder.setExtension(Server.bootstrapResponse, bsrespBuilder.build());
 		Request response = mainBuilder.build();
-		outQueue.addElement(new AddressedRequest(response, peerAddr));
+		outQueue.addElement(new AddressedRequest(response, peerAddr, false));
 		
 		log.debug(response.toString());
 		log.info(String.format("Bootstrapping found %d unique peers to send out of %d requested (%d total)",keysToSend.size(), peernum, numOfKeys));
@@ -175,7 +175,7 @@ public class ServerManager {
 		}
 		Request response=responseBuilder.setExtension(Server.validateSearchResponse, validation).build();
 		log.debug(response.toString());
-		outQueue.addElement(new AddressedRequest(response, req.address));
+		outQueue.addElement(new AddressedRequest(response, req.address, false));
 	}
 	
 	public void SearchDone(SearchStatus status)

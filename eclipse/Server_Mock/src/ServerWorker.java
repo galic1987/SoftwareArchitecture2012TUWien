@@ -32,6 +32,13 @@ public class ServerWorker extends Thread {
 				break;
 			case BOOTSTRAP_REQUEST:
 				srvManager.Bootstrap(req);
+				try {
+					Thread.sleep(1000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				manager.removeConnection(req.address);
 				break;
 			case PEER_DEAD_REQUEST:
 				break;

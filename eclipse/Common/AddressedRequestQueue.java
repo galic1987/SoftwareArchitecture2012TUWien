@@ -7,18 +7,23 @@ public class AddressedRequestQueue {
 	static Logger log=Logger.getLogger(Connection.class);
 	LinkedBlockingQueue<AddressedRequest> queue;
 
-	public AddressedRequestQueue() {
+	String name;
+	
+	public AddressedRequestQueue(String n) {
 		queue = new LinkedBlockingQueue<AddressedRequest>();
+		name =n;
 	}
 	public void addElement(AddressedRequest req)
 	{
+		log.debug(String.format("message arrived in queue: %s", name));
 		queue.add(req);
-		log.info(String.format("New message added to queue: %s", req.req.toString()));
 	}
 	
 	public AddressedRequest getElement()
 	{
 		AddressedRequest req=queue.poll();
+		if (req!=null)
+			log.debug(String.format("message picked up from queue: %s", name));
 		return req;
 	}
 	

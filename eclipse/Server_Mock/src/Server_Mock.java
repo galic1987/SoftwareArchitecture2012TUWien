@@ -14,12 +14,16 @@ public class Server_Mock {
 		
 		int port = Integer.parseInt(args[0]);
 		log.info(String.format("Server starting on port %d",port));
-		AddressedRequestQueue inqueue=new AddressedRequestQueue();
-		AddressedRequestQueue outqueue=new AddressedRequestQueue();
+		AddressedRequestQueue inqueue=new AddressedRequestQueue("inqueue");
+		AddressedRequestQueue outqueue=new AddressedRequestQueue("outqueue");
+		
+		//signalling that these are connections on server so we know we can 
+		//break them off as soon as we send response
+		Connection.server=true;
 		
 		ServerManager srvManager=new ServerManager(outqueue, 1,3);
 		List<ServerWorker> workers=new ArrayList<ServerWorker>();
-		ConnectionManager manager= new ConnectionManager(port, inqueue, outqueue);
+		ConnectionManager manager= new ConnectionManager(port, inqueue, outqueue, true);
 		QueueSender sender=new QueueSender(outqueue, manager);
 		for (int i=0;i<10;i++)
 		{
@@ -32,7 +36,7 @@ public class Server_Mock {
 		sender.start();
 		
 		try {
-			Thread.sleep(100000);
+			manager.join();
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
