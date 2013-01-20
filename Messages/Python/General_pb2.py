@@ -11,7 +11,7 @@ from google.protobuf import descriptor_pb2
 DESCRIPTOR = descriptor.FileDescriptor(
   name='General.proto',
   package='pb_sa',
-  serialized_pb='\n\rGeneral.proto\x12\x05pb_sa\"|\n\x07Request\x12\x12\n\nrequest_id\x18\x01 \x02(\x03\x12(\n\x0crequest_type\x18\x02 \x01(\x0e\x32\x12.pb_sa.RequestType\x12\x11\n\ttimestamp\x18\x03 \x01(\x03\x12\x16\n\x0elisten_address\x18\x04 \x01(\t*\x08\x08\x64\x10\x80\x80\x80\x80\x02\"c\n\rSearchRequest\x12\x10\n\x08\x63lientid\x18\x03 \x02(\x05\x12\x14\n\x0chops_to_live\x18\x04 \x01(\x05\x12\x13\n\x0b\x66ingerprint\x18\x05 \x02(\x0c\x12\x15\n\roriginal_peer\x18\x06 \x01(\t\"3\n\x08PeerData\x12\x14\n\x0cpeer_address\x18\x01 \x02(\t\x12\x11\n\tclient_id\x18\x02 \x02(\x03\"_\n\x08SongData\x12\x11\n\tsong_name\x18\x01 \x02(\t\x12\x13\n\x0b\x61rtist_name\x18\x02 \x02(\t\x12\x12\n\nalbum_name\x18\x03 \x02(\t\x12\x17\n\x0f\x43onfidenceLevel\x18\x04 \x01(\x01\"#\n\x0e\x41\x64\x64SongRequest\x12\x11\n\tfile_path\x18\x01 \x02(\t*\xe0\x03\n\x0bRequestType\x12\x19\n\x15\x41RE_YOU_ALIVE_REQUEST\x10\x64\x12\x1a\n\x16\x41RE_YOU_ALIVE_RESPONSE\x10\x65\x12\x12\n\x0eSEARCH_REQUEST\x10\x66\x12\x10\n\x0cSEARCH_ABORT\x10g\x12\x15\n\x11SEARCH_SUCCESFULL\x10h\x12!\n\x1cMONITORING_GET_PEERS_REQUEST\x10\xc8\x01\x12\"\n\x1dMONITORING_GET_PEERS_RESPONSE\x10\xc9\x01\x12*\n%MONITORING_REQUESTS_PROCESSED_REQUEST\x10\xca\x01\x12+\n&MONITORING_REQUESTS_PROCESSED_RESPONSE\x10\xcb\x01\x12\x1a\n\x15REGISTER_PEER_REQUEST\x10\xad\x02\x12\x1b\n\x16REGISTER_PEER_RESPONSE\x10\xae\x02\x12\x16\n\x11\x42OOTSTRAP_REQUEST\x10\xaf\x02\x12\x17\n\x12\x42OOTSTRAP_RESPONSE\x10\xb0\x02\x12\x16\n\x11PEER_DEAD_REQUEST\x10\xb1\x02\x12\x1c\n\x17VALIDATE_SEARCH_REQUEST\x10\xb2\x02\x12\x1d\n\x18VALIDATE_SEARCH_RESPONSE\x10\xb3\x02*J\n\x14ValidateSearchStatus\x12\r\n\tSEARCH_OK\x10\x00\x12\x11\n\rSEARCH_DENIED\x10\x01\x12\x10\n\x0cSEARCH_ERROR\x10\x02*8\n\x0cSearchStatus\x12\t\n\x05\x46OUND\x10\x00\x12\r\n\tNOT_FOUND\x10\x01\x12\x0e\n\nPROCESSING\x10\x02*5\n\x16PeerRegistrationStatus\x12\x0b\n\x07PEER_OK\x10\x00\x12\x0e\n\nPEER_ERROR\x10\x01\x42,\n*at.ac.tuwien.software.architectures.ws2012')
+  serialized_pb='\n\rGeneral.proto\x12\x05pb_sa\"|\n\x07Request\x12\x12\n\nrequest_id\x18\x01 \x02(\x03\x12(\n\x0crequest_type\x18\x02 \x01(\x0e\x32\x12.pb_sa.RequestType\x12\x11\n\ttimestamp\x18\x03 \x01(\x03\x12\x16\n\x0elisten_address\x18\x04 \x01(\t*\x08\x08\x64\x10\x80\x80\x80\x80\x02\"<\n\x13\x43lientSearchRequest\x12\x10\n\x08\x63lientid\x18\x03 \x02(\x05\x12\x13\n\x0b\x66ingerprint\x18\x05 \x02(\x0c\"c\n\rSearchRequest\x12\x10\n\x08\x63lientid\x18\x03 \x02(\x05\x12\x14\n\x0chops_to_live\x18\x04 \x01(\x05\x12\x13\n\x0b\x66ingerprint\x18\x05 \x02(\x0c\x12\x15\n\roriginal_peer\x18\x06 \x01(\t\"3\n\x08PeerData\x12\x14\n\x0cpeer_address\x18\x01 \x02(\t\x12\x11\n\tclient_id\x18\x02 \x02(\x03\"_\n\x08SongData\x12\x11\n\tsong_name\x18\x01 \x02(\t\x12\x13\n\x0b\x61rtist_name\x18\x02 \x02(\t\x12\x12\n\nalbum_name\x18\x03 \x02(\t\x12\x17\n\x0f\x43onfidenceLevel\x18\x04 \x01(\x01\"#\n\x0e\x41\x64\x64SongRequest\x12\x11\n\tfile_path\x18\x01 \x02(\t*\xb6\x04\n\x0bRequestType\x12\x19\n\x15\x41RE_YOU_ALIVE_REQUEST\x10\x64\x12\x1a\n\x16\x41RE_YOU_ALIVE_RESPONSE\x10\x65\x12\x12\n\x0eSEARCH_REQUEST\x10\x66\x12\x10\n\x0cSEARCH_ABORT\x10g\x12\x15\n\x11SEARCH_SUCCESFULL\x10h\x12\x19\n\x15\x43LIENT_SEARCH_REQUEST\x10i\x12\x1e\n\x1aSEARCH_UNSUCCESFUL_REQUEST\x10j\x12\x19\n\x15SEARCH_DENIED_REQUEST\x10k\x12!\n\x1cMONITORING_GET_PEERS_REQUEST\x10\xc8\x01\x12\"\n\x1dMONITORING_GET_PEERS_RESPONSE\x10\xc9\x01\x12*\n%MONITORING_REQUESTS_PROCESSED_REQUEST\x10\xca\x01\x12+\n&MONITORING_REQUESTS_PROCESSED_RESPONSE\x10\xcb\x01\x12\x1a\n\x15REGISTER_PEER_REQUEST\x10\xad\x02\x12\x1b\n\x16REGISTER_PEER_RESPONSE\x10\xae\x02\x12\x16\n\x11\x42OOTSTRAP_REQUEST\x10\xaf\x02\x12\x17\n\x12\x42OOTSTRAP_RESPONSE\x10\xb0\x02\x12\x16\n\x11PEER_DEAD_REQUEST\x10\xb1\x02\x12\x1c\n\x17VALIDATE_SEARCH_REQUEST\x10\xb2\x02\x12\x1d\n\x18VALIDATE_SEARCH_RESPONSE\x10\xb3\x02*J\n\x14ValidateSearchStatus\x12\r\n\tSEARCH_OK\x10\x00\x12\x11\n\rSEARCH_DENIED\x10\x01\x12\x10\n\x0cSEARCH_ERROR\x10\x02*8\n\x0cSearchStatus\x12\t\n\x05\x46OUND\x10\x00\x12\r\n\tNOT_FOUND\x10\x01\x12\x0e\n\nPROCESSING\x10\x02*5\n\x16PeerRegistrationStatus\x12\x0b\n\x07PEER_OK\x10\x00\x12\x0e\n\nPEER_ERROR\x10\x01\x42,\n*at.ac.tuwien.software.architectures.ws2012')
 
 _REQUESTTYPE = descriptor.EnumDescriptor(
   name='RequestType',
@@ -40,54 +40,66 @@ _REQUESTTYPE = descriptor.EnumDescriptor(
       options=None,
       type=None),
     descriptor.EnumValueDescriptor(
-      name='MONITORING_GET_PEERS_REQUEST', index=5, number=200,
+      name='CLIENT_SEARCH_REQUEST', index=5, number=105,
       options=None,
       type=None),
     descriptor.EnumValueDescriptor(
-      name='MONITORING_GET_PEERS_RESPONSE', index=6, number=201,
+      name='SEARCH_UNSUCCESFUL_REQUEST', index=6, number=106,
       options=None,
       type=None),
     descriptor.EnumValueDescriptor(
-      name='MONITORING_REQUESTS_PROCESSED_REQUEST', index=7, number=202,
+      name='SEARCH_DENIED_REQUEST', index=7, number=107,
       options=None,
       type=None),
     descriptor.EnumValueDescriptor(
-      name='MONITORING_REQUESTS_PROCESSED_RESPONSE', index=8, number=203,
+      name='MONITORING_GET_PEERS_REQUEST', index=8, number=200,
       options=None,
       type=None),
     descriptor.EnumValueDescriptor(
-      name='REGISTER_PEER_REQUEST', index=9, number=301,
+      name='MONITORING_GET_PEERS_RESPONSE', index=9, number=201,
       options=None,
       type=None),
     descriptor.EnumValueDescriptor(
-      name='REGISTER_PEER_RESPONSE', index=10, number=302,
+      name='MONITORING_REQUESTS_PROCESSED_REQUEST', index=10, number=202,
       options=None,
       type=None),
     descriptor.EnumValueDescriptor(
-      name='BOOTSTRAP_REQUEST', index=11, number=303,
+      name='MONITORING_REQUESTS_PROCESSED_RESPONSE', index=11, number=203,
       options=None,
       type=None),
     descriptor.EnumValueDescriptor(
-      name='BOOTSTRAP_RESPONSE', index=12, number=304,
+      name='REGISTER_PEER_REQUEST', index=12, number=301,
       options=None,
       type=None),
     descriptor.EnumValueDescriptor(
-      name='PEER_DEAD_REQUEST', index=13, number=305,
+      name='REGISTER_PEER_RESPONSE', index=13, number=302,
       options=None,
       type=None),
     descriptor.EnumValueDescriptor(
-      name='VALIDATE_SEARCH_REQUEST', index=14, number=306,
+      name='BOOTSTRAP_REQUEST', index=14, number=303,
       options=None,
       type=None),
     descriptor.EnumValueDescriptor(
-      name='VALIDATE_SEARCH_RESPONSE', index=15, number=307,
+      name='BOOTSTRAP_RESPONSE', index=15, number=304,
+      options=None,
+      type=None),
+    descriptor.EnumValueDescriptor(
+      name='PEER_DEAD_REQUEST', index=16, number=305,
+      options=None,
+      type=None),
+    descriptor.EnumValueDescriptor(
+      name='VALIDATE_SEARCH_REQUEST', index=17, number=306,
+      options=None,
+      type=None),
+    descriptor.EnumValueDescriptor(
+      name='VALIDATE_SEARCH_RESPONSE', index=18, number=307,
       options=None,
       type=None),
   ],
   containing_type=None,
   options=None,
-  serialized_start=439,
-  serialized_end=919,
+  serialized_start=501,
+  serialized_end=1067,
 )
 
 
@@ -112,8 +124,8 @@ _VALIDATESEARCHSTATUS = descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=921,
-  serialized_end=995,
+  serialized_start=1069,
+  serialized_end=1143,
 )
 
 
@@ -138,8 +150,8 @@ _SEARCHSTATUS = descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=997,
-  serialized_end=1053,
+  serialized_start=1145,
+  serialized_end=1201,
 )
 
 
@@ -160,8 +172,8 @@ _PEERREGISTRATIONSTATUS = descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=1055,
-  serialized_end=1108,
+  serialized_start=1203,
+  serialized_end=1256,
 )
 
 
@@ -170,6 +182,9 @@ ARE_YOU_ALIVE_RESPONSE = 101
 SEARCH_REQUEST = 102
 SEARCH_ABORT = 103
 SEARCH_SUCCESFULL = 104
+CLIENT_SEARCH_REQUEST = 105
+SEARCH_UNSUCCESFUL_REQUEST = 106
+SEARCH_DENIED_REQUEST = 107
 MONITORING_GET_PEERS_REQUEST = 200
 MONITORING_GET_PEERS_RESPONSE = 201
 MONITORING_REQUESTS_PROCESSED_REQUEST = 202
@@ -241,6 +256,41 @@ _REQUEST = descriptor.Descriptor(
 )
 
 
+_CLIENTSEARCHREQUEST = descriptor.Descriptor(
+  name='ClientSearchRequest',
+  full_name='pb_sa.ClientSearchRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    descriptor.FieldDescriptor(
+      name='clientid', full_name='pb_sa.ClientSearchRequest.clientid', index=0,
+      number=3, type=5, cpp_type=1, label=2,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    descriptor.FieldDescriptor(
+      name='fingerprint', full_name='pb_sa.ClientSearchRequest.fingerprint', index=1,
+      number=5, type=12, cpp_type=9, label=2,
+      has_default_value=False, default_value="",
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=150,
+  serialized_end=210,
+)
+
+
 _SEARCHREQUEST = descriptor.Descriptor(
   name='SearchRequest',
   full_name='pb_sa.SearchRequest',
@@ -285,8 +335,8 @@ _SEARCHREQUEST = descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=150,
-  serialized_end=249,
+  serialized_start=212,
+  serialized_end=311,
 )
 
 
@@ -320,8 +370,8 @@ _PEERDATA = descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=251,
-  serialized_end=302,
+  serialized_start=313,
+  serialized_end=364,
 )
 
 
@@ -369,8 +419,8 @@ _SONGDATA = descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=304,
-  serialized_end=399,
+  serialized_start=366,
+  serialized_end=461,
 )
 
 
@@ -397,12 +447,13 @@ _ADDSONGREQUEST = descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=401,
-  serialized_end=436,
+  serialized_start=463,
+  serialized_end=498,
 )
 
 _REQUEST.fields_by_name['request_type'].enum_type = _REQUESTTYPE
 DESCRIPTOR.message_types_by_name['Request'] = _REQUEST
+DESCRIPTOR.message_types_by_name['ClientSearchRequest'] = _CLIENTSEARCHREQUEST
 DESCRIPTOR.message_types_by_name['SearchRequest'] = _SEARCHREQUEST
 DESCRIPTOR.message_types_by_name['PeerData'] = _PEERDATA
 DESCRIPTOR.message_types_by_name['SongData'] = _SONGDATA
@@ -413,6 +464,12 @@ class Request(message.Message):
   DESCRIPTOR = _REQUEST
   
   # @@protoc_insertion_point(class_scope:pb_sa.Request)
+
+class ClientSearchRequest(message.Message):
+  __metaclass__ = reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _CLIENTSEARCHREQUEST
+  
+  # @@protoc_insertion_point(class_scope:pb_sa.ClientSearchRequest)
 
 class SearchRequest(message.Message):
   __metaclass__ = reflection.GeneratedProtocolMessageType

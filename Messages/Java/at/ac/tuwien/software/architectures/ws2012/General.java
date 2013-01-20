@@ -15,17 +15,20 @@ public final class General {
     SEARCH_REQUEST(2, 102),
     SEARCH_ABORT(3, 103),
     SEARCH_SUCCESFULL(4, 104),
-    MONITORING_GET_PEERS_REQUEST(5, 200),
-    MONITORING_GET_PEERS_RESPONSE(6, 201),
-    MONITORING_REQUESTS_PROCESSED_REQUEST(7, 202),
-    MONITORING_REQUESTS_PROCESSED_RESPONSE(8, 203),
-    REGISTER_PEER_REQUEST(9, 301),
-    REGISTER_PEER_RESPONSE(10, 302),
-    BOOTSTRAP_REQUEST(11, 303),
-    BOOTSTRAP_RESPONSE(12, 304),
-    PEER_DEAD_REQUEST(13, 305),
-    VALIDATE_SEARCH_REQUEST(14, 306),
-    VALIDATE_SEARCH_RESPONSE(15, 307),
+    CLIENT_SEARCH_REQUEST(5, 105),
+    SEARCH_UNSUCCESFUL_REQUEST(6, 106),
+    SEARCH_DENIED_REQUEST(7, 107),
+    MONITORING_GET_PEERS_REQUEST(8, 200),
+    MONITORING_GET_PEERS_RESPONSE(9, 201),
+    MONITORING_REQUESTS_PROCESSED_REQUEST(10, 202),
+    MONITORING_REQUESTS_PROCESSED_RESPONSE(11, 203),
+    REGISTER_PEER_REQUEST(12, 301),
+    REGISTER_PEER_RESPONSE(13, 302),
+    BOOTSTRAP_REQUEST(14, 303),
+    BOOTSTRAP_RESPONSE(15, 304),
+    PEER_DEAD_REQUEST(16, 305),
+    VALIDATE_SEARCH_REQUEST(17, 306),
+    VALIDATE_SEARCH_RESPONSE(18, 307),
     ;
     
     public static final int ARE_YOU_ALIVE_REQUEST_VALUE = 100;
@@ -33,6 +36,9 @@ public final class General {
     public static final int SEARCH_REQUEST_VALUE = 102;
     public static final int SEARCH_ABORT_VALUE = 103;
     public static final int SEARCH_SUCCESFULL_VALUE = 104;
+    public static final int CLIENT_SEARCH_REQUEST_VALUE = 105;
+    public static final int SEARCH_UNSUCCESFUL_REQUEST_VALUE = 106;
+    public static final int SEARCH_DENIED_REQUEST_VALUE = 107;
     public static final int MONITORING_GET_PEERS_REQUEST_VALUE = 200;
     public static final int MONITORING_GET_PEERS_RESPONSE_VALUE = 201;
     public static final int MONITORING_REQUESTS_PROCESSED_REQUEST_VALUE = 202;
@@ -55,6 +61,9 @@ public final class General {
         case 102: return SEARCH_REQUEST;
         case 103: return SEARCH_ABORT;
         case 104: return SEARCH_SUCCESFULL;
+        case 105: return CLIENT_SEARCH_REQUEST;
+        case 106: return SEARCH_UNSUCCESFUL_REQUEST;
+        case 107: return SEARCH_DENIED_REQUEST;
         case 200: return MONITORING_GET_PEERS_REQUEST;
         case 201: return MONITORING_GET_PEERS_RESPONSE;
         case 202: return MONITORING_REQUESTS_PROCESSED_REQUEST;
@@ -96,7 +105,7 @@ public final class General {
     }
     
     private static final RequestType[] VALUES = {
-      ARE_YOU_ALIVE_REQUEST, ARE_YOU_ALIVE_RESPONSE, SEARCH_REQUEST, SEARCH_ABORT, SEARCH_SUCCESFULL, MONITORING_GET_PEERS_REQUEST, MONITORING_GET_PEERS_RESPONSE, MONITORING_REQUESTS_PROCESSED_REQUEST, MONITORING_REQUESTS_PROCESSED_RESPONSE, REGISTER_PEER_REQUEST, REGISTER_PEER_RESPONSE, BOOTSTRAP_REQUEST, BOOTSTRAP_RESPONSE, PEER_DEAD_REQUEST, VALIDATE_SEARCH_REQUEST, VALIDATE_SEARCH_RESPONSE, 
+      ARE_YOU_ALIVE_REQUEST, ARE_YOU_ALIVE_RESPONSE, SEARCH_REQUEST, SEARCH_ABORT, SEARCH_SUCCESFULL, CLIENT_SEARCH_REQUEST, SEARCH_UNSUCCESFUL_REQUEST, SEARCH_DENIED_REQUEST, MONITORING_GET_PEERS_REQUEST, MONITORING_GET_PEERS_RESPONSE, MONITORING_REQUESTS_PROCESSED_REQUEST, MONITORING_REQUESTS_PROCESSED_RESPONSE, REGISTER_PEER_REQUEST, REGISTER_PEER_RESPONSE, BOOTSTRAP_REQUEST, BOOTSTRAP_RESPONSE, PEER_DEAD_REQUEST, VALIDATE_SEARCH_REQUEST, VALIDATE_SEARCH_RESPONSE, 
     };
     
     public static RequestType valueOf(
@@ -908,6 +917,420 @@ public final class General {
     }
     
     // @@protoc_insertion_point(class_scope:pb_sa.Request)
+  }
+  
+  public interface ClientSearchRequestOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+    
+    // required int32 clientid = 3;
+    boolean hasClientid();
+    int getClientid();
+    
+    // required bytes fingerprint = 5;
+    boolean hasFingerprint();
+    com.google.protobuf.ByteString getFingerprint();
+  }
+  public static final class ClientSearchRequest extends
+      com.google.protobuf.GeneratedMessage
+      implements ClientSearchRequestOrBuilder {
+    // Use ClientSearchRequest.newBuilder() to construct.
+    private ClientSearchRequest(Builder builder) {
+      super(builder);
+    }
+    private ClientSearchRequest(boolean noInit) {}
+    
+    private static final ClientSearchRequest defaultInstance;
+    public static ClientSearchRequest getDefaultInstance() {
+      return defaultInstance;
+    }
+    
+    public ClientSearchRequest getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+    
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return at.ac.tuwien.software.architectures.ws2012.General.internal_static_pb_sa_ClientSearchRequest_descriptor;
+    }
+    
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return at.ac.tuwien.software.architectures.ws2012.General.internal_static_pb_sa_ClientSearchRequest_fieldAccessorTable;
+    }
+    
+    private int bitField0_;
+    // required int32 clientid = 3;
+    public static final int CLIENTID_FIELD_NUMBER = 3;
+    private int clientid_;
+    public boolean hasClientid() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    public int getClientid() {
+      return clientid_;
+    }
+    
+    // required bytes fingerprint = 5;
+    public static final int FINGERPRINT_FIELD_NUMBER = 5;
+    private com.google.protobuf.ByteString fingerprint_;
+    public boolean hasFingerprint() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    public com.google.protobuf.ByteString getFingerprint() {
+      return fingerprint_;
+    }
+    
+    private void initFields() {
+      clientid_ = 0;
+      fingerprint_ = com.google.protobuf.ByteString.EMPTY;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+      
+      if (!hasClientid()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasFingerprint()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+    
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(3, clientid_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeBytes(5, fingerprint_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+    
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+    
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, clientid_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(5, fingerprint_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+    
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+    
+    public static at.ac.tuwien.software.architectures.ws2012.General.ClientSearchRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data).buildParsed();
+    }
+    public static at.ac.tuwien.software.architectures.ws2012.General.ClientSearchRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
+    }
+    public static at.ac.tuwien.software.architectures.ws2012.General.ClientSearchRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data).buildParsed();
+    }
+    public static at.ac.tuwien.software.architectures.ws2012.General.ClientSearchRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
+    }
+    public static at.ac.tuwien.software.architectures.ws2012.General.ClientSearchRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input).buildParsed();
+    }
+    public static at.ac.tuwien.software.architectures.ws2012.General.ClientSearchRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
+    }
+    public static at.ac.tuwien.software.architectures.ws2012.General.ClientSearchRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
+    }
+    public static at.ac.tuwien.software.architectures.ws2012.General.ClientSearchRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
+    }
+    public static at.ac.tuwien.software.architectures.ws2012.General.ClientSearchRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input).buildParsed();
+    }
+    public static at.ac.tuwien.software.architectures.ws2012.General.ClientSearchRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
+    }
+    
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(at.ac.tuwien.software.architectures.ws2012.General.ClientSearchRequest prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+    
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements at.ac.tuwien.software.architectures.ws2012.General.ClientSearchRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return at.ac.tuwien.software.architectures.ws2012.General.internal_static_pb_sa_ClientSearchRequest_descriptor;
+      }
+      
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return at.ac.tuwien.software.architectures.ws2012.General.internal_static_pb_sa_ClientSearchRequest_fieldAccessorTable;
+      }
+      
+      // Construct using at.ac.tuwien.software.architectures.ws2012.General.ClientSearchRequest.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+      
+      private Builder(BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+      
+      public Builder clear() {
+        super.clear();
+        clientid_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        fingerprint_ = com.google.protobuf.ByteString.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        return this;
+      }
+      
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+      
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return at.ac.tuwien.software.architectures.ws2012.General.ClientSearchRequest.getDescriptor();
+      }
+      
+      public at.ac.tuwien.software.architectures.ws2012.General.ClientSearchRequest getDefaultInstanceForType() {
+        return at.ac.tuwien.software.architectures.ws2012.General.ClientSearchRequest.getDefaultInstance();
+      }
+      
+      public at.ac.tuwien.software.architectures.ws2012.General.ClientSearchRequest build() {
+        at.ac.tuwien.software.architectures.ws2012.General.ClientSearchRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+      
+      private at.ac.tuwien.software.architectures.ws2012.General.ClientSearchRequest buildParsed()
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        at.ac.tuwien.software.architectures.ws2012.General.ClientSearchRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(
+            result).asInvalidProtocolBufferException();
+        }
+        return result;
+      }
+      
+      public at.ac.tuwien.software.architectures.ws2012.General.ClientSearchRequest buildPartial() {
+        at.ac.tuwien.software.architectures.ws2012.General.ClientSearchRequest result = new at.ac.tuwien.software.architectures.ws2012.General.ClientSearchRequest(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.clientid_ = clientid_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.fingerprint_ = fingerprint_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+      
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof at.ac.tuwien.software.architectures.ws2012.General.ClientSearchRequest) {
+          return mergeFrom((at.ac.tuwien.software.architectures.ws2012.General.ClientSearchRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+      
+      public Builder mergeFrom(at.ac.tuwien.software.architectures.ws2012.General.ClientSearchRequest other) {
+        if (other == at.ac.tuwien.software.architectures.ws2012.General.ClientSearchRequest.getDefaultInstance()) return this;
+        if (other.hasClientid()) {
+          setClientid(other.getClientid());
+        }
+        if (other.hasFingerprint()) {
+          setFingerprint(other.getFingerprint());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+      
+      public final boolean isInitialized() {
+        if (!hasClientid()) {
+          
+          return false;
+        }
+        if (!hasFingerprint()) {
+          
+          return false;
+        }
+        return true;
+      }
+      
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder(
+            this.getUnknownFields());
+        while (true) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              this.setUnknownFields(unknownFields.build());
+              onChanged();
+              return this;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                this.setUnknownFields(unknownFields.build());
+                onChanged();
+                return this;
+              }
+              break;
+            }
+            case 24: {
+              bitField0_ |= 0x00000001;
+              clientid_ = input.readInt32();
+              break;
+            }
+            case 42: {
+              bitField0_ |= 0x00000002;
+              fingerprint_ = input.readBytes();
+              break;
+            }
+          }
+        }
+      }
+      
+      private int bitField0_;
+      
+      // required int32 clientid = 3;
+      private int clientid_ ;
+      public boolean hasClientid() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      public int getClientid() {
+        return clientid_;
+      }
+      public Builder setClientid(int value) {
+        bitField0_ |= 0x00000001;
+        clientid_ = value;
+        onChanged();
+        return this;
+      }
+      public Builder clearClientid() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        clientid_ = 0;
+        onChanged();
+        return this;
+      }
+      
+      // required bytes fingerprint = 5;
+      private com.google.protobuf.ByteString fingerprint_ = com.google.protobuf.ByteString.EMPTY;
+      public boolean hasFingerprint() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      public com.google.protobuf.ByteString getFingerprint() {
+        return fingerprint_;
+      }
+      public Builder setFingerprint(com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        fingerprint_ = value;
+        onChanged();
+        return this;
+      }
+      public Builder clearFingerprint() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        fingerprint_ = getDefaultInstance().getFingerprint();
+        onChanged();
+        return this;
+      }
+      
+      // @@protoc_insertion_point(builder_scope:pb_sa.ClientSearchRequest)
+    }
+    
+    static {
+      defaultInstance = new ClientSearchRequest(true);
+      defaultInstance.initFields();
+    }
+    
+    // @@protoc_insertion_point(class_scope:pb_sa.ClientSearchRequest)
   }
   
   public interface SearchRequestOrBuilder
@@ -2956,6 +3379,11 @@ public final class General {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_pb_sa_Request_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_pb_sa_ClientSearchRequest_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_pb_sa_ClientSearchRequest_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_pb_sa_SearchRequest_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -2987,32 +3415,36 @@ public final class General {
       "\n\rGeneral.proto\022\005pb_sa\"|\n\007Request\022\022\n\nreq" +
       "uest_id\030\001 \002(\003\022(\n\014request_type\030\002 \001(\0162\022.pb" +
       "_sa.RequestType\022\021\n\ttimestamp\030\003 \001(\003\022\026\n\016li" +
-      "sten_address\030\004 \001(\t*\010\010d\020\200\200\200\200\002\"c\n\rSearchRe" +
-      "quest\022\020\n\010clientid\030\003 \002(\005\022\024\n\014hops_to_live\030" +
-      "\004 \001(\005\022\023\n\013fingerprint\030\005 \002(\014\022\025\n\roriginal_p" +
-      "eer\030\006 \001(\t\"3\n\010PeerData\022\024\n\014peer_address\030\001 " +
-      "\002(\t\022\021\n\tclient_id\030\002 \002(\003\"_\n\010SongData\022\021\n\tso" +
-      "ng_name\030\001 \002(\t\022\023\n\013artist_name\030\002 \002(\t\022\022\n\nal" +
-      "bum_name\030\003 \002(\t\022\027\n\017ConfidenceLevel\030\004 \001(\001\"",
-      "#\n\016AddSongRequest\022\021\n\tfile_path\030\001 \002(\t*\340\003\n" +
-      "\013RequestType\022\031\n\025ARE_YOU_ALIVE_REQUEST\020d\022" +
-      "\032\n\026ARE_YOU_ALIVE_RESPONSE\020e\022\022\n\016SEARCH_RE" +
-      "QUEST\020f\022\020\n\014SEARCH_ABORT\020g\022\025\n\021SEARCH_SUCC" +
-      "ESFULL\020h\022!\n\034MONITORING_GET_PEERS_REQUEST" +
-      "\020\310\001\022\"\n\035MONITORING_GET_PEERS_RESPONSE\020\311\001\022" +
-      "*\n%MONITORING_REQUESTS_PROCESSED_REQUEST" +
-      "\020\312\001\022+\n&MONITORING_REQUESTS_PROCESSED_RES" +
-      "PONSE\020\313\001\022\032\n\025REGISTER_PEER_REQUEST\020\255\002\022\033\n\026" +
-      "REGISTER_PEER_RESPONSE\020\256\002\022\026\n\021BOOTSTRAP_R",
-      "EQUEST\020\257\002\022\027\n\022BOOTSTRAP_RESPONSE\020\260\002\022\026\n\021PE" +
-      "ER_DEAD_REQUEST\020\261\002\022\034\n\027VALIDATE_SEARCH_RE" +
-      "QUEST\020\262\002\022\035\n\030VALIDATE_SEARCH_RESPONSE\020\263\002*" +
-      "J\n\024ValidateSearchStatus\022\r\n\tSEARCH_OK\020\000\022\021" +
-      "\n\rSEARCH_DENIED\020\001\022\020\n\014SEARCH_ERROR\020\002*8\n\014S" +
-      "earchStatus\022\t\n\005FOUND\020\000\022\r\n\tNOT_FOUND\020\001\022\016\n" +
-      "\nPROCESSING\020\002*5\n\026PeerRegistrationStatus\022" +
-      "\013\n\007PEER_OK\020\000\022\016\n\nPEER_ERROR\020\001B,\n*at.ac.tu" +
-      "wien.software.architectures.ws2012"
+      "sten_address\030\004 \001(\t*\010\010d\020\200\200\200\200\002\"<\n\023ClientSe" +
+      "archRequest\022\020\n\010clientid\030\003 \002(\005\022\023\n\013fingerp" +
+      "rint\030\005 \002(\014\"c\n\rSearchRequest\022\020\n\010clientid\030" +
+      "\003 \002(\005\022\024\n\014hops_to_live\030\004 \001(\005\022\023\n\013fingerpri" +
+      "nt\030\005 \002(\014\022\025\n\roriginal_peer\030\006 \001(\t\"3\n\010PeerD" +
+      "ata\022\024\n\014peer_address\030\001 \002(\t\022\021\n\tclient_id\030\002" +
+      " \002(\003\"_\n\010SongData\022\021\n\tsong_name\030\001 \002(\t\022\023\n\013a",
+      "rtist_name\030\002 \002(\t\022\022\n\nalbum_name\030\003 \002(\t\022\027\n\017" +
+      "ConfidenceLevel\030\004 \001(\001\"#\n\016AddSongRequest\022" +
+      "\021\n\tfile_path\030\001 \002(\t*\266\004\n\013RequestType\022\031\n\025AR" +
+      "E_YOU_ALIVE_REQUEST\020d\022\032\n\026ARE_YOU_ALIVE_R" +
+      "ESPONSE\020e\022\022\n\016SEARCH_REQUEST\020f\022\020\n\014SEARCH_" +
+      "ABORT\020g\022\025\n\021SEARCH_SUCCESFULL\020h\022\031\n\025CLIENT" +
+      "_SEARCH_REQUEST\020i\022\036\n\032SEARCH_UNSUCCESFUL_" +
+      "REQUEST\020j\022\031\n\025SEARCH_DENIED_REQUEST\020k\022!\n\034" +
+      "MONITORING_GET_PEERS_REQUEST\020\310\001\022\"\n\035MONIT" +
+      "ORING_GET_PEERS_RESPONSE\020\311\001\022*\n%MONITORIN",
+      "G_REQUESTS_PROCESSED_REQUEST\020\312\001\022+\n&MONIT" +
+      "ORING_REQUESTS_PROCESSED_RESPONSE\020\313\001\022\032\n\025" +
+      "REGISTER_PEER_REQUEST\020\255\002\022\033\n\026REGISTER_PEE" +
+      "R_RESPONSE\020\256\002\022\026\n\021BOOTSTRAP_REQUEST\020\257\002\022\027\n" +
+      "\022BOOTSTRAP_RESPONSE\020\260\002\022\026\n\021PEER_DEAD_REQU" +
+      "EST\020\261\002\022\034\n\027VALIDATE_SEARCH_REQUEST\020\262\002\022\035\n\030" +
+      "VALIDATE_SEARCH_RESPONSE\020\263\002*J\n\024ValidateS" +
+      "earchStatus\022\r\n\tSEARCH_OK\020\000\022\021\n\rSEARCH_DEN" +
+      "IED\020\001\022\020\n\014SEARCH_ERROR\020\002*8\n\014SearchStatus\022" +
+      "\t\n\005FOUND\020\000\022\r\n\tNOT_FOUND\020\001\022\016\n\nPROCESSING\020",
+      "\002*5\n\026PeerRegistrationStatus\022\013\n\007PEER_OK\020\000" +
+      "\022\016\n\nPEER_ERROR\020\001B,\n*at.ac.tuwien.softwar" +
+      "e.architectures.ws2012"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -3027,8 +3459,16 @@ public final class General {
               new java.lang.String[] { "RequestId", "RequestType", "Timestamp", "ListenAddress", },
               at.ac.tuwien.software.architectures.ws2012.General.Request.class,
               at.ac.tuwien.software.architectures.ws2012.General.Request.Builder.class);
-          internal_static_pb_sa_SearchRequest_descriptor =
+          internal_static_pb_sa_ClientSearchRequest_descriptor =
             getDescriptor().getMessageTypes().get(1);
+          internal_static_pb_sa_ClientSearchRequest_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_pb_sa_ClientSearchRequest_descriptor,
+              new java.lang.String[] { "Clientid", "Fingerprint", },
+              at.ac.tuwien.software.architectures.ws2012.General.ClientSearchRequest.class,
+              at.ac.tuwien.software.architectures.ws2012.General.ClientSearchRequest.Builder.class);
+          internal_static_pb_sa_SearchRequest_descriptor =
+            getDescriptor().getMessageTypes().get(2);
           internal_static_pb_sa_SearchRequest_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_pb_sa_SearchRequest_descriptor,
@@ -3036,7 +3476,7 @@ public final class General {
               at.ac.tuwien.software.architectures.ws2012.General.SearchRequest.class,
               at.ac.tuwien.software.architectures.ws2012.General.SearchRequest.Builder.class);
           internal_static_pb_sa_PeerData_descriptor =
-            getDescriptor().getMessageTypes().get(2);
+            getDescriptor().getMessageTypes().get(3);
           internal_static_pb_sa_PeerData_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_pb_sa_PeerData_descriptor,
@@ -3044,7 +3484,7 @@ public final class General {
               at.ac.tuwien.software.architectures.ws2012.General.PeerData.class,
               at.ac.tuwien.software.architectures.ws2012.General.PeerData.Builder.class);
           internal_static_pb_sa_SongData_descriptor =
-            getDescriptor().getMessageTypes().get(3);
+            getDescriptor().getMessageTypes().get(4);
           internal_static_pb_sa_SongData_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_pb_sa_SongData_descriptor,
@@ -3052,7 +3492,7 @@ public final class General {
               at.ac.tuwien.software.architectures.ws2012.General.SongData.class,
               at.ac.tuwien.software.architectures.ws2012.General.SongData.Builder.class);
           internal_static_pb_sa_AddSongRequest_descriptor =
-            getDescriptor().getMessageTypes().get(4);
+            getDescriptor().getMessageTypes().get(5);
           internal_static_pb_sa_AddSongRequest_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_pb_sa_AddSongRequest_descriptor,

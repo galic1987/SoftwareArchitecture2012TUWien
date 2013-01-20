@@ -23,6 +23,7 @@ public class Connection extends Thread {
 	public Date timestamp;
 	
 	static boolean server;
+	boolean client_connection;
 	boolean server_connection;
 	
 	public String listenAddress;
@@ -35,6 +36,7 @@ public class Connection extends Thread {
 		manager=m;
 		name=n;
 		server_connection=srv_conn;
+		client_connection=false;
 		
 		registry=ExtensionRegistry.newInstance();
 		General.registerAllExtensions(registry);
@@ -71,7 +73,7 @@ public class Connection extends Thread {
 		log.warn(String.format("Removing connection, Exception: %s", e.getMessage()));
 		Connection conn=manager.removeConnection(name);
 		
-		if (!server_connection && !server)
+		if (!server_connection && !server && !client_connection)
 		{
 			log.info(String.format("peer %s missing, will report to server",name));
 			manager.reportDead(name, conn.listenAddress);

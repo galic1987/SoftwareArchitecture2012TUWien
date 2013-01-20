@@ -182,4 +182,29 @@ public class ServerManager {
 	{
 		
 	}
+	
+	public void validateSearchRequest(AddressedRequest req) {
+		Request request = req.req;
+		ValidateSearchRequest validate=request.getExtension(Server.validateSearchRequest);
+		
+		SearchRequest searchreq=validate.getSearchRequest();
+		//search ok
+/*		ValidateSearchResponse resp=ValidateSearchResponse.newBuilder().
+				setSearchStatus(ValidateSearchStatus.SEARCH_OK).
+				setSearchRequest(searchreq).
+				build();
+		log.info("search permitted");
+	*/	
+		//search denied
+		ValidateSearchResponse resp=ValidateSearchResponse.newBuilder().setSearchStatus(ValidateSearchStatus.SEARCH_DENIED).setSearchRequest(searchreq).build();
+		log.info("search denied");
+		
+		Request container=Request.newBuilder().
+				setRequestId(request.getRequestId()).
+				setRequestType(RequestType.VALIDATE_SEARCH_RESPONSE).
+				setTimestamp((new Date()).getTime()).
+				setExtension(Server.validateSearchResponse, resp).
+				build();
+		outQueue.addElement(new AddressedRequest(container, req.address, false));
+	}	
 }

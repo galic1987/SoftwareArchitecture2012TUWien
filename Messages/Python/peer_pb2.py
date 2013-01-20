@@ -12,7 +12,7 @@ import General_pb2
 DESCRIPTOR = descriptor.FileDescriptor(
   name='peer.proto',
   package='pb_sa',
-  serialized_pb='\n\npeer.proto\x12\x05pb_sa\x1a\rGeneral.proto\".\n\x12\x41reYouAliveRequest\x12\x18\n\x10\x64\x65stination_peer\x18\x01 \x02(\t\"/\n\x13\x41reYouAliveResponse\x12\x18\n\x10\x64\x65stination_peer\x18\x01 \x02(\t\"!\n\x0bSearchAbort\x12\x12\n\nrequest_id\x18\x01 \x02(\x05\"\x95\x01\n\x0fSearchSuccesful\x12,\n\x0esearch_request\x18\x01 \x02(\x0b\x32\x14.pb_sa.SearchRequest\x12\x16\n\x0e\x66ounder_peerid\x18\x02 \x02(\x05\x12\x18\n\x10\x66ounder_clientid\x18\x03 \x02(\x05\x12\"\n\tsong_data\x18\x04 \x01(\x0b\x32\x0f.pb_sa.SongData\"\x1b\n\x19MonitoringGetPeersRequest\"@\n\x1aMonitoringGetPeersResponse\x12\"\n\tpeer_data\x18\x01 \x03(\x0b\x32\x0f.pb_sa.PeerData\"$\n\"MonitoringRequestsProcessedRequest\"O\n#MonitoringRequestsProcessedResponse\x12(\n\x0crequest_data\x18\x01 \x03(\x0b\x32\x12.pb_sa.RequestData\"y\n\x0bRequestData\x12,\n\x0esearch_request\x18\x01 \x02(\x0b\x32\x14.pb_sa.SearchRequest\x12*\n\rsearch_status\x18\x02 \x02(\x0e\x32\x13.pb_sa.SearchStatus\x12\x10\n\x08\x63redited\x18\x03 \x01(\x08:H\n\x15\x61re_you_alive_request\x12\x0e.pb_sa.Request\x18\x64 \x01(\x0b\x32\x19.pb_sa.AreYouAliveRequest:J\n\x16\x61re_you_alive_response\x12\x0e.pb_sa.Request\x18\x65 \x01(\x0b\x32\x1a.pb_sa.AreYouAliveResponse:<\n\x0esearch_request\x12\x0e.pb_sa.Request\x18\x66 \x01(\x0b\x32\x14.pb_sa.SearchRequest:8\n\x0csearch_abort\x12\x0e.pb_sa.Request\x18g \x01(\x0b\x32\x12.pb_sa.SearchAbort:@\n\x10search_succesful\x12\x0e.pb_sa.Request\x18h \x01(\x0b\x32\x16.pb_sa.SearchSuccesful:W\n\x1cmonitoring_get_peers_request\x12\x0e.pb_sa.Request\x18\xc8\x01 \x01(\x0b\x32 .pb_sa.MonitoringGetPeersRequest:Y\n\x1dmonitoring_get_peers_response\x12\x0e.pb_sa.Request\x18\xc9\x01 \x01(\x0b\x32!.pb_sa.MonitoringGetPeersResponse:i\n%monitoring_requests_processed_request\x12\x0e.pb_sa.Request\x18\xca\x01 \x01(\x0b\x32).pb_sa.MonitoringRequestsProcessedRequest:k\n&monitoring_requests_processed_response\x12\x0e.pb_sa.Request\x18\xcb\x01 \x01(\x0b\x32*.pb_sa.MonitoringRequestsProcessedResponseB,\n*at.ac.tuwien.software.architectures.ws2012')
+  serialized_pb='\n\npeer.proto\x12\x05pb_sa\x1a\rGeneral.proto\".\n\x12\x41reYouAliveRequest\x12\x18\n\x10\x64\x65stination_peer\x18\x01 \x02(\t\"/\n\x13\x41reYouAliveResponse\x12\x18\n\x10\x64\x65stination_peer\x18\x01 \x02(\t\"!\n\x0bSearchAbort\x12\x12\n\nrequest_id\x18\x01 \x02(\x05\"\x95\x01\n\x0fSearchSuccesful\x12,\n\x0esearch_request\x18\x01 \x02(\x0b\x32\x14.pb_sa.SearchRequest\x12\x16\n\x0e\x66ounder_peerid\x18\x02 \x02(\x05\x12\x18\n\x10\x66ounder_clientid\x18\x03 \x02(\x05\x12\"\n\tsong_data\x18\x04 \x01(\x0b\x32\x0f.pb_sa.SongData\"H\n\x18SearchUnsuccesfulRequest\x12,\n\x0esearch_request\x18\x01 \x02(\x0b\x32\x14.pb_sa.SearchRequest\"C\n\x13SearchDeniedRequest\x12,\n\x0esearch_request\x18\x01 \x02(\x0b\x32\x14.pb_sa.SearchRequest\"\x1b\n\x19MonitoringGetPeersRequest\"@\n\x1aMonitoringGetPeersResponse\x12\"\n\tpeer_data\x18\x01 \x03(\x0b\x32\x0f.pb_sa.PeerData\"$\n\"MonitoringRequestsProcessedRequest\"O\n#MonitoringRequestsProcessedResponse\x12(\n\x0crequest_data\x18\x01 \x03(\x0b\x32\x12.pb_sa.RequestData\"y\n\x0bRequestData\x12,\n\x0esearch_request\x18\x01 \x02(\x0b\x32\x14.pb_sa.SearchRequest\x12*\n\rsearch_status\x18\x02 \x02(\x0e\x32\x13.pb_sa.SearchStatus\x12\x10\n\x08\x63redited\x18\x03 \x01(\x08:H\n\x15\x61re_you_alive_request\x12\x0e.pb_sa.Request\x18\x64 \x01(\x0b\x32\x19.pb_sa.AreYouAliveRequest:J\n\x16\x61re_you_alive_response\x12\x0e.pb_sa.Request\x18\x65 \x01(\x0b\x32\x1a.pb_sa.AreYouAliveResponse:<\n\x0esearch_request\x12\x0e.pb_sa.Request\x18\x66 \x01(\x0b\x32\x14.pb_sa.SearchRequest:8\n\x0csearch_abort\x12\x0e.pb_sa.Request\x18g \x01(\x0b\x32\x12.pb_sa.SearchAbort:@\n\x10search_succesful\x12\x0e.pb_sa.Request\x18h \x01(\x0b\x32\x16.pb_sa.SearchSuccesful:I\n\x15\x63lient_search_request\x12\x0e.pb_sa.Request\x18i \x01(\x0b\x32\x1a.pb_sa.ClientSearchRequest:S\n\x1asearch_unsuccesful_request\x12\x0e.pb_sa.Request\x18j \x01(\x0b\x32\x1f.pb_sa.SearchUnsuccesfulRequest:I\n\x15search_denied_request\x12\x0e.pb_sa.Request\x18k \x01(\x0b\x32\x1a.pb_sa.SearchDeniedRequest:W\n\x1cmonitoring_get_peers_request\x12\x0e.pb_sa.Request\x18\xc8\x01 \x01(\x0b\x32 .pb_sa.MonitoringGetPeersRequest:Y\n\x1dmonitoring_get_peers_response\x12\x0e.pb_sa.Request\x18\xc9\x01 \x01(\x0b\x32!.pb_sa.MonitoringGetPeersResponse:i\n%monitoring_requests_processed_request\x12\x0e.pb_sa.Request\x18\xca\x01 \x01(\x0b\x32).pb_sa.MonitoringRequestsProcessedRequest:k\n&monitoring_requests_processed_response\x12\x0e.pb_sa.Request\x18\xcb\x01 \x01(\x0b\x32*.pb_sa.MonitoringRequestsProcessedResponseB,\n*at.ac.tuwien.software.architectures.ws2012')
 
 
 ARE_YOU_ALIVE_REQUEST_FIELD_NUMBER = 100
@@ -55,9 +55,33 @@ search_succesful = descriptor.FieldDescriptor(
   message_type=None, enum_type=None, containing_type=None,
   is_extension=True, extension_scope=None,
   options=None)
+CLIENT_SEARCH_REQUEST_FIELD_NUMBER = 105
+client_search_request = descriptor.FieldDescriptor(
+  name='client_search_request', full_name='pb_sa.client_search_request', index=5,
+  number=105, type=11, cpp_type=10, label=1,
+  has_default_value=False, default_value=None,
+  message_type=None, enum_type=None, containing_type=None,
+  is_extension=True, extension_scope=None,
+  options=None)
+SEARCH_UNSUCCESFUL_REQUEST_FIELD_NUMBER = 106
+search_unsuccesful_request = descriptor.FieldDescriptor(
+  name='search_unsuccesful_request', full_name='pb_sa.search_unsuccesful_request', index=6,
+  number=106, type=11, cpp_type=10, label=1,
+  has_default_value=False, default_value=None,
+  message_type=None, enum_type=None, containing_type=None,
+  is_extension=True, extension_scope=None,
+  options=None)
+SEARCH_DENIED_REQUEST_FIELD_NUMBER = 107
+search_denied_request = descriptor.FieldDescriptor(
+  name='search_denied_request', full_name='pb_sa.search_denied_request', index=7,
+  number=107, type=11, cpp_type=10, label=1,
+  has_default_value=False, default_value=None,
+  message_type=None, enum_type=None, containing_type=None,
+  is_extension=True, extension_scope=None,
+  options=None)
 MONITORING_GET_PEERS_REQUEST_FIELD_NUMBER = 200
 monitoring_get_peers_request = descriptor.FieldDescriptor(
-  name='monitoring_get_peers_request', full_name='pb_sa.monitoring_get_peers_request', index=5,
+  name='monitoring_get_peers_request', full_name='pb_sa.monitoring_get_peers_request', index=8,
   number=200, type=11, cpp_type=10, label=1,
   has_default_value=False, default_value=None,
   message_type=None, enum_type=None, containing_type=None,
@@ -65,7 +89,7 @@ monitoring_get_peers_request = descriptor.FieldDescriptor(
   options=None)
 MONITORING_GET_PEERS_RESPONSE_FIELD_NUMBER = 201
 monitoring_get_peers_response = descriptor.FieldDescriptor(
-  name='monitoring_get_peers_response', full_name='pb_sa.monitoring_get_peers_response', index=6,
+  name='monitoring_get_peers_response', full_name='pb_sa.monitoring_get_peers_response', index=9,
   number=201, type=11, cpp_type=10, label=1,
   has_default_value=False, default_value=None,
   message_type=None, enum_type=None, containing_type=None,
@@ -73,7 +97,7 @@ monitoring_get_peers_response = descriptor.FieldDescriptor(
   options=None)
 MONITORING_REQUESTS_PROCESSED_REQUEST_FIELD_NUMBER = 202
 monitoring_requests_processed_request = descriptor.FieldDescriptor(
-  name='monitoring_requests_processed_request', full_name='pb_sa.monitoring_requests_processed_request', index=7,
+  name='monitoring_requests_processed_request', full_name='pb_sa.monitoring_requests_processed_request', index=10,
   number=202, type=11, cpp_type=10, label=1,
   has_default_value=False, default_value=None,
   message_type=None, enum_type=None, containing_type=None,
@@ -81,7 +105,7 @@ monitoring_requests_processed_request = descriptor.FieldDescriptor(
   options=None)
 MONITORING_REQUESTS_PROCESSED_RESPONSE_FIELD_NUMBER = 203
 monitoring_requests_processed_response = descriptor.FieldDescriptor(
-  name='monitoring_requests_processed_response', full_name='pb_sa.monitoring_requests_processed_response', index=8,
+  name='monitoring_requests_processed_response', full_name='pb_sa.monitoring_requests_processed_response', index=11,
   number=203, type=11, cpp_type=10, label=1,
   has_default_value=False, default_value=None,
   message_type=None, enum_type=None, containing_type=None,
@@ -222,6 +246,62 @@ _SEARCHSUCCESFUL = descriptor.Descriptor(
 )
 
 
+_SEARCHUNSUCCESFULREQUEST = descriptor.Descriptor(
+  name='SearchUnsuccesfulRequest',
+  full_name='pb_sa.SearchUnsuccesfulRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    descriptor.FieldDescriptor(
+      name='search_request', full_name='pb_sa.SearchUnsuccesfulRequest.search_request', index=0,
+      number=1, type=11, cpp_type=10, label=2,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=320,
+  serialized_end=392,
+)
+
+
+_SEARCHDENIEDREQUEST = descriptor.Descriptor(
+  name='SearchDeniedRequest',
+  full_name='pb_sa.SearchDeniedRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    descriptor.FieldDescriptor(
+      name='search_request', full_name='pb_sa.SearchDeniedRequest.search_request', index=0,
+      number=1, type=11, cpp_type=10, label=2,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  serialized_start=394,
+  serialized_end=461,
+)
+
+
 _MONITORINGGETPEERSREQUEST = descriptor.Descriptor(
   name='MonitoringGetPeersRequest',
   full_name='pb_sa.MonitoringGetPeersRequest',
@@ -238,8 +318,8 @@ _MONITORINGGETPEERSREQUEST = descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=320,
-  serialized_end=347,
+  serialized_start=463,
+  serialized_end=490,
 )
 
 
@@ -266,8 +346,8 @@ _MONITORINGGETPEERSRESPONSE = descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=349,
-  serialized_end=413,
+  serialized_start=492,
+  serialized_end=556,
 )
 
 
@@ -287,8 +367,8 @@ _MONITORINGREQUESTSPROCESSEDREQUEST = descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=415,
-  serialized_end=451,
+  serialized_start=558,
+  serialized_end=594,
 )
 
 
@@ -315,8 +395,8 @@ _MONITORINGREQUESTSPROCESSEDRESPONSE = descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=453,
-  serialized_end=532,
+  serialized_start=596,
+  serialized_end=675,
 )
 
 
@@ -357,12 +437,14 @@ _REQUESTDATA = descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=534,
-  serialized_end=655,
+  serialized_start=677,
+  serialized_end=798,
 )
 
 _SEARCHSUCCESFUL.fields_by_name['search_request'].message_type = General_pb2._SEARCHREQUEST
 _SEARCHSUCCESFUL.fields_by_name['song_data'].message_type = General_pb2._SONGDATA
+_SEARCHUNSUCCESFULREQUEST.fields_by_name['search_request'].message_type = General_pb2._SEARCHREQUEST
+_SEARCHDENIEDREQUEST.fields_by_name['search_request'].message_type = General_pb2._SEARCHREQUEST
 _MONITORINGGETPEERSRESPONSE.fields_by_name['peer_data'].message_type = General_pb2._PEERDATA
 _MONITORINGREQUESTSPROCESSEDRESPONSE.fields_by_name['request_data'].message_type = _REQUESTDATA
 _REQUESTDATA.fields_by_name['search_request'].message_type = General_pb2._SEARCHREQUEST
@@ -371,6 +453,8 @@ DESCRIPTOR.message_types_by_name['AreYouAliveRequest'] = _AREYOUALIVEREQUEST
 DESCRIPTOR.message_types_by_name['AreYouAliveResponse'] = _AREYOUALIVERESPONSE
 DESCRIPTOR.message_types_by_name['SearchAbort'] = _SEARCHABORT
 DESCRIPTOR.message_types_by_name['SearchSuccesful'] = _SEARCHSUCCESFUL
+DESCRIPTOR.message_types_by_name['SearchUnsuccesfulRequest'] = _SEARCHUNSUCCESFULREQUEST
+DESCRIPTOR.message_types_by_name['SearchDeniedRequest'] = _SEARCHDENIEDREQUEST
 DESCRIPTOR.message_types_by_name['MonitoringGetPeersRequest'] = _MONITORINGGETPEERSREQUEST
 DESCRIPTOR.message_types_by_name['MonitoringGetPeersResponse'] = _MONITORINGGETPEERSRESPONSE
 DESCRIPTOR.message_types_by_name['MonitoringRequestsProcessedRequest'] = _MONITORINGREQUESTSPROCESSEDREQUEST
@@ -400,6 +484,18 @@ class SearchSuccesful(message.Message):
   DESCRIPTOR = _SEARCHSUCCESFUL
   
   # @@protoc_insertion_point(class_scope:pb_sa.SearchSuccesful)
+
+class SearchUnsuccesfulRequest(message.Message):
+  __metaclass__ = reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _SEARCHUNSUCCESFULREQUEST
+  
+  # @@protoc_insertion_point(class_scope:pb_sa.SearchUnsuccesfulRequest)
+
+class SearchDeniedRequest(message.Message):
+  __metaclass__ = reflection.GeneratedProtocolMessageType
+  DESCRIPTOR = _SEARCHDENIEDREQUEST
+  
+  # @@protoc_insertion_point(class_scope:pb_sa.SearchDeniedRequest)
 
 class MonitoringGetPeersRequest(message.Message):
   __metaclass__ = reflection.GeneratedProtocolMessageType
@@ -441,6 +537,12 @@ search_abort.message_type = _SEARCHABORT
 General_pb2.Request.RegisterExtension(search_abort)
 search_succesful.message_type = _SEARCHSUCCESFUL
 General_pb2.Request.RegisterExtension(search_succesful)
+client_search_request.message_type = General_pb2._CLIENTSEARCHREQUEST
+General_pb2.Request.RegisterExtension(client_search_request)
+search_unsuccesful_request.message_type = _SEARCHUNSUCCESFULREQUEST
+General_pb2.Request.RegisterExtension(search_unsuccesful_request)
+search_denied_request.message_type = _SEARCHDENIEDREQUEST
+General_pb2.Request.RegisterExtension(search_denied_request)
 monitoring_get_peers_request.message_type = _MONITORINGGETPEERSREQUEST
 General_pb2.Request.RegisterExtension(monitoring_get_peers_request)
 monitoring_get_peers_response.message_type = _MONITORINGGETPEERSRESPONSE

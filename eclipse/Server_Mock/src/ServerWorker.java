@@ -51,6 +51,14 @@ public class ServerWorker extends Thread {
 				manager.removeConnection(req.address);
 				break;
 			case VALIDATE_SEARCH_REQUEST:
+				srvManager.validateSearchRequest(req);
+				try {
+					Thread.sleep(1000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				manager.removeConnection(req.address);
 				break;
 			default:
 				break;

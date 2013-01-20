@@ -1,20 +1,34 @@
 import java.net.Authenticator.RequestorType;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.log4j.Logger;
 
+import com.google.protobuf.ByteString;
+
+import ac.at.tuwien.infosys.swa.audio.Fingerprint;
 import at.ac.tuwien.software.architectures.ws2012.General.PeerData;
 import at.ac.tuwien.software.architectures.ws2012.General.PeerRegistrationStatus;
 import at.ac.tuwien.software.architectures.ws2012.General.Request;
 import at.ac.tuwien.software.architectures.ws2012.General.RequestType;
+import at.ac.tuwien.software.architectures.ws2012.General.SearchRequest;
+import at.ac.tuwien.software.architectures.ws2012.General.SearchStatus;
+import at.ac.tuwien.software.architectures.ws2012.General.SongData;
+import at.ac.tuwien.software.architectures.ws2012.General.ValidateSearchStatus;
 import at.ac.tuwien.software.architectures.ws2012.Peer.AreYouAliveRequest;
+import at.ac.tuwien.software.architectures.ws2012.Peer.SearchDeniedRequest;
+import at.ac.tuwien.software.architectures.ws2012.General;
+import at.ac.tuwien.software.architectures.ws2012.Peer.SearchSuccesful;
+import at.ac.tuwien.software.architectures.ws2012.Peer.SearchUnsuccesfulRequest;
 import at.ac.tuwien.software.architectures.ws2012.Server;
 import at.ac.tuwien.software.architectures.ws2012.Peer;
 import at.ac.tuwien.software.architectures.ws2012.Server.BootstrapRequest;
 import at.ac.tuwien.software.architectures.ws2012.Server.PeerDeadRequest;
 import at.ac.tuwien.software.architectures.ws2012.Server.RegisterPeerResponse;
+import at.ac.tuwien.software.architectures.ws2012.Server.ValidateSearchRequest;
 
 
 public class PeerManager {
@@ -27,8 +41,12 @@ public class PeerManager {
 	String listenAddress;
 	int reqid;
 	ConnectionManager connManager;
+	Map<ByteString,SearchData> searchMap;
 	
-	public PeerManager(AddressedRequestQueue out, String srvr, int peers, String music, String localadd, ConnectionManager mgr)
+	int searchHopsToLive;
+	int clientID;
+	
+	public PeerManager(AddressedRequestQueue out, String srvr, int peers, String music, String localadd, ConnectionManager mgr, int hopsToLive, int clientid)
 	{
 		serverAddress=srvr;
 		numOfPeers=peers;
@@ -37,6 +55,9 @@ public class PeerManager {
 		listenAddress=localadd;
 		reqid=0;
 		connManager = mgr;
+		searchHopsToLive=hopsToLive;
+		searchMap=new HashMap<ByteString, SearchData>();
+		clientID=clientid;
 	}
 	
 	public void RegisterPeer(AddressedRequest req) {
@@ -134,5 +155,141 @@ public class PeerManager {
 		AreYouAliveRequest areyoualive=AreYouAliveRequest.newBuilder().setDestinationPeer(listenAddress).build();
 		Request containerreq=Request.newBuilder().setRequestId(++reqid).setListenAddress(listenAddress).setRequestType(RequestType.ARE_YOU_ALIVE_REQUEST).setTimestamp((new Date()).getTime()).setExtension(Peer.areYouAliveRequest, areyoualive).build();
 		outqueue.addElement(new AddressedRequest(containerreq, address, false));
+	}
+
+	//we first ask for validation from server, 
+	//if user has coins, we distribute request (SearchRequest is sent to other peers), search locally
+	//all the peers keep information about original peer, fingerprint, timeout.
+	//all the peers check if timeout has passed, when that happens, they remove information about 
+	//the search from their record
+	//if user does not have enough coins we immediately inform user that it is not possible to perform search
+	public void ClientSearchRequest(AddressedRequest req) {
+		Request request=req.req;
+		General.ClientSearchRequest csrch=request.getExtension(Peer.clientSearchRequest);
+		SearchData data=new SearchData(); 
+		data.clientAddress=req.address; 
+		data.clientID=csrch.getClientid();
+		data.fingerprint=csrch.getFingerprint();
+		data.originalPeerListen=listenAddress;
+		data.originalPeer=true;
+		data.timestamp=new Date();
+		
+		searchMap.put(data.fingerprint, data);
+		
+		SearchRequest srchrequest=SearchRequest.newBuilder().setClientid(data.clientID).setFingerprint(data.fingerprint).setHopsToLive(searchHopsToLive).setOriginalPeer(listenAddress).build();
+		data.request=srchrequest;
+		
+		ValidateSearchRequest validate=ValidateSearchRequest.newBuilder().setSearchRequest(srchrequest).build();
+		Request container=Request.newBuilder().setListenAddress(listenAddress).setRequestId(++reqid).setRequestType(RequestType.VALIDATE_SEARCH_REQUEST).setTimestamp((new Date()).getTime()).setExtension(Server.validateSearchRequest, validate).build();
+		
+		outqueue.addElement(new AddressedRequest(container, serverAddress, true));
+		log.info("new search request... validating");
+	}
+
+	public void ValidateSearchResponse(AddressedRequest req) {
+		Request request=req.req;
+		Server.ValidateSearchResponse validateResponse=request.getExtension(Server.validateSearchResponse);
+		
+		ValidateSearchStatus status = validateResponse.getSearchStatus();
+		SearchRequest search = validateResponse.getSearchRequest();
+		
+		SearchData data=searchMap.get(search.getFingerprint());
+		
+		
+		//if denied just throw the search away and forget about it
+		if(status!=ValidateSearchStatus.SEARCH_OK)
+		{
+			SearchDeniedRequest inner=SearchDeniedRequest.newBuilder().setSearchRequest(search).build();
+			Request response=Request.newBuilder().setListenAddress(listenAddress).setTimestamp((new Date()).getTime()).setRequestId(++reqid).setRequestType(RequestType.SEARCH_DENIED_REQUEST).setExtension(Peer.searchDeniedRequest, inner).build();
+			outqueue.addElement(new AddressedRequest(response, data.clientAddress, false));
+			searchMap.remove(search.getFingerprint());
+			log.info("Search request denied");
+			return;
+		}
+		
+		//if allowed, first send search to all connected peers, then start searching locally
+		Request peersearch=Request.newBuilder().
+				setRequestId(++reqid).
+				setListenAddress(listenAddress).
+				setRequestType(RequestType.SEARCH_REQUEST).
+				setTimestamp((new Date()).getTime()).
+				setExtension(Peer.searchRequest, search).
+				build();
+		connManager.sendToPeers(peersearch);
+		
+		//start local search
+		
+	}
+
+	public void SearchRequest(AddressedRequest req) {
+		Request request=req.req;
+		SearchRequest search=request.getExtension(Peer.searchRequest);
+		
+		int hopsToLive=search.getHopsToLive();
+		
+		if (searchMap.containsKey(search.getFingerprint()))
+		{
+			log.info("ignoring the search, duplicate");
+			return;
+		}
+		
+		if (hopsToLive==1)
+		{
+			log.info("maximum hops to live reached, performing only local search");
+		}
+		else
+		{
+			SearchRequest newsearch=SearchRequest.newBuilder(search).setHopsToLive(hopsToLive-1).build();
+			Request newreq=Request.newBuilder().
+					setRequestId(++reqid).
+					setListenAddress(listenAddress).
+					setRequestType(RequestType.SEARCH_REQUEST).
+					setTimestamp((new Date()).getTime()).
+					setExtension(Peer.searchRequest, newsearch).
+					build();	
+		}
+		
+		//perform local search
+		
+	}
+	
+	public void HandleMusicFound(SearchRequest search, SongData song )
+	{
+		SearchSuccesful success=SearchSuccesful.newBuilder().
+				setFounderClientid(clientID).
+				setSearchRequest(search).setSongData(song).build();
+		
+		Request found=Request.newBuilder().
+				setRequestId(++reqid).
+				setListenAddress(listenAddress).
+				setRequestType(RequestType.SEARCH_SUCCESFULL).
+				setTimestamp((new Date()).getTime()).
+				setExtension(Peer.searchSuccesful, success).
+				build();	
+		
+		outqueue.addElement(new AddressedRequest(found, serverAddress, true));
+		//we do not notify ourselves
+		if (!search.getOriginalPeer().equals(listenAddress))
+			outqueue.addElement(new AddressedRequest(found, search.getOriginalPeer(), false));
+	}
+	
+	public void HandleMusicNotFound(SearchRequest search)
+	{
+		SearchUnsuccesfulRequest unsuccess=SearchUnsuccesfulRequest.newBuilder().
+				setSearchRequest(search).build();
+		
+		Request notfound=Request.newBuilder().
+				setRequestId(++reqid).
+				setListenAddress(listenAddress).
+				setRequestType(RequestType.SEARCH_UNSUCCESFUL_REQUEST).
+				setTimestamp((new Date()).getTime()).
+				setExtension(Peer.searchUnsuccesfulRequest, unsuccess).
+				build();	
+		
+		outqueue.addElement(new AddressedRequest(notfound, serverAddress, true));
+
+		//if we are the original peer, we do not send notification to ourselves
+		if (!search.getOriginalPeer().contentEquals(listenAddress))
+		outqueue.addElement(new AddressedRequest(notfound, search.getOriginalPeer(), false));
 	}
 }

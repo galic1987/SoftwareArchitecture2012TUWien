@@ -10,6 +10,9 @@ extend Request {
 	optional SearchRequest search_request=102;
 	optional SearchAbort search_abort=103;
 	optional SearchSuccesful search_succesful=104;
+	optional ClientSearchRequest client_search_request=105;
+	optional SearchUnsuccesfulRequest search_unsuccesful_request=106;
+	optional SearchDeniedRequest search_denied_request=107;
 	
 	optional MonitoringGetPeersRequest monitoring_get_peers_request=200;
 	optional MonitoringGetPeersResponse monitoring_get_peers_response=201;
@@ -34,6 +37,14 @@ message SearchSuccesful {
      required int32 founder_peerid=2;
      required int32 founder_clientid=3;
 	 optional SongData song_data=4;
+}
+
+message SearchUnsuccesfulRequest {
+     required SearchRequest search_request=1;
+}
+
+message SearchDeniedRequest {
+     required SearchRequest search_request=1;
 }
 
 

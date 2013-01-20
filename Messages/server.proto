@@ -42,6 +42,7 @@ message ValidateSearchRequest {
 
 message ValidateSearchResponse {
 	 required ValidateSearchStatus search_status=1;
+	 required SearchRequest search_request=2;
 }
 
 

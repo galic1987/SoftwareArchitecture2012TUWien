@@ -12,6 +12,9 @@ public final class Peer {
     registry.add(at.ac.tuwien.software.architectures.ws2012.Peer.searchRequest);
     registry.add(at.ac.tuwien.software.architectures.ws2012.Peer.searchAbort);
     registry.add(at.ac.tuwien.software.architectures.ws2012.Peer.searchSuccesful);
+    registry.add(at.ac.tuwien.software.architectures.ws2012.Peer.clientSearchRequest);
+    registry.add(at.ac.tuwien.software.architectures.ws2012.Peer.searchUnsuccesfulRequest);
+    registry.add(at.ac.tuwien.software.architectures.ws2012.Peer.searchDeniedRequest);
     registry.add(at.ac.tuwien.software.architectures.ws2012.Peer.monitoringGetPeersRequest);
     registry.add(at.ac.tuwien.software.architectures.ws2012.Peer.monitoringGetPeersResponse);
     registry.add(at.ac.tuwien.software.architectures.ws2012.Peer.monitoringRequestsProcessedRequest);
@@ -1852,6 +1855,886 @@ public final class Peer {
     }
     
     // @@protoc_insertion_point(class_scope:pb_sa.SearchSuccesful)
+  }
+  
+  public interface SearchUnsuccesfulRequestOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+    
+    // required .pb_sa.SearchRequest search_request = 1;
+    boolean hasSearchRequest();
+    at.ac.tuwien.software.architectures.ws2012.General.SearchRequest getSearchRequest();
+    at.ac.tuwien.software.architectures.ws2012.General.SearchRequestOrBuilder getSearchRequestOrBuilder();
+  }
+  public static final class SearchUnsuccesfulRequest extends
+      com.google.protobuf.GeneratedMessage
+      implements SearchUnsuccesfulRequestOrBuilder {
+    // Use SearchUnsuccesfulRequest.newBuilder() to construct.
+    private SearchUnsuccesfulRequest(Builder builder) {
+      super(builder);
+    }
+    private SearchUnsuccesfulRequest(boolean noInit) {}
+    
+    private static final SearchUnsuccesfulRequest defaultInstance;
+    public static SearchUnsuccesfulRequest getDefaultInstance() {
+      return defaultInstance;
+    }
+    
+    public SearchUnsuccesfulRequest getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+    
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return at.ac.tuwien.software.architectures.ws2012.Peer.internal_static_pb_sa_SearchUnsuccesfulRequest_descriptor;
+    }
+    
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return at.ac.tuwien.software.architectures.ws2012.Peer.internal_static_pb_sa_SearchUnsuccesfulRequest_fieldAccessorTable;
+    }
+    
+    private int bitField0_;
+    // required .pb_sa.SearchRequest search_request = 1;
+    public static final int SEARCH_REQUEST_FIELD_NUMBER = 1;
+    private at.ac.tuwien.software.architectures.ws2012.General.SearchRequest searchRequest_;
+    public boolean hasSearchRequest() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    public at.ac.tuwien.software.architectures.ws2012.General.SearchRequest getSearchRequest() {
+      return searchRequest_;
+    }
+    public at.ac.tuwien.software.architectures.ws2012.General.SearchRequestOrBuilder getSearchRequestOrBuilder() {
+      return searchRequest_;
+    }
+    
+    private void initFields() {
+      searchRequest_ = at.ac.tuwien.software.architectures.ws2012.General.SearchRequest.getDefaultInstance();
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+      
+      if (!hasSearchRequest()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!getSearchRequest().isInitialized()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+    
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeMessage(1, searchRequest_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+    
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+    
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, searchRequest_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+    
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+    
+    public static at.ac.tuwien.software.architectures.ws2012.Peer.SearchUnsuccesfulRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data).buildParsed();
+    }
+    public static at.ac.tuwien.software.architectures.ws2012.Peer.SearchUnsuccesfulRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
+    }
+    public static at.ac.tuwien.software.architectures.ws2012.Peer.SearchUnsuccesfulRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data).buildParsed();
+    }
+    public static at.ac.tuwien.software.architectures.ws2012.Peer.SearchUnsuccesfulRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
+    }
+    public static at.ac.tuwien.software.architectures.ws2012.Peer.SearchUnsuccesfulRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input).buildParsed();
+    }
+    public static at.ac.tuwien.software.architectures.ws2012.Peer.SearchUnsuccesfulRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
+    }
+    public static at.ac.tuwien.software.architectures.ws2012.Peer.SearchUnsuccesfulRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
+    }
+    public static at.ac.tuwien.software.architectures.ws2012.Peer.SearchUnsuccesfulRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
+    }
+    public static at.ac.tuwien.software.architectures.ws2012.Peer.SearchUnsuccesfulRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input).buildParsed();
+    }
+    public static at.ac.tuwien.software.architectures.ws2012.Peer.SearchUnsuccesfulRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
+    }
+    
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(at.ac.tuwien.software.architectures.ws2012.Peer.SearchUnsuccesfulRequest prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+    
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements at.ac.tuwien.software.architectures.ws2012.Peer.SearchUnsuccesfulRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return at.ac.tuwien.software.architectures.ws2012.Peer.internal_static_pb_sa_SearchUnsuccesfulRequest_descriptor;
+      }
+      
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return at.ac.tuwien.software.architectures.ws2012.Peer.internal_static_pb_sa_SearchUnsuccesfulRequest_fieldAccessorTable;
+      }
+      
+      // Construct using at.ac.tuwien.software.architectures.ws2012.Peer.SearchUnsuccesfulRequest.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+      
+      private Builder(BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getSearchRequestFieldBuilder();
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+      
+      public Builder clear() {
+        super.clear();
+        if (searchRequestBuilder_ == null) {
+          searchRequest_ = at.ac.tuwien.software.architectures.ws2012.General.SearchRequest.getDefaultInstance();
+        } else {
+          searchRequestBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+      
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+      
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return at.ac.tuwien.software.architectures.ws2012.Peer.SearchUnsuccesfulRequest.getDescriptor();
+      }
+      
+      public at.ac.tuwien.software.architectures.ws2012.Peer.SearchUnsuccesfulRequest getDefaultInstanceForType() {
+        return at.ac.tuwien.software.architectures.ws2012.Peer.SearchUnsuccesfulRequest.getDefaultInstance();
+      }
+      
+      public at.ac.tuwien.software.architectures.ws2012.Peer.SearchUnsuccesfulRequest build() {
+        at.ac.tuwien.software.architectures.ws2012.Peer.SearchUnsuccesfulRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+      
+      private at.ac.tuwien.software.architectures.ws2012.Peer.SearchUnsuccesfulRequest buildParsed()
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        at.ac.tuwien.software.architectures.ws2012.Peer.SearchUnsuccesfulRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(
+            result).asInvalidProtocolBufferException();
+        }
+        return result;
+      }
+      
+      public at.ac.tuwien.software.architectures.ws2012.Peer.SearchUnsuccesfulRequest buildPartial() {
+        at.ac.tuwien.software.architectures.ws2012.Peer.SearchUnsuccesfulRequest result = new at.ac.tuwien.software.architectures.ws2012.Peer.SearchUnsuccesfulRequest(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        if (searchRequestBuilder_ == null) {
+          result.searchRequest_ = searchRequest_;
+        } else {
+          result.searchRequest_ = searchRequestBuilder_.build();
+        }
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+      
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof at.ac.tuwien.software.architectures.ws2012.Peer.SearchUnsuccesfulRequest) {
+          return mergeFrom((at.ac.tuwien.software.architectures.ws2012.Peer.SearchUnsuccesfulRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+      
+      public Builder mergeFrom(at.ac.tuwien.software.architectures.ws2012.Peer.SearchUnsuccesfulRequest other) {
+        if (other == at.ac.tuwien.software.architectures.ws2012.Peer.SearchUnsuccesfulRequest.getDefaultInstance()) return this;
+        if (other.hasSearchRequest()) {
+          mergeSearchRequest(other.getSearchRequest());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+      
+      public final boolean isInitialized() {
+        if (!hasSearchRequest()) {
+          
+          return false;
+        }
+        if (!getSearchRequest().isInitialized()) {
+          
+          return false;
+        }
+        return true;
+      }
+      
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder(
+            this.getUnknownFields());
+        while (true) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              this.setUnknownFields(unknownFields.build());
+              onChanged();
+              return this;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                this.setUnknownFields(unknownFields.build());
+                onChanged();
+                return this;
+              }
+              break;
+            }
+            case 10: {
+              at.ac.tuwien.software.architectures.ws2012.General.SearchRequest.Builder subBuilder = at.ac.tuwien.software.architectures.ws2012.General.SearchRequest.newBuilder();
+              if (hasSearchRequest()) {
+                subBuilder.mergeFrom(getSearchRequest());
+              }
+              input.readMessage(subBuilder, extensionRegistry);
+              setSearchRequest(subBuilder.buildPartial());
+              break;
+            }
+          }
+        }
+      }
+      
+      private int bitField0_;
+      
+      // required .pb_sa.SearchRequest search_request = 1;
+      private at.ac.tuwien.software.architectures.ws2012.General.SearchRequest searchRequest_ = at.ac.tuwien.software.architectures.ws2012.General.SearchRequest.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          at.ac.tuwien.software.architectures.ws2012.General.SearchRequest, at.ac.tuwien.software.architectures.ws2012.General.SearchRequest.Builder, at.ac.tuwien.software.architectures.ws2012.General.SearchRequestOrBuilder> searchRequestBuilder_;
+      public boolean hasSearchRequest() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      public at.ac.tuwien.software.architectures.ws2012.General.SearchRequest getSearchRequest() {
+        if (searchRequestBuilder_ == null) {
+          return searchRequest_;
+        } else {
+          return searchRequestBuilder_.getMessage();
+        }
+      }
+      public Builder setSearchRequest(at.ac.tuwien.software.architectures.ws2012.General.SearchRequest value) {
+        if (searchRequestBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          searchRequest_ = value;
+          onChanged();
+        } else {
+          searchRequestBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      public Builder setSearchRequest(
+          at.ac.tuwien.software.architectures.ws2012.General.SearchRequest.Builder builderForValue) {
+        if (searchRequestBuilder_ == null) {
+          searchRequest_ = builderForValue.build();
+          onChanged();
+        } else {
+          searchRequestBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      public Builder mergeSearchRequest(at.ac.tuwien.software.architectures.ws2012.General.SearchRequest value) {
+        if (searchRequestBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001) &&
+              searchRequest_ != at.ac.tuwien.software.architectures.ws2012.General.SearchRequest.getDefaultInstance()) {
+            searchRequest_ =
+              at.ac.tuwien.software.architectures.ws2012.General.SearchRequest.newBuilder(searchRequest_).mergeFrom(value).buildPartial();
+          } else {
+            searchRequest_ = value;
+          }
+          onChanged();
+        } else {
+          searchRequestBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      public Builder clearSearchRequest() {
+        if (searchRequestBuilder_ == null) {
+          searchRequest_ = at.ac.tuwien.software.architectures.ws2012.General.SearchRequest.getDefaultInstance();
+          onChanged();
+        } else {
+          searchRequestBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+      public at.ac.tuwien.software.architectures.ws2012.General.SearchRequest.Builder getSearchRequestBuilder() {
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return getSearchRequestFieldBuilder().getBuilder();
+      }
+      public at.ac.tuwien.software.architectures.ws2012.General.SearchRequestOrBuilder getSearchRequestOrBuilder() {
+        if (searchRequestBuilder_ != null) {
+          return searchRequestBuilder_.getMessageOrBuilder();
+        } else {
+          return searchRequest_;
+        }
+      }
+      private com.google.protobuf.SingleFieldBuilder<
+          at.ac.tuwien.software.architectures.ws2012.General.SearchRequest, at.ac.tuwien.software.architectures.ws2012.General.SearchRequest.Builder, at.ac.tuwien.software.architectures.ws2012.General.SearchRequestOrBuilder> 
+          getSearchRequestFieldBuilder() {
+        if (searchRequestBuilder_ == null) {
+          searchRequestBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              at.ac.tuwien.software.architectures.ws2012.General.SearchRequest, at.ac.tuwien.software.architectures.ws2012.General.SearchRequest.Builder, at.ac.tuwien.software.architectures.ws2012.General.SearchRequestOrBuilder>(
+                  searchRequest_,
+                  getParentForChildren(),
+                  isClean());
+          searchRequest_ = null;
+        }
+        return searchRequestBuilder_;
+      }
+      
+      // @@protoc_insertion_point(builder_scope:pb_sa.SearchUnsuccesfulRequest)
+    }
+    
+    static {
+      defaultInstance = new SearchUnsuccesfulRequest(true);
+      defaultInstance.initFields();
+    }
+    
+    // @@protoc_insertion_point(class_scope:pb_sa.SearchUnsuccesfulRequest)
+  }
+  
+  public interface SearchDeniedRequestOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+    
+    // required .pb_sa.SearchRequest search_request = 1;
+    boolean hasSearchRequest();
+    at.ac.tuwien.software.architectures.ws2012.General.SearchRequest getSearchRequest();
+    at.ac.tuwien.software.architectures.ws2012.General.SearchRequestOrBuilder getSearchRequestOrBuilder();
+  }
+  public static final class SearchDeniedRequest extends
+      com.google.protobuf.GeneratedMessage
+      implements SearchDeniedRequestOrBuilder {
+    // Use SearchDeniedRequest.newBuilder() to construct.
+    private SearchDeniedRequest(Builder builder) {
+      super(builder);
+    }
+    private SearchDeniedRequest(boolean noInit) {}
+    
+    private static final SearchDeniedRequest defaultInstance;
+    public static SearchDeniedRequest getDefaultInstance() {
+      return defaultInstance;
+    }
+    
+    public SearchDeniedRequest getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+    
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return at.ac.tuwien.software.architectures.ws2012.Peer.internal_static_pb_sa_SearchDeniedRequest_descriptor;
+    }
+    
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return at.ac.tuwien.software.architectures.ws2012.Peer.internal_static_pb_sa_SearchDeniedRequest_fieldAccessorTable;
+    }
+    
+    private int bitField0_;
+    // required .pb_sa.SearchRequest search_request = 1;
+    public static final int SEARCH_REQUEST_FIELD_NUMBER = 1;
+    private at.ac.tuwien.software.architectures.ws2012.General.SearchRequest searchRequest_;
+    public boolean hasSearchRequest() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    public at.ac.tuwien.software.architectures.ws2012.General.SearchRequest getSearchRequest() {
+      return searchRequest_;
+    }
+    public at.ac.tuwien.software.architectures.ws2012.General.SearchRequestOrBuilder getSearchRequestOrBuilder() {
+      return searchRequest_;
+    }
+    
+    private void initFields() {
+      searchRequest_ = at.ac.tuwien.software.architectures.ws2012.General.SearchRequest.getDefaultInstance();
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+      
+      if (!hasSearchRequest()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!getSearchRequest().isInitialized()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+    
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeMessage(1, searchRequest_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+    
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+    
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, searchRequest_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+    
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+    
+    public static at.ac.tuwien.software.architectures.ws2012.Peer.SearchDeniedRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data).buildParsed();
+    }
+    public static at.ac.tuwien.software.architectures.ws2012.Peer.SearchDeniedRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
+    }
+    public static at.ac.tuwien.software.architectures.ws2012.Peer.SearchDeniedRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data).buildParsed();
+    }
+    public static at.ac.tuwien.software.architectures.ws2012.Peer.SearchDeniedRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
+    }
+    public static at.ac.tuwien.software.architectures.ws2012.Peer.SearchDeniedRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input).buildParsed();
+    }
+    public static at.ac.tuwien.software.architectures.ws2012.Peer.SearchDeniedRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
+    }
+    public static at.ac.tuwien.software.architectures.ws2012.Peer.SearchDeniedRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
+    }
+    public static at.ac.tuwien.software.architectures.ws2012.Peer.SearchDeniedRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
+    }
+    public static at.ac.tuwien.software.architectures.ws2012.Peer.SearchDeniedRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input).buildParsed();
+    }
+    public static at.ac.tuwien.software.architectures.ws2012.Peer.SearchDeniedRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
+    }
+    
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(at.ac.tuwien.software.architectures.ws2012.Peer.SearchDeniedRequest prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+    
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements at.ac.tuwien.software.architectures.ws2012.Peer.SearchDeniedRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return at.ac.tuwien.software.architectures.ws2012.Peer.internal_static_pb_sa_SearchDeniedRequest_descriptor;
+      }
+      
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return at.ac.tuwien.software.architectures.ws2012.Peer.internal_static_pb_sa_SearchDeniedRequest_fieldAccessorTable;
+      }
+      
+      // Construct using at.ac.tuwien.software.architectures.ws2012.Peer.SearchDeniedRequest.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+      
+      private Builder(BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getSearchRequestFieldBuilder();
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+      
+      public Builder clear() {
+        super.clear();
+        if (searchRequestBuilder_ == null) {
+          searchRequest_ = at.ac.tuwien.software.architectures.ws2012.General.SearchRequest.getDefaultInstance();
+        } else {
+          searchRequestBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+      
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+      
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return at.ac.tuwien.software.architectures.ws2012.Peer.SearchDeniedRequest.getDescriptor();
+      }
+      
+      public at.ac.tuwien.software.architectures.ws2012.Peer.SearchDeniedRequest getDefaultInstanceForType() {
+        return at.ac.tuwien.software.architectures.ws2012.Peer.SearchDeniedRequest.getDefaultInstance();
+      }
+      
+      public at.ac.tuwien.software.architectures.ws2012.Peer.SearchDeniedRequest build() {
+        at.ac.tuwien.software.architectures.ws2012.Peer.SearchDeniedRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+      
+      private at.ac.tuwien.software.architectures.ws2012.Peer.SearchDeniedRequest buildParsed()
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        at.ac.tuwien.software.architectures.ws2012.Peer.SearchDeniedRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(
+            result).asInvalidProtocolBufferException();
+        }
+        return result;
+      }
+      
+      public at.ac.tuwien.software.architectures.ws2012.Peer.SearchDeniedRequest buildPartial() {
+        at.ac.tuwien.software.architectures.ws2012.Peer.SearchDeniedRequest result = new at.ac.tuwien.software.architectures.ws2012.Peer.SearchDeniedRequest(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        if (searchRequestBuilder_ == null) {
+          result.searchRequest_ = searchRequest_;
+        } else {
+          result.searchRequest_ = searchRequestBuilder_.build();
+        }
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+      
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof at.ac.tuwien.software.architectures.ws2012.Peer.SearchDeniedRequest) {
+          return mergeFrom((at.ac.tuwien.software.architectures.ws2012.Peer.SearchDeniedRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+      
+      public Builder mergeFrom(at.ac.tuwien.software.architectures.ws2012.Peer.SearchDeniedRequest other) {
+        if (other == at.ac.tuwien.software.architectures.ws2012.Peer.SearchDeniedRequest.getDefaultInstance()) return this;
+        if (other.hasSearchRequest()) {
+          mergeSearchRequest(other.getSearchRequest());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+      
+      public final boolean isInitialized() {
+        if (!hasSearchRequest()) {
+          
+          return false;
+        }
+        if (!getSearchRequest().isInitialized()) {
+          
+          return false;
+        }
+        return true;
+      }
+      
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder(
+            this.getUnknownFields());
+        while (true) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              this.setUnknownFields(unknownFields.build());
+              onChanged();
+              return this;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                this.setUnknownFields(unknownFields.build());
+                onChanged();
+                return this;
+              }
+              break;
+            }
+            case 10: {
+              at.ac.tuwien.software.architectures.ws2012.General.SearchRequest.Builder subBuilder = at.ac.tuwien.software.architectures.ws2012.General.SearchRequest.newBuilder();
+              if (hasSearchRequest()) {
+                subBuilder.mergeFrom(getSearchRequest());
+              }
+              input.readMessage(subBuilder, extensionRegistry);
+              setSearchRequest(subBuilder.buildPartial());
+              break;
+            }
+          }
+        }
+      }
+      
+      private int bitField0_;
+      
+      // required .pb_sa.SearchRequest search_request = 1;
+      private at.ac.tuwien.software.architectures.ws2012.General.SearchRequest searchRequest_ = at.ac.tuwien.software.architectures.ws2012.General.SearchRequest.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          at.ac.tuwien.software.architectures.ws2012.General.SearchRequest, at.ac.tuwien.software.architectures.ws2012.General.SearchRequest.Builder, at.ac.tuwien.software.architectures.ws2012.General.SearchRequestOrBuilder> searchRequestBuilder_;
+      public boolean hasSearchRequest() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      public at.ac.tuwien.software.architectures.ws2012.General.SearchRequest getSearchRequest() {
+        if (searchRequestBuilder_ == null) {
+          return searchRequest_;
+        } else {
+          return searchRequestBuilder_.getMessage();
+        }
+      }
+      public Builder setSearchRequest(at.ac.tuwien.software.architectures.ws2012.General.SearchRequest value) {
+        if (searchRequestBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          searchRequest_ = value;
+          onChanged();
+        } else {
+          searchRequestBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      public Builder setSearchRequest(
+          at.ac.tuwien.software.architectures.ws2012.General.SearchRequest.Builder builderForValue) {
+        if (searchRequestBuilder_ == null) {
+          searchRequest_ = builderForValue.build();
+          onChanged();
+        } else {
+          searchRequestBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      public Builder mergeSearchRequest(at.ac.tuwien.software.architectures.ws2012.General.SearchRequest value) {
+        if (searchRequestBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001) &&
+              searchRequest_ != at.ac.tuwien.software.architectures.ws2012.General.SearchRequest.getDefaultInstance()) {
+            searchRequest_ =
+              at.ac.tuwien.software.architectures.ws2012.General.SearchRequest.newBuilder(searchRequest_).mergeFrom(value).buildPartial();
+          } else {
+            searchRequest_ = value;
+          }
+          onChanged();
+        } else {
+          searchRequestBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      public Builder clearSearchRequest() {
+        if (searchRequestBuilder_ == null) {
+          searchRequest_ = at.ac.tuwien.software.architectures.ws2012.General.SearchRequest.getDefaultInstance();
+          onChanged();
+        } else {
+          searchRequestBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+      public at.ac.tuwien.software.architectures.ws2012.General.SearchRequest.Builder getSearchRequestBuilder() {
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return getSearchRequestFieldBuilder().getBuilder();
+      }
+      public at.ac.tuwien.software.architectures.ws2012.General.SearchRequestOrBuilder getSearchRequestOrBuilder() {
+        if (searchRequestBuilder_ != null) {
+          return searchRequestBuilder_.getMessageOrBuilder();
+        } else {
+          return searchRequest_;
+        }
+      }
+      private com.google.protobuf.SingleFieldBuilder<
+          at.ac.tuwien.software.architectures.ws2012.General.SearchRequest, at.ac.tuwien.software.architectures.ws2012.General.SearchRequest.Builder, at.ac.tuwien.software.architectures.ws2012.General.SearchRequestOrBuilder> 
+          getSearchRequestFieldBuilder() {
+        if (searchRequestBuilder_ == null) {
+          searchRequestBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              at.ac.tuwien.software.architectures.ws2012.General.SearchRequest, at.ac.tuwien.software.architectures.ws2012.General.SearchRequest.Builder, at.ac.tuwien.software.architectures.ws2012.General.SearchRequestOrBuilder>(
+                  searchRequest_,
+                  getParentForChildren(),
+                  isClean());
+          searchRequest_ = null;
+        }
+        return searchRequestBuilder_;
+      }
+      
+      // @@protoc_insertion_point(builder_scope:pb_sa.SearchDeniedRequest)
+    }
+    
+    static {
+      defaultInstance = new SearchDeniedRequest(true);
+      defaultInstance.initFields();
+    }
+    
+    // @@protoc_insertion_point(class_scope:pb_sa.SearchDeniedRequest)
   }
   
   public interface MonitoringGetPeersRequestOrBuilder
@@ -4143,6 +5026,30 @@ public final class Peer {
           .newFileScopedGeneratedExtension(
         at.ac.tuwien.software.architectures.ws2012.Peer.SearchSuccesful.class,
         at.ac.tuwien.software.architectures.ws2012.Peer.SearchSuccesful.getDefaultInstance());
+  public static final int CLIENT_SEARCH_REQUEST_FIELD_NUMBER = 105;
+  public static final
+    com.google.protobuf.GeneratedMessage.GeneratedExtension<
+      at.ac.tuwien.software.architectures.ws2012.General.Request,
+      at.ac.tuwien.software.architectures.ws2012.General.ClientSearchRequest> clientSearchRequest = com.google.protobuf.GeneratedMessage
+          .newFileScopedGeneratedExtension(
+        at.ac.tuwien.software.architectures.ws2012.General.ClientSearchRequest.class,
+        at.ac.tuwien.software.architectures.ws2012.General.ClientSearchRequest.getDefaultInstance());
+  public static final int SEARCH_UNSUCCESFUL_REQUEST_FIELD_NUMBER = 106;
+  public static final
+    com.google.protobuf.GeneratedMessage.GeneratedExtension<
+      at.ac.tuwien.software.architectures.ws2012.General.Request,
+      at.ac.tuwien.software.architectures.ws2012.Peer.SearchUnsuccesfulRequest> searchUnsuccesfulRequest = com.google.protobuf.GeneratedMessage
+          .newFileScopedGeneratedExtension(
+        at.ac.tuwien.software.architectures.ws2012.Peer.SearchUnsuccesfulRequest.class,
+        at.ac.tuwien.software.architectures.ws2012.Peer.SearchUnsuccesfulRequest.getDefaultInstance());
+  public static final int SEARCH_DENIED_REQUEST_FIELD_NUMBER = 107;
+  public static final
+    com.google.protobuf.GeneratedMessage.GeneratedExtension<
+      at.ac.tuwien.software.architectures.ws2012.General.Request,
+      at.ac.tuwien.software.architectures.ws2012.Peer.SearchDeniedRequest> searchDeniedRequest = com.google.protobuf.GeneratedMessage
+          .newFileScopedGeneratedExtension(
+        at.ac.tuwien.software.architectures.ws2012.Peer.SearchDeniedRequest.class,
+        at.ac.tuwien.software.architectures.ws2012.Peer.SearchDeniedRequest.getDefaultInstance());
   public static final int MONITORING_GET_PEERS_REQUEST_FIELD_NUMBER = 200;
   public static final
     com.google.protobuf.GeneratedMessage.GeneratedExtension<
@@ -4196,6 +5103,16 @@ public final class Peer {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_pb_sa_SearchSuccesful_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_pb_sa_SearchUnsuccesfulRequest_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_pb_sa_SearchUnsuccesfulRequest_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_pb_sa_SearchDeniedRequest_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_pb_sa_SearchDeniedRequest_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_pb_sa_MonitoringGetPeersRequest_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -4236,35 +5153,45 @@ public final class Peer {
       "\030\001 \002(\005\"\225\001\n\017SearchSuccesful\022,\n\016search_req" +
       "uest\030\001 \002(\0132\024.pb_sa.SearchRequest\022\026\n\016foun" +
       "der_peerid\030\002 \002(\005\022\030\n\020founder_clientid\030\003 \002" +
-      "(\005\022\"\n\tsong_data\030\004 \001(\0132\017.pb_sa.SongData\"\033" +
-      "\n\031MonitoringGetPeersRequest\"@\n\032Monitorin" +
-      "gGetPeersResponse\022\"\n\tpeer_data\030\001 \003(\0132\017.p",
-      "b_sa.PeerData\"$\n\"MonitoringRequestsProce" +
-      "ssedRequest\"O\n#MonitoringRequestsProcess" +
-      "edResponse\022(\n\014request_data\030\001 \003(\0132\022.pb_sa" +
-      ".RequestData\"y\n\013RequestData\022,\n\016search_re" +
-      "quest\030\001 \002(\0132\024.pb_sa.SearchRequest\022*\n\rsea" +
-      "rch_status\030\002 \002(\0162\023.pb_sa.SearchStatus\022\020\n" +
-      "\010credited\030\003 \001(\010:H\n\025are_you_alive_request" +
-      "\022\016.pb_sa.Request\030d \001(\0132\031.pb_sa.AreYouAli" +
-      "veRequest:J\n\026are_you_alive_response\022\016.pb" +
-      "_sa.Request\030e \001(\0132\032.pb_sa.AreYouAliveRes",
-      "ponse:<\n\016search_request\022\016.pb_sa.Request\030" +
-      "f \001(\0132\024.pb_sa.SearchRequest:8\n\014search_ab" +
-      "ort\022\016.pb_sa.Request\030g \001(\0132\022.pb_sa.Search" +
-      "Abort:@\n\020search_succesful\022\016.pb_sa.Reques" +
-      "t\030h \001(\0132\026.pb_sa.SearchSuccesful:W\n\034monit" +
-      "oring_get_peers_request\022\016.pb_sa.Request\030" +
-      "\310\001 \001(\0132 .pb_sa.MonitoringGetPeersRequest" +
-      ":Y\n\035monitoring_get_peers_response\022\016.pb_s" +
-      "a.Request\030\311\001 \001(\0132!.pb_sa.MonitoringGetPe" +
-      "ersResponse:i\n%monitoring_requests_proce",
-      "ssed_request\022\016.pb_sa.Request\030\312\001 \001(\0132).pb" +
-      "_sa.MonitoringRequestsProcessedRequest:k" +
-      "\n&monitoring_requests_processed_response" +
-      "\022\016.pb_sa.Request\030\313\001 \001(\0132*.pb_sa.Monitori" +
-      "ngRequestsProcessedResponseB,\n*at.ac.tuw" +
-      "ien.software.architectures.ws2012"
+      "(\005\022\"\n\tsong_data\030\004 \001(\0132\017.pb_sa.SongData\"H" +
+      "\n\030SearchUnsuccesfulRequest\022,\n\016search_req" +
+      "uest\030\001 \002(\0132\024.pb_sa.SearchRequest\"C\n\023Sear",
+      "chDeniedRequest\022,\n\016search_request\030\001 \002(\0132" +
+      "\024.pb_sa.SearchRequest\"\033\n\031MonitoringGetPe" +
+      "ersRequest\"@\n\032MonitoringGetPeersResponse" +
+      "\022\"\n\tpeer_data\030\001 \003(\0132\017.pb_sa.PeerData\"$\n\"" +
+      "MonitoringRequestsProcessedRequest\"O\n#Mo" +
+      "nitoringRequestsProcessedResponse\022(\n\014req" +
+      "uest_data\030\001 \003(\0132\022.pb_sa.RequestData\"y\n\013R" +
+      "equestData\022,\n\016search_request\030\001 \002(\0132\024.pb_" +
+      "sa.SearchRequest\022*\n\rsearch_status\030\002 \002(\0162" +
+      "\023.pb_sa.SearchStatus\022\020\n\010credited\030\003 \001(\010:H",
+      "\n\025are_you_alive_request\022\016.pb_sa.Request\030" +
+      "d \001(\0132\031.pb_sa.AreYouAliveRequest:J\n\026are_" +
+      "you_alive_response\022\016.pb_sa.Request\030e \001(\013" +
+      "2\032.pb_sa.AreYouAliveResponse:<\n\016search_r" +
+      "equest\022\016.pb_sa.Request\030f \001(\0132\024.pb_sa.Sea" +
+      "rchRequest:8\n\014search_abort\022\016.pb_sa.Reque" +
+      "st\030g \001(\0132\022.pb_sa.SearchAbort:@\n\020search_s" +
+      "uccesful\022\016.pb_sa.Request\030h \001(\0132\026.pb_sa.S" +
+      "earchSuccesful:I\n\025client_search_request\022" +
+      "\016.pb_sa.Request\030i \001(\0132\032.pb_sa.ClientSear",
+      "chRequest:S\n\032search_unsuccesful_request\022" +
+      "\016.pb_sa.Request\030j \001(\0132\037.pb_sa.SearchUnsu" +
+      "ccesfulRequest:I\n\025search_denied_request\022" +
+      "\016.pb_sa.Request\030k \001(\0132\032.pb_sa.SearchDeni" +
+      "edRequest:W\n\034monitoring_get_peers_reques" +
+      "t\022\016.pb_sa.Request\030\310\001 \001(\0132 .pb_sa.Monitor" +
+      "ingGetPeersRequest:Y\n\035monitoring_get_pee" +
+      "rs_response\022\016.pb_sa.Request\030\311\001 \001(\0132!.pb_" +
+      "sa.MonitoringGetPeersResponse:i\n%monitor" +
+      "ing_requests_processed_request\022\016.pb_sa.R",
+      "equest\030\312\001 \001(\0132).pb_sa.MonitoringRequests" +
+      "ProcessedRequest:k\n&monitoring_requests_" +
+      "processed_response\022\016.pb_sa.Request\030\313\001 \001(" +
+      "\0132*.pb_sa.MonitoringRequestsProcessedRes" +
+      "ponseB,\n*at.ac.tuwien.software.architect" +
+      "ures.ws2012"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -4303,8 +5230,24 @@ public final class Peer {
               new java.lang.String[] { "SearchRequest", "FounderPeerid", "FounderClientid", "SongData", },
               at.ac.tuwien.software.architectures.ws2012.Peer.SearchSuccesful.class,
               at.ac.tuwien.software.architectures.ws2012.Peer.SearchSuccesful.Builder.class);
-          internal_static_pb_sa_MonitoringGetPeersRequest_descriptor =
+          internal_static_pb_sa_SearchUnsuccesfulRequest_descriptor =
             getDescriptor().getMessageTypes().get(4);
+          internal_static_pb_sa_SearchUnsuccesfulRequest_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_pb_sa_SearchUnsuccesfulRequest_descriptor,
+              new java.lang.String[] { "SearchRequest", },
+              at.ac.tuwien.software.architectures.ws2012.Peer.SearchUnsuccesfulRequest.class,
+              at.ac.tuwien.software.architectures.ws2012.Peer.SearchUnsuccesfulRequest.Builder.class);
+          internal_static_pb_sa_SearchDeniedRequest_descriptor =
+            getDescriptor().getMessageTypes().get(5);
+          internal_static_pb_sa_SearchDeniedRequest_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_pb_sa_SearchDeniedRequest_descriptor,
+              new java.lang.String[] { "SearchRequest", },
+              at.ac.tuwien.software.architectures.ws2012.Peer.SearchDeniedRequest.class,
+              at.ac.tuwien.software.architectures.ws2012.Peer.SearchDeniedRequest.Builder.class);
+          internal_static_pb_sa_MonitoringGetPeersRequest_descriptor =
+            getDescriptor().getMessageTypes().get(6);
           internal_static_pb_sa_MonitoringGetPeersRequest_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_pb_sa_MonitoringGetPeersRequest_descriptor,
@@ -4312,7 +5255,7 @@ public final class Peer {
               at.ac.tuwien.software.architectures.ws2012.Peer.MonitoringGetPeersRequest.class,
               at.ac.tuwien.software.architectures.ws2012.Peer.MonitoringGetPeersRequest.Builder.class);
           internal_static_pb_sa_MonitoringGetPeersResponse_descriptor =
-            getDescriptor().getMessageTypes().get(5);
+            getDescriptor().getMessageTypes().get(7);
           internal_static_pb_sa_MonitoringGetPeersResponse_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_pb_sa_MonitoringGetPeersResponse_descriptor,
@@ -4320,7 +5263,7 @@ public final class Peer {
               at.ac.tuwien.software.architectures.ws2012.Peer.MonitoringGetPeersResponse.class,
               at.ac.tuwien.software.architectures.ws2012.Peer.MonitoringGetPeersResponse.Builder.class);
           internal_static_pb_sa_MonitoringRequestsProcessedRequest_descriptor =
-            getDescriptor().getMessageTypes().get(6);
+            getDescriptor().getMessageTypes().get(8);
           internal_static_pb_sa_MonitoringRequestsProcessedRequest_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_pb_sa_MonitoringRequestsProcessedRequest_descriptor,
@@ -4328,7 +5271,7 @@ public final class Peer {
               at.ac.tuwien.software.architectures.ws2012.Peer.MonitoringRequestsProcessedRequest.class,
               at.ac.tuwien.software.architectures.ws2012.Peer.MonitoringRequestsProcessedRequest.Builder.class);
           internal_static_pb_sa_MonitoringRequestsProcessedResponse_descriptor =
-            getDescriptor().getMessageTypes().get(7);
+            getDescriptor().getMessageTypes().get(9);
           internal_static_pb_sa_MonitoringRequestsProcessedResponse_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_pb_sa_MonitoringRequestsProcessedResponse_descriptor,
@@ -4336,7 +5279,7 @@ public final class Peer {
               at.ac.tuwien.software.architectures.ws2012.Peer.MonitoringRequestsProcessedResponse.class,
               at.ac.tuwien.software.architectures.ws2012.Peer.MonitoringRequestsProcessedResponse.Builder.class);
           internal_static_pb_sa_RequestData_descriptor =
-            getDescriptor().getMessageTypes().get(8);
+            getDescriptor().getMessageTypes().get(10);
           internal_static_pb_sa_RequestData_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_pb_sa_RequestData_descriptor,
@@ -4348,10 +5291,13 @@ public final class Peer {
           searchRequest.internalInit(descriptor.getExtensions().get(2));
           searchAbort.internalInit(descriptor.getExtensions().get(3));
           searchSuccesful.internalInit(descriptor.getExtensions().get(4));
-          monitoringGetPeersRequest.internalInit(descriptor.getExtensions().get(5));
-          monitoringGetPeersResponse.internalInit(descriptor.getExtensions().get(6));
-          monitoringRequestsProcessedRequest.internalInit(descriptor.getExtensions().get(7));
-          monitoringRequestsProcessedResponse.internalInit(descriptor.getExtensions().get(8));
+          clientSearchRequest.internalInit(descriptor.getExtensions().get(5));
+          searchUnsuccesfulRequest.internalInit(descriptor.getExtensions().get(6));
+          searchDeniedRequest.internalInit(descriptor.getExtensions().get(7));
+          monitoringGetPeersRequest.internalInit(descriptor.getExtensions().get(8));
+          monitoringGetPeersResponse.internalInit(descriptor.getExtensions().get(9));
+          monitoringRequestsProcessedRequest.internalInit(descriptor.getExtensions().get(10));
+          monitoringRequestsProcessedResponse.internalInit(descriptor.getExtensions().get(11));
           return null;
         }
       };

@@ -2642,6 +2642,11 @@ public final class Server {
     // required .pb_sa.ValidateSearchStatus search_status = 1;
     boolean hasSearchStatus();
     at.ac.tuwien.software.architectures.ws2012.General.ValidateSearchStatus getSearchStatus();
+    
+    // required .pb_sa.SearchRequest search_request = 2;
+    boolean hasSearchRequest();
+    at.ac.tuwien.software.architectures.ws2012.General.SearchRequest getSearchRequest();
+    at.ac.tuwien.software.architectures.ws2012.General.SearchRequestOrBuilder getSearchRequestOrBuilder();
   }
   public static final class ValidateSearchResponse extends
       com.google.protobuf.GeneratedMessage
@@ -2682,8 +2687,22 @@ public final class Server {
       return searchStatus_;
     }
     
+    // required .pb_sa.SearchRequest search_request = 2;
+    public static final int SEARCH_REQUEST_FIELD_NUMBER = 2;
+    private at.ac.tuwien.software.architectures.ws2012.General.SearchRequest searchRequest_;
+    public boolean hasSearchRequest() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    public at.ac.tuwien.software.architectures.ws2012.General.SearchRequest getSearchRequest() {
+      return searchRequest_;
+    }
+    public at.ac.tuwien.software.architectures.ws2012.General.SearchRequestOrBuilder getSearchRequestOrBuilder() {
+      return searchRequest_;
+    }
+    
     private void initFields() {
       searchStatus_ = at.ac.tuwien.software.architectures.ws2012.General.ValidateSearchStatus.SEARCH_OK;
+      searchRequest_ = at.ac.tuwien.software.architectures.ws2012.General.SearchRequest.getDefaultInstance();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -2691,6 +2710,14 @@ public final class Server {
       if (isInitialized != -1) return isInitialized == 1;
       
       if (!hasSearchStatus()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasSearchRequest()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!getSearchRequest().isInitialized()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -2704,6 +2731,9 @@ public final class Server {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         output.writeEnum(1, searchStatus_.getNumber());
       }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeMessage(2, searchRequest_);
+      }
       getUnknownFields().writeTo(output);
     }
     
@@ -2716,6 +2746,10 @@ public final class Server {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(1, searchStatus_.getNumber());
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, searchRequest_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -2833,6 +2867,7 @@ public final class Server {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getSearchRequestFieldBuilder();
         }
       }
       private static Builder create() {
@@ -2843,6 +2878,12 @@ public final class Server {
         super.clear();
         searchStatus_ = at.ac.tuwien.software.architectures.ws2012.General.ValidateSearchStatus.SEARCH_OK;
         bitField0_ = (bitField0_ & ~0x00000001);
+        if (searchRequestBuilder_ == null) {
+          searchRequest_ = at.ac.tuwien.software.architectures.ws2012.General.SearchRequest.getDefaultInstance();
+        } else {
+          searchRequestBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
       
@@ -2885,6 +2926,14 @@ public final class Server {
           to_bitField0_ |= 0x00000001;
         }
         result.searchStatus_ = searchStatus_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        if (searchRequestBuilder_ == null) {
+          result.searchRequest_ = searchRequest_;
+        } else {
+          result.searchRequest_ = searchRequestBuilder_.build();
+        }
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -2904,12 +2953,23 @@ public final class Server {
         if (other.hasSearchStatus()) {
           setSearchStatus(other.getSearchStatus());
         }
+        if (other.hasSearchRequest()) {
+          mergeSearchRequest(other.getSearchRequest());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
       
       public final boolean isInitialized() {
         if (!hasSearchStatus()) {
+          
+          return false;
+        }
+        if (!hasSearchRequest()) {
+          
+          return false;
+        }
+        if (!getSearchRequest().isInitialized()) {
           
           return false;
         }
@@ -2950,6 +3010,15 @@ public final class Server {
               }
               break;
             }
+            case 18: {
+              at.ac.tuwien.software.architectures.ws2012.General.SearchRequest.Builder subBuilder = at.ac.tuwien.software.architectures.ws2012.General.SearchRequest.newBuilder();
+              if (hasSearchRequest()) {
+                subBuilder.mergeFrom(getSearchRequest());
+              }
+              input.readMessage(subBuilder, extensionRegistry);
+              setSearchRequest(subBuilder.buildPartial());
+              break;
+            }
           }
         }
       }
@@ -2978,6 +3047,96 @@ public final class Server {
         searchStatus_ = at.ac.tuwien.software.architectures.ws2012.General.ValidateSearchStatus.SEARCH_OK;
         onChanged();
         return this;
+      }
+      
+      // required .pb_sa.SearchRequest search_request = 2;
+      private at.ac.tuwien.software.architectures.ws2012.General.SearchRequest searchRequest_ = at.ac.tuwien.software.architectures.ws2012.General.SearchRequest.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          at.ac.tuwien.software.architectures.ws2012.General.SearchRequest, at.ac.tuwien.software.architectures.ws2012.General.SearchRequest.Builder, at.ac.tuwien.software.architectures.ws2012.General.SearchRequestOrBuilder> searchRequestBuilder_;
+      public boolean hasSearchRequest() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      public at.ac.tuwien.software.architectures.ws2012.General.SearchRequest getSearchRequest() {
+        if (searchRequestBuilder_ == null) {
+          return searchRequest_;
+        } else {
+          return searchRequestBuilder_.getMessage();
+        }
+      }
+      public Builder setSearchRequest(at.ac.tuwien.software.architectures.ws2012.General.SearchRequest value) {
+        if (searchRequestBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          searchRequest_ = value;
+          onChanged();
+        } else {
+          searchRequestBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000002;
+        return this;
+      }
+      public Builder setSearchRequest(
+          at.ac.tuwien.software.architectures.ws2012.General.SearchRequest.Builder builderForValue) {
+        if (searchRequestBuilder_ == null) {
+          searchRequest_ = builderForValue.build();
+          onChanged();
+        } else {
+          searchRequestBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000002;
+        return this;
+      }
+      public Builder mergeSearchRequest(at.ac.tuwien.software.architectures.ws2012.General.SearchRequest value) {
+        if (searchRequestBuilder_ == null) {
+          if (((bitField0_ & 0x00000002) == 0x00000002) &&
+              searchRequest_ != at.ac.tuwien.software.architectures.ws2012.General.SearchRequest.getDefaultInstance()) {
+            searchRequest_ =
+              at.ac.tuwien.software.architectures.ws2012.General.SearchRequest.newBuilder(searchRequest_).mergeFrom(value).buildPartial();
+          } else {
+            searchRequest_ = value;
+          }
+          onChanged();
+        } else {
+          searchRequestBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000002;
+        return this;
+      }
+      public Builder clearSearchRequest() {
+        if (searchRequestBuilder_ == null) {
+          searchRequest_ = at.ac.tuwien.software.architectures.ws2012.General.SearchRequest.getDefaultInstance();
+          onChanged();
+        } else {
+          searchRequestBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000002);
+        return this;
+      }
+      public at.ac.tuwien.software.architectures.ws2012.General.SearchRequest.Builder getSearchRequestBuilder() {
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return getSearchRequestFieldBuilder().getBuilder();
+      }
+      public at.ac.tuwien.software.architectures.ws2012.General.SearchRequestOrBuilder getSearchRequestOrBuilder() {
+        if (searchRequestBuilder_ != null) {
+          return searchRequestBuilder_.getMessageOrBuilder();
+        } else {
+          return searchRequest_;
+        }
+      }
+      private com.google.protobuf.SingleFieldBuilder<
+          at.ac.tuwien.software.architectures.ws2012.General.SearchRequest, at.ac.tuwien.software.architectures.ws2012.General.SearchRequest.Builder, at.ac.tuwien.software.architectures.ws2012.General.SearchRequestOrBuilder> 
+          getSearchRequestFieldBuilder() {
+        if (searchRequestBuilder_ == null) {
+          searchRequestBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              at.ac.tuwien.software.architectures.ws2012.General.SearchRequest, at.ac.tuwien.software.architectures.ws2012.General.SearchRequest.Builder, at.ac.tuwien.software.architectures.ws2012.General.SearchRequestOrBuilder>(
+                  searchRequest_,
+                  getParentForChildren(),
+                  isClean());
+          searchRequest_ = null;
+        }
+        return searchRequestBuilder_;
       }
       
       // @@protoc_insertion_point(builder_scope:pb_sa.ValidateSearchResponse)
@@ -3101,23 +3260,24 @@ public final class Server {
       "PeerData\"+\n\017PeerDeadRequest\022\030\n\020destinati" +
       "on_peer\030\001 \002(\t\"E\n\025ValidateSearchRequest\022," +
       "\n\016search_request\030\001 \002(\0132\024.pb_sa.SearchReq",
-      "uest\"L\n\026ValidateSearchResponse\0222\n\rsearch" +
+      "uest\"z\n\026ValidateSearchResponse\0222\n\rsearch" +
       "_status\030\001 \002(\0162\033.pb_sa.ValidateSearchStat" +
-      "us:J\n\025register_peer_request\022\016.pb_sa.Requ" +
-      "est\030\254\002 \001(\0132\032.pb_sa.RegisterPeerRequest:L" +
-      "\n\026register_peer_response\022\016.pb_sa.Request" +
-      "\030\255\002 \001(\0132\033.pb_sa.RegisterPeerResponse:C\n\021" +
-      "bootstrap_request\022\016.pb_sa.Request\030\256\002 \001(\013" +
-      "2\027.pb_sa.BootstrapRequest:E\n\022bootstrap_r" +
-      "esponse\022\016.pb_sa.Request\030\257\002 \001(\0132\030.pb_sa.B" +
-      "ootstrapResponse:B\n\021peer_dead_request\022\016.",
-      "pb_sa.Request\030\260\002 \001(\0132\026.pb_sa.PeerDeadReq" +
-      "uest:N\n\027validate_search_request\022\016.pb_sa." +
-      "Request\030\261\002 \001(\0132\034.pb_sa.ValidateSearchReq" +
-      "uest:P\n\030validate_search_response\022\016.pb_sa" +
-      ".Request\030\262\002 \001(\0132\035.pb_sa.ValidateSearchRe" +
-      "sponseB,\n*at.ac.tuwien.software.architec" +
-      "tures.ws2012"
+      "us\022,\n\016search_request\030\002 \002(\0132\024.pb_sa.Searc" +
+      "hRequest:J\n\025register_peer_request\022\016.pb_s" +
+      "a.Request\030\254\002 \001(\0132\032.pb_sa.RegisterPeerReq" +
+      "uest:L\n\026register_peer_response\022\016.pb_sa.R" +
+      "equest\030\255\002 \001(\0132\033.pb_sa.RegisterPeerRespon" +
+      "se:C\n\021bootstrap_request\022\016.pb_sa.Request\030" +
+      "\256\002 \001(\0132\027.pb_sa.BootstrapRequest:E\n\022boots" +
+      "trap_response\022\016.pb_sa.Request\030\257\002 \001(\0132\030.p",
+      "b_sa.BootstrapResponse:B\n\021peer_dead_requ" +
+      "est\022\016.pb_sa.Request\030\260\002 \001(\0132\026.pb_sa.PeerD" +
+      "eadRequest:N\n\027validate_search_request\022\016." +
+      "pb_sa.Request\030\261\002 \001(\0132\034.pb_sa.ValidateSea" +
+      "rchRequest:P\n\030validate_search_response\022\016" +
+      ".pb_sa.Request\030\262\002 \001(\0132\035.pb_sa.ValidateSe" +
+      "archResponseB,\n*at.ac.tuwien.software.ar" +
+      "chitectures.ws2012"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -3177,7 +3337,7 @@ public final class Server {
           internal_static_pb_sa_ValidateSearchResponse_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_pb_sa_ValidateSearchResponse_descriptor,
-              new java.lang.String[] { "SearchStatus", },
+              new java.lang.String[] { "SearchStatus", "SearchRequest", },
               at.ac.tuwien.software.architectures.ws2012.Server.ValidateSearchResponse.class,
               at.ac.tuwien.software.architectures.ws2012.Server.ValidateSearchResponse.Builder.class);
           registerPeerRequest.internalInit(descriptor.getExtensions().get(0));

@@ -36,6 +36,8 @@ public class Peer {
 		int numOfWorkers=3;
 		
 		int refreshPeriod=10000;
+		int hopsToLive=3;
+		int clientID=100;
 		
 		String serverAddress=String.format("%s:%d", serverIP, serverPort);
 		String localIP=GetLocalIP();
@@ -48,7 +50,7 @@ public class Peer {
 		
 		List<PeerWorker> workers=new ArrayList<PeerWorker>();
 		ConnectionManager manager= new ConnectionManager(port, inqueue, outqueue, false);
-		PeerManager peerManager= new PeerManager(outqueue, serverAddress, numberOfPeers, musicFolder, localaddress, manager);
+		PeerManager peerManager= new PeerManager(outqueue, serverAddress, numberOfPeers, musicFolder, localaddress, manager, hopsToLive, clientID);
 		manager.peerManager=peerManager;
 		
 		PeerJobRunner runner=new PeerJobRunner(manager, peerManager, refreshPeriod);

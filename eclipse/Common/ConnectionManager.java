@@ -2,12 +2,19 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.util.Collection;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import org.apache.log4j.Logger;
 
 import at.ac.tuwien.software.architectures.ws2012.General.Request;
+import at.ac.tuwien.software.architectures.ws2012.General.RequestType;
+import at.ac.tuwien.software.architectures.ws2012.General.ValidateSearchStatus;
+import at.ac.tuwien.software.architectures.ws2012.Server;
+import at.ac.tuwien.software.architectures.ws2012.Server.ValidateSearchRequest;
+import at.ac.tuwien.software.architectures.ws2012.Server.ValidateSearchResponse;
 
 public class ConnectionManager extends Thread {
 	static Logger log=Logger.getLogger(ConnectionManager.class.toString());
@@ -138,5 +145,19 @@ public class ConnectionManager extends Thread {
 			return;
 		peerManager.reportDead(name, listenaddr);
 		
+	}
+
+	public void sendToPeers(Request peersearch) {
+		Collection<Connection> connections=connectionMap.values();
+		Iterator<Connection> it=connections.iterator();
+		while(it.hasNext())
+		{
+			Connection c=it.next();
+			if (!c.server_connection && !c.client_connection)
+			{
+				log.info(String.format("forwarding search to %s", c.actualAddress));
+				outqueue.addElement(new AddressedRequest(peersearch, c.actualAddress, false));
+			}
+		}
 	}
 }

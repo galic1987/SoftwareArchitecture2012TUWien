@@ -39,9 +39,15 @@ public class PeerWorker extends Thread {
 			case ARE_YOU_ALIVE_RESPONSE:
 				peerManager.AreYouAliveResponse(req);
 				break;
+			case CLIENT_SEARCH_REQUEST:
+				manager.GetConnection(req.address).client_connection=true;
+				peerManager.ClientSearchRequest(req);
+				break;
+			case VALIDATE_SEARCH_RESPONSE:
+				peerManager.ValidateSearchResponse(req);
+				break;
 			case SEARCH_REQUEST:
-				SearchRequest search=req.req.getExtension(Peer.searchRequest);
-				int clientid = search.getClientid();
+				peerManager.SearchRequest(req);
 				break;
 			case SEARCH_ABORT:
 				break;
