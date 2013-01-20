@@ -10,6 +10,7 @@ import music.MusicLibrary;
 import org.apache.log4j.Logger;
 import org.omg.CORBA.DATA_CONVERSION;
 
+import ac.at.tuwien.infosys.swa.audio.Fingerprint;
 import at.ac.tuwien.software.architectures.ws2012.General;
 import at.ac.tuwien.software.architectures.ws2012.General.PeerData;
 import at.ac.tuwien.software.architectures.ws2012.General.PeerRegistrationStatus;
