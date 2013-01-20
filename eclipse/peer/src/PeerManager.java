@@ -1,4 +1,3 @@
-import java.net.Authenticator.RequestorType;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -9,29 +8,28 @@ import music.IMusicLibrary;
 import music.MusicLibrary;
 
 import org.apache.log4j.Logger;
+import org.omg.CORBA.DATA_CONVERSION;
 
-import com.google.protobuf.ByteString;
-
-import ac.at.tuwien.infosys.swa.audio.Fingerprint;
+import at.ac.tuwien.software.architectures.ws2012.General;
 import at.ac.tuwien.software.architectures.ws2012.General.PeerData;
 import at.ac.tuwien.software.architectures.ws2012.General.PeerRegistrationStatus;
 import at.ac.tuwien.software.architectures.ws2012.General.Request;
 import at.ac.tuwien.software.architectures.ws2012.General.RequestType;
 import at.ac.tuwien.software.architectures.ws2012.General.SearchRequest;
-import at.ac.tuwien.software.architectures.ws2012.General.SearchStatus;
 import at.ac.tuwien.software.architectures.ws2012.General.SongData;
 import at.ac.tuwien.software.architectures.ws2012.General.ValidateSearchStatus;
+import at.ac.tuwien.software.architectures.ws2012.Peer;
 import at.ac.tuwien.software.architectures.ws2012.Peer.AreYouAliveRequest;
 import at.ac.tuwien.software.architectures.ws2012.Peer.SearchDeniedRequest;
-import at.ac.tuwien.software.architectures.ws2012.General;
 import at.ac.tuwien.software.architectures.ws2012.Peer.SearchSuccesful;
 import at.ac.tuwien.software.architectures.ws2012.Peer.SearchUnsuccesfulRequest;
 import at.ac.tuwien.software.architectures.ws2012.Server;
-import at.ac.tuwien.software.architectures.ws2012.Peer;
 import at.ac.tuwien.software.architectures.ws2012.Server.BootstrapRequest;
 import at.ac.tuwien.software.architectures.ws2012.Server.PeerDeadRequest;
 import at.ac.tuwien.software.architectures.ws2012.Server.RegisterPeerResponse;
 import at.ac.tuwien.software.architectures.ws2012.Server.ValidateSearchRequest;
+
+import com.google.protobuf.ByteString;
 
 
 public class PeerManager {
@@ -272,10 +270,16 @@ public class PeerManager {
 				setExtension(Peer.searchSuccesful, success).
 				build();	
 		
+		SearchData data=searchMap.remove(search.getFingerprint());
+		
+		
 		outqueue.addElement(new AddressedRequest(found, serverAddress, true));
-		//we do not notify ourselves
+		
+		//if original peer, send to client, otherwise, send to original peer
 		if (!search.getOriginalPeer().equals(listenAddress))
 			outqueue.addElement(new AddressedRequest(found, search.getOriginalPeer(), false));
+		else
+			outqueue.addElement(new AddressedRequest(found, data.clientAddress, false));
 	}
 	
 	public void HandleMusicNotFound(SearchRequest search)
@@ -290,12 +294,16 @@ public class PeerManager {
 				setTimestamp((new Date()).getTime()).
 				setExtension(Peer.searchUnsuccesfulRequest, unsuccess).
 				build();	
+
+		SearchData data=searchMap.remove(search.getFingerprint());
 		
 		outqueue.addElement(new AddressedRequest(notfound, serverAddress, true));
 
-		//if we are the original peer, we do not send notification to ourselves
+		//if original peer, send to client, otherwise, send to original peer
 		if (!search.getOriginalPeer().contentEquals(listenAddress))
-		outqueue.addElement(new AddressedRequest(notfound, search.getOriginalPeer(), false));
+			outqueue.addElement(new AddressedRequest(notfound, search.getOriginalPeer(), false));
+		else
+			outqueue.addElement(new AddressedRequest(notfound, data.clientAddress, false));
 	}
 	
 	public String addSong(String song){
@@ -309,5 +317,27 @@ public class PeerManager {
 	
 	public void updateMusicLibrary(){
 		musicLib.updateLibrary();
+	}
+
+	public void searchSuccessful(AddressedRequest req) {
+		Request request=req.req;
+		SearchSuccesful success=request.getExtension(Peer.searchSuccesful);
+		
+		SearchData data=searchMap.remove(success.getSearchRequest().getFingerprint());
+		
+		Request clientResponse=Request.newBuilder().setRequestId(++reqid).setRequestType(RequestType.SEARCH_SUCCESFULL).setExtension(Peer.searchSuccesful, success).build();
+		
+		outqueue.addElement(new AddressedRequest(clientResponse, data.clientAddress, false));
+	}
+
+	public void searchUnsuccessful(AddressedRequest req) {
+		Request request=req.req;
+		SearchUnsuccesfulRequest failed=request.getExtension(Peer.searchUnsuccesfulRequest);
+		
+		SearchData data=searchMap.remove(failed.getSearchRequest().getFingerprint());
+		
+		Request clientResponse=Request.newBuilder().setRequestId(++reqid).setRequestType(RequestType.SEARCH_UNSUCCESFUL_REQUEST).setExtension(Peer.searchUnsuccesfulRequest, failed).build();
+		
+		outqueue.addElement(new AddressedRequest(clientResponse, data.clientAddress, false));
 	}
 }

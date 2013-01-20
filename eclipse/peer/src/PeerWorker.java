@@ -52,7 +52,10 @@ public class PeerWorker extends Thread {
 			case SEARCH_ABORT:
 				break;
 			case SEARCH_SUCCESFULL:
+				peerManager.searchSuccessful(req);
 				break;
+			case SEARCH_UNSUCCESFUL_REQUEST:
+				peerManager.searchUnsuccessful(req);
 			case MONITORING_GET_PEERS_REQUEST:
 				break;
 			case MONITORING_REQUESTS_PROCESSED_REQUEST:
