@@ -23,5 +23,21 @@ public interface IMusicLibrary {
 	 * @return "NO" if no song found or song name
 	 */
 	public abstract String matchSong(Fingerprint f);
+	
+	
+	
+	/**
+	 * add song to the library 
+	 * @param song nameOfSong
+	 */
+	
+	public abstract String addMusic(String song);
+	
+	/**
+	 * remove song from the library
+	 * @param song name of song
+	 */
+	
+	public abstract String removeMusic(String song);
 
 }

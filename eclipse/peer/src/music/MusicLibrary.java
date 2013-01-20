@@ -1,5 +1,6 @@
 package music;
-import ac.at.tuwien.infosys.swa.audio.*;
+import ac.at.tuwien.infosys.swa.audio.Fingerprint;
+import ac.at.tuwien.infosys.swa.audio.FingerprintSystem;
 
 import java.io.*;
 import java.util.HashMap;
@@ -30,7 +31,7 @@ public class MusicLibrary implements IMusicLibrary {
 		}
 
 		this.libPath = path;
-		this.updateLibrary();
+	//	this.updateLibrary();
 	}
 
 	/* (non-Javadoc)
@@ -118,6 +119,18 @@ public class MusicLibrary implements IMusicLibrary {
 		
 		
 		return "NO";
+	}
+
+	public String addMusic(String song) {
+		File f = new File(libPath+song);
+		library.put(f.getName(), this.getFingerprintFromAFile(f));
+		return "Added song with the name" + song + "succesfully";
+	}
+
+	public String removeMusic(String song) {
+			library.remove(song);
+			return "Removed song with the name" + song + "succesfully";
+
 	}
 
 }

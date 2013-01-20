@@ -1,10 +1,14 @@
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.net.SocketAddress;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
@@ -30,10 +34,10 @@ public class Peer {
 		int serverPort=5678;
 		String serverIP="127.0.0.1";
 		
-		int numberOfPeers=5;
+		int numberOfPeers=1;
 		String musicFolder="";
 		
-		int numOfWorkers=3;
+		int numOfWorkers=1;
 		
 		int refreshPeriod=10000;
 		int hopsToLive=3;
@@ -72,11 +76,43 @@ public class Peer {
 		log.info("waiting");
 		
 		try {
-			Thread.sleep(100000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			//Thread.sleep(100000);
+	        
+			 
+
+	        
+	    // user input begins here
+		BufferedReader stdIn = new BufferedReader(
+	                                   new InputStreamReader(System.in));
+		String userInput;
+		while ((userInput = stdIn.readLine()) != null) {
+			String[] ccmm = getCommandArray(userInput);
+			if(ccmm[0].equals("add")){
+				// add the song
+				log.info(peerManager.addSong(ccmm[1]));
+				
+			}else if(ccmm[0].equals("remove")){
+				// remove the song
+				log.info(peerManager.removeSong(ccmm[1]));
+
+
+			}else{
+				log.info("remove or add song possible commands");
+			}
 		}
+
+		// close all open connections
+		stdIn.close();
+
+		
+		
+		}catch (Exception e) {
+			e.printStackTrace();
+			System.err.println("Exception" + e.toString() );
+		}
+				
+			
+
 	}
 
 	private static void ConnectToServer(AddressedRequestQueue queue, String serveraddress, String localAddress) {
@@ -96,5 +132,31 @@ public class Peer {
 
 		}
 		return i.getHostAddress();
+	}
+	
+	
+	// used to get command 
+	private static String getCommandFromLine(String userInput){
+			Scanner lineScanner = new Scanner(userInput);
+			lineScanner.useDelimiter(" ");
+			if(lineScanner.hasNext()){
+				return lineScanner.next();
+			}else{
+				return "";
+			}
+	}
+	
+	
+	// used to get command array with arguments from one string
+	public static String[] getCommandArray(String userInput){
+		String [] my_array = new String[32];
+		int counter = 0;
+		Scanner lineScanner = new Scanner(userInput);
+		lineScanner.useDelimiter(" ");
+		while(lineScanner.hasNext() && counter < 32){
+			my_array[counter] =  lineScanner.next();
+			counter = counter + 1;
+		}
+		return my_array;
 	}
 }

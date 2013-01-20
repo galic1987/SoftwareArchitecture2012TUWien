@@ -5,6 +5,9 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import music.IMusicLibrary;
+import music.MusicLibrary;
+
 import org.apache.log4j.Logger;
 
 import com.google.protobuf.ByteString;
@@ -42,6 +45,8 @@ public class PeerManager {
 	int reqid;
 	ConnectionManager connManager;
 	Map<ByteString,SearchData> searchMap;
+	
+	IMusicLibrary musicLib = new MusicLibrary("sampleAudio/");
 	
 	int searchHopsToLive;
 	int clientID;
@@ -291,5 +296,14 @@ public class PeerManager {
 		//if we are the original peer, we do not send notification to ourselves
 		if (!search.getOriginalPeer().contentEquals(listenAddress))
 		outqueue.addElement(new AddressedRequest(notfound, search.getOriginalPeer(), false));
+	}
+	
+	public String addSong(String song){
+		return musicLib.addMusic(song);
+	}
+	
+	
+	public String removeSong(String song){
+		return musicLib.removeMusic(song);
 	}
 }
