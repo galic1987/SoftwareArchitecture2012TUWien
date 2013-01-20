@@ -200,6 +200,25 @@ public class PeerManager {
 		
 		SearchData data=searchMap.get(search.getFingerprint());
 		
+		try{
+			Fingerprint f= FingerprintUtil.deserializeFingerprint(data.fingerprint.toByteArray());
+
+			String songName = musicLib.matchSong(f);
+			if(songName != "NO"){
+				// TODO: Inform server found it
+				SongData dataa = SongData.getDefaultInstance();
+				dataa.setSongName(songName);
+				
+				this.HandleMusicFound(search, dataa);
+				// TODO: Inform client foind it
+				return; 
+			}
+			
+			}catch(Exception e){
+				
+		}
+			
+		
 		
 		//if denied just throw the search away and forget about it
 		if(status!=ValidateSearchStatus.SEARCH_OK)
@@ -231,6 +250,7 @@ public class PeerManager {
 		SearchRequest search=request.getExtension(Peer.searchRequest);
 		
 		int hopsToLive=search.getHopsToLive();
+		
 		
 		if (searchMap.containsKey(search.getFingerprint()))
 		{
