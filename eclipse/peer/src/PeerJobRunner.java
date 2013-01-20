@@ -12,7 +12,6 @@ public class PeerJobRunner extends Thread {
 	{
 		connManager=connmanager;
 		peerManager=peermanager;
-		
 		period=periodinmilliseconds;
 	}
 	public void run()
@@ -20,14 +19,13 @@ public class PeerJobRunner extends Thread {
 		while(true)
 		{
 			log.info("ping");
-			Iterator<String> it=connManager.connectionMap.keySet().iterator();
+			Iterator<Connection> it=connManager.connectionMap.values().iterator();
 			while (it.hasNext())
 			{
-				
-				peerManager.checkAlive(it.next());
+				Connection c=it.next();
+				if (!c.server_connection && !c.client_connection)
+					peerManager.checkAlive(c.actualAddress);
 			}
-			
-			
 			
 			try {
 				Thread.sleep(period);

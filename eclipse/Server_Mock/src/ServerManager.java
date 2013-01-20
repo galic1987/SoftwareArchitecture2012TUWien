@@ -34,6 +34,7 @@ public class ServerManager {
 	
 	int searchCost;
 	int finderReward;
+	int searchCounter;
 	
 	AddressedRequestQueue outQueue;
 	
@@ -46,6 +47,9 @@ public class ServerManager {
 		
 		searchCost = SearchCost;
 		finderReward= FinderReward;
+		
+		//just some stupid way to randomize if search requests are denied or allowed
+		searchCounter=0;
 	}
 	
 	public synchronized void RegisterPeer(AddressedRequest req)
@@ -184,20 +188,27 @@ public class ServerManager {
 	}
 	
 	public void validateSearchRequest(AddressedRequest req) {
+		searchCounter++;
 		Request request = req.req;
 		ValidateSearchRequest validate=request.getExtension(Server.validateSearchRequest);
 		
 		SearchRequest searchreq=validate.getSearchRequest();
 		//search ok
-/*		ValidateSearchResponse resp=ValidateSearchResponse.newBuilder().
-				setSearchStatus(ValidateSearchStatus.SEARCH_OK).
-				setSearchRequest(searchreq).
-				build();
-		log.info("search permitted");
-	*/	
-		//search denied
-		ValidateSearchResponse resp=ValidateSearchResponse.newBuilder().setSearchStatus(ValidateSearchStatus.SEARCH_DENIED).setSearchRequest(searchreq).build();
-		log.info("search denied");
+		ValidateSearchResponse resp;
+		if (searchCounter%2==1) 
+		{
+			resp=ValidateSearchResponse.newBuilder().
+					setSearchStatus(ValidateSearchStatus.SEARCH_OK).
+					setSearchRequest(searchreq).
+					build();
+			log.info("search permitted");
+		}
+		else
+		{
+			//search denied
+			resp=ValidateSearchResponse.newBuilder().setSearchStatus(ValidateSearchStatus.SEARCH_DENIED).setSearchRequest(searchreq).build();
+			log.info("search denied");
+		}
 		
 		Request container=Request.newBuilder().
 				setRequestId(request.getRequestId()).
